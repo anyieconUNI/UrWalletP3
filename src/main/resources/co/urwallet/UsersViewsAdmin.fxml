@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="541.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.UsersViewsController">
+    <children>
+        <SplitPane dividerPositions="0.49537037037037024" layoutX="4.0" layoutY="8.0" orientation="VERTICAL"
+                   prefHeight="533.0" prefWidth="726.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="247.0" prefWidth="724.0">
+                    <children>
+                        <Label layoutX="35.0" layoutY="40.0" text="Cedula:">
+                            <font>
+                                <Font name="Candara" size="14.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="txtCedula" layoutX="101.0" layoutY="35.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #21b1b1;"/>
+
+                        <Label layoutX="35.0" layoutY="80.0" text="Nombre Completo:">
+                            <font>
+                                <Font name="Candara" size="14.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="txtNombreCompleto" layoutX="101.0" layoutY="75.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #21b1b1;"/>
+
+                        <Label layoutX="35.0" layoutY="120.0" text="Telefono:">
+                            <font>
+                                <Font name="Candara" size="14.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="txtTelefono" layoutX="101.0" layoutY="115.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #21b1b1;"/>
+
+                        <Label layoutX="35.0" layoutY="160.0" text="Correo Electrónico:">
+                            <font>
+                                <Font name="Candara" size="14.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="txtCorreo" layoutX="101.0" layoutY="155.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #21b1b1;"/>
+
+                        <Label layoutX="35.0" layoutY="200.0" text="Contraseña:">
+                            <font>
+                                <Font name="Candara" size="14.0"/>
+                            </font>
+                        </Label>
+                        <PasswordField fx:id="txtContrasena" layoutX="101.0" layoutY="195.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #21b1b1;"/>
+
+                        <Label layoutX="370.0" layoutY="40.0" text="Dirección:">
+                            <font>
+                                <Font name="Candara" size="14.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="txtDireccion" layoutX="450.0" layoutY="35.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #21b1b1;"/>
+
+
+                        <Button fx:id="btnActualizar" layoutX="308.0" layoutY="202.0" mnemonicParsing="false"
+                                onAction="#actualizarUserAction" prefHeight="27.0" prefWidth="88.0"
+                                style="-fx-background-color: #21b1b1;" text="Actualizar" textFill="WHITE">
+                            <font>
+                                <Font name="Candara" size="14.0"/>
+                            </font>
+                        </Button>
+
+                        <Button fx:id="btnNuevo" layoutX="160.0" layoutY="202.0" mnemonicParsing="false"
+                                onAction="#limpiarUserAction" prefHeight="20.0" prefWidth="100.0"
+                                style="-fx-background-color: #21b1b1;" text="Limpiar" textFill="WHITE">
+                            <font>
+                                <Font name="Candara" size="14.0"/>
+                            </font>
+                        </Button>
+
+                        <Button fx:id="btnAgregar" layoutX="450.0" layoutY="202.0" mnemonicParsing="false"
+                                onAction="#agregarUserAction" prefHeight="20.0" prefWidth="106.0"
+                                style="-fx-background-color: #21b1b1;" text="Agregar" textFill="WHITE">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="724.0">
+                    <children>
+                        <TableView fx:id="tableusers" layoutX="210.0" layoutY="14.0" prefHeight="200.0"
+                                   prefWidth="316.0" style="-fx-border-color: #21b1b1;">
+                            <columns>
+                                <TableColumn fx:id="tcCedula" prefWidth="75.0" text="Cédula"/>
+                                <TableColumn fx:id="tcNombreCompleto" prefWidth="100.0" text="Nombre Completo"/>
+                                <TableColumn fx:id="tcTelefono" prefWidth="90.0" text="Telefono"/>
+                                <TableColumn fx:id="tcCorreo" prefWidth="120.0" text="Correo"/>
+                                <TableColumn fx:id="tcDireccion" prefWidth="120.0" text="Dirección"/>
+                                <TableColumn fx:id="tcSaldoDispo" prefWidth="100.0" text="Saldo Disponible"/>
+                            </columns>
+                        </TableView>
+
+                        <Button fx:id="btnEliminar" layoutX="318.0" layoutY="224.0" mnemonicParsing="false"
+                                onAction="#eliminarUserAction" prefHeight="27.0" prefWidth="100.0"
+                                style="-fx-background-color: #ff6a6a;" text="Eliminar" textFill="WHITE">
+                            <font>
+                                <Font name="Candara" size="14.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
