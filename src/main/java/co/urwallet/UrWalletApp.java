@@ -18,7 +18,7 @@ public class UrWalletApp  extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         this.primaryStage = stage;
-        this.primaryStage.setTitle("Banco UQ");
+        this.primaryStage.setTitle("UrWallet");
         mostrarVentanaPrincipal();
     }
 

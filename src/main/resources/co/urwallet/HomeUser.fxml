@@ -1,104 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.urwallet.viewController.HomeViewsUsers"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.HomeViewsUsers">
     <children>
-        <Label fx:id="welcomeLabel" text="Bienvenido, "/>
-        <Label layoutX="135.0" layoutY="62.0" text="Crear nueva cuenta" textFill="#21b1b1">
+        <Label fx:id="welcomeLabel" layoutX="13.0" prefHeight="39.0" prefWidth="98.0" text="Hola, ">
+         <font>
+            <Font name="Candara" size="14.0" />
+         </font></Label>
+        <Label layoutX="218.0" layoutY="61.0" text="Crear nueva cuenta" textFill="#187173">
             <font>
-                <Font name="Candara Bold" size="20.0"/>
+                <Font name="Candara Bold" size="20.0" />
             </font>
         </Label>
 
-        <GridPane alignment="CENTER" hgap="10.0" layoutX="13.0" layoutY="88.0" prefHeight="237.0" prefWidth="381.0"
-                  vgap="10.0">
-            <Label prefHeight="20.0" prefWidth="165.0" text="Número identificación:" GridPane.columnIndex="0"
-                   GridPane.rowIndex="0">
+        <GridPane alignment="CENTER" hgap="10.0" layoutX="110.0" layoutY="95.0" prefHeight="237.0" prefWidth="381.0" vgap="10.0">
+            <Label prefHeight="20.0" prefWidth="165.0" text="Número identificación:" textFill="#00093c" GridPane.columnIndex="0" GridPane.rowIndex="0">
                 <font>
-                    <Font size="14.0"/>
+                    <Font size="14.0" />
                 </font>
             </Label>
-            <TextField fx:id="txtIdentificacion" minHeight="30.0" prefHeight="30.0" prefWidth="178.0"
-                       promptText="Escriba su N: Identificacion" style="-fx-border-color: #21b1b1;" GridPane.columnIndex="1"
-                       GridPane.rowIndex="0" editable="false"/>
+            <TextField fx:id="txtIdentificacion" editable="false" minHeight="30.0" prefHeight="30.0" prefWidth="178.0" promptText="Escriba su N: Identificacion" style="-fx-border-color: #187173;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-            <Label text="Nombre Compelto:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <Label text="Nombre Compelto:" textFill="#00093c" GridPane.columnIndex="0" GridPane.rowIndex="1">
                 <font>
-                    <Font name="Candara" size="14.0"/>
+                    <Font name="Candara" size="14.0" />
                 </font>
             </Label>
-            <TextField fx:id="txtNombreCompleto" minHeight="30.0" promptText="Escriba su Nombre"
-                       style="-fx-border-color: #21b1b1;" GridPane.columnIndex="1" GridPane.rowIndex="1" editable="false"/>
+            <TextField fx:id="txtNombreCompleto" editable="false" minHeight="30.0" promptText="Escriba su Nombre" style="-fx-border-color: #187173;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <Label text="Correo electrónico:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <Label text="Correo electrónico:" textFill="#00093c" GridPane.columnIndex="0" GridPane.rowIndex="2">
                 <font>
-                    <Font size="14.0"/>
+                    <Font size="14.0" />
                 </font>
             </Label>
-            <TextField fx:id="txtCorreo" minHeight="30.0" promptText="Correo" style="-fx-border-color: #21b1b1;"
-                       GridPane.columnIndex="1" GridPane.rowIndex="2" editable="false"/>
+            <TextField fx:id="txtCorreo" editable="false" minHeight="30.0" promptText="Correo" style="-fx-border-color: #187173;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-            <Label text="Telefono:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <Label text="Telefono:" textFill="#00093c" GridPane.columnIndex="0" GridPane.rowIndex="3">
                 <font>
-                    <Font size="14.0"/>
+                    <Font size="14.0" />
                 </font>
             </Label>
-            <TextField fx:id="txtTelefono" minHeight="30.0" promptText="Telefono" style="-fx-border-color: #21b1b1;"
-                       GridPane.columnIndex="1" GridPane.rowIndex="3" editable="false"/>
+            <TextField fx:id="txtTelefono" editable="false" minHeight="30.0" promptText="Telefono" style="-fx-border-color: #187173;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-            <Label text="Dirección:" GridPane.columnIndex="0" GridPane.rowIndex="5">
+            <Label text="Dirección:" textFill="#00093c" GridPane.columnIndex="0" GridPane.rowIndex="5">
                 <font>
-                    <Font size="14.0"/>
+                    <Font size="14.0" />
                 </font>
             </Label>
-            <TextField fx:id="txtDireccion" minHeight="30.0" promptText="Telefono" style="-fx-border-color: #21b1b1;"
-                       GridPane.columnIndex="1" GridPane.rowIndex="5" editable="false"/>
+            <TextField fx:id="txtDireccion" editable="false" minHeight="30.0" promptText="Telefono" style="-fx-border-color: #187173;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
             <columnConstraints>
-                <ColumnConstraints maxWidth="150.0" minWidth="143.2000244140625" prefWidth="143.2000244140625"/>
-                <ColumnConstraints maxWidth="148.79997558593746" minWidth="148.79997558593746"
-                                   prefWidth="148.79997558593746"/>
+                <ColumnConstraints maxWidth="150.0" minWidth="143.2000244140625" prefWidth="143.2000244140625" />
+                <ColumnConstraints maxWidth="148.79997558593746" minWidth="148.79997558593746" prefWidth="148.79997558593746" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints/>
-                <RowConstraints/>
-                <RowConstraints/>
-                <RowConstraints/>
-                <RowConstraints/>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            <RowConstraints />
             </rowConstraints>
         </GridPane>
-        <Label layoutX="103.0" layoutY="31.0" text="Bienvenido">
+        <Label layoutX="244.0" layoutY="31.0" text="Bienvenido" textFill="#00093c">
             <font>
-                <Font name="Candara" size="24.0"/>
+                <Font name="Candara" size="24.0" />
             </font>
         </Label>
-        <Button layoutX="165.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #ff6a6a;"
-                onAction="#editarUser" text="Editar" textFill="WHITE" fx:id="editar">
+        <Button fx:id="editar" layoutX="154.0" layoutY="333.0" mnemonicParsing="false" onAction="#editarUser" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #00093c;" text="Editar" textFill="WHITE">
             <font>
-                <Font name="Candara" size="14.0"/>
+                <Font name="Candara" size="14.0" />
             </font>
         </Button>
 
-        <Button layoutX="215.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #ff6a6a;"
-                onAction="#actualizarUser" text="Actualizar" fx:id="actualizar" textFill="WHITE" disable="true">
+        <Button fx:id="actualizar" disable="true" layoutX="261.0" layoutY="333.0" mnemonicParsing="false" onAction="#actualizarUser" style="-fx-background-color: #00093c;" text="Actualizar" textFill="WHITE">
             <font>
-                <Font name="Candara" size="14.0"/>
+                <Font name="Candara" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="315.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #ff6a6a;"
-                onAction="#eliminar" text="Eliminar" textFill="WHITE" >
+        <Button layoutX="384.0" layoutY="333.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-color: #ff6a6a;" text="Eliminar" textFill="WHITE">
             <font>
-                <Font name="Candara" size="14.0"/>
+                <Font name="Candara" size="14.0" />
             </font>
         </Button>
     </children>
