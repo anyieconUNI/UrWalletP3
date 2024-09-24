@@ -12,11 +12,6 @@ public class UrWallet implements IUrWalletService {
 //    ArrayList<Admin> listaAdmins = new ArrayList<>();
 //    ArrayList<Cuenta> listaCuentas = new ArrayList<>();
 
-
-
-
-
-
 //
     public UrWallet() {
     }

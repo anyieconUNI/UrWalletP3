@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.HomeViewsUsers">
     <children>
-        <Label fx:id="welcomeLabel" layoutX="13.0" prefHeight="39.0" prefWidth="98.0" text="Hola, ">
+        <Label fx:id="welcomeLabel" layoutX="13.0" prefHeight="39.0" prefWidth="189.0" text="Hola, ">
          <font>
             <Font name="Candara" size="14.0" />
          </font></Label>
