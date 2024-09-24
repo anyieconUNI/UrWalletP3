@@ -2,6 +2,7 @@ package co.urwallet.mapping.mappers;
 import co.urwallet.model.Usuario;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 import co.urwallet.mapping.dto.UsuarioDto;
@@ -23,14 +24,4 @@ public interface UrWalletMapper {
     @IterableMapping(qualifiedByName = "usuarioToUsuarioDto")
     List<UsuarioDto> getUsuariosDto(List<Usuario> listaUsuarios);
 
-    // Métodos personalizados para mapear entre String y Usuario (si es necesario)
-    default String usuarioToString(Usuario usuario) {
-        return usuario != null ? usuario.getNombreCompleto() : null;
-    }
-
-    default Usuario stringToUsuario(String nombre) {
-        Usuario usuario = new Usuario();
-        usuario.setNombreCompleto(nombre);
-        return usuario;
-    }
 }

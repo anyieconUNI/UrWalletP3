@@ -1,20 +1,28 @@
 package co.urwallet.model;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Usuario extends Persona {
     private  String idUsuario;
     private String telefono;
     private  String direccion;
     private Float saldoDispo;
 
-    public Usuario() {
-
+    public Usuario(String cedula, String nombreCompleto, String correo, String contrasena, String idUsuario, String telefono, String direccion, Float saldoDispo) {
+        super(cedula, nombreCompleto, correo, contrasena);
+        this.idUsuario = idUsuario;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.saldoDispo = saldoDispo;
     }
+
     public String getIdUsuario() {
         return idUsuario;
     }

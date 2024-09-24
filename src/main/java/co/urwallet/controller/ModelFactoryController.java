@@ -60,6 +60,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             }
             return true;
         }catch (UsuarioException e){
+            e.printStackTrace();
             e.getMessage();
             return false;
         }
