@@ -14,14 +14,11 @@ public interface UrWalletMapper {
     UrWalletMapper INSTANCE = Mappers.getMapper(UrWalletMapper.class);
 
     // Mapea de Usuario a UsuarioDto
-    @Named("usuarioToUsuarioDto")
     UsuarioDto usuarioToUsuarioDto(Usuario usuario);
 
     // Mapea de UsuarioDto a Usuario
     Usuario usuarioDtoToUsuario(UsuarioDto usuarioDto);
 
     // Mapea una lista de Usuarios a una lista de UsuarioDto
-    @IterableMapping(qualifiedByName = "usuarioToUsuarioDto")
     List<UsuarioDto> getUsuariosDto(List<Usuario> listaUsuarios);
-
 }
