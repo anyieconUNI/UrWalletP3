@@ -80,8 +80,38 @@ public class UrWallet implements IUrWalletService {
         }
         return usuarioEncontrado;
     }
-
+    
     @Override
+    public boolean actualizarUsuario(String idActual, Usuario usuario) throws UsuarioException {
+        try {
+            System.out.print("AQUIIIIIIIIIIIIIII" + idActual);
+            Usuario usuarioActual = obtenerUsuario(idActual);
+
+            if (usuarioActual == null) {
+                throw new UsuarioException("El usuario no existe");
+            } else {
+                usuarioActual.setNombreCompleto(usuario.getNombreCompleto());
+                usuarioActual.setCedula(usuario.getCedula());
+                usuarioActual.setTelefono(usuario.getTelefono());
+                usuarioActual.setDireccion(usuario.getDireccion());
+                return true;
+            }
+        } catch (UsuarioException e) {
+            // Manejo específico de UsuarioException
+            System.err.println("Error en actualizarUsuario: " + e.getMessage());
+            throw e; // Vuelve a lanzar la excepción
+        } catch (Exception e) {
+            // Manejo de cualquier otra excepción no prevista
+            System.err.println("Error inesperado: " + e.getMessage());
+            throw new UsuarioException("Error inesperado al actualizar el usuario");
+        }
+    }
+
+
+
+    /*
+    @Override
+
     public boolean actualizarUsuario(String idActual, Usuario usuario) throws UsuarioException {
         System.out.print("AQUIIIIIIIIIIIIIII"+ idActual);
         Usuario usuarioActual = obtenerUsuario(idActual);
@@ -99,6 +129,10 @@ public class UrWallet implements IUrWalletService {
             return true;
         }
     }
+
+     */
+
+
 //    public Usuario validarUsuario(String numeroIdentificacion, String contraseña) throws Exception {
 //        Usuario usuario = obtenerUsuario(numeroIdentificacion);
 //        if (usuario != null) {
@@ -222,5 +256,7 @@ public class UrWallet implements IUrWalletService {
 //        }
 //        return consultarSaldoRecursivo(identificacion, index + 1, saldo);
 //    }
+
+
 
 }
