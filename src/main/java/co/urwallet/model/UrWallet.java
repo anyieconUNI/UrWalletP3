@@ -27,12 +27,18 @@ public class UrWallet implements IUrWalletService {
 
     @Override
     public boolean verificarUsuarioExistente(String idUser) throws UsuarioException {
-        if (usuarioExiste(idUser)) {
-            throw new UsuarioException("El usuario ya existe");
-        } else {
-            return false;
+        try {
+            if (usuarioExiste(idUser)) {
+                throw new UsuarioException("El usuario ya existe");
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.err.println("Error inesperado en verificarUsuarioExistente: " + e.getMessage());
+            throw new UsuarioException("Error inesperado al verificar la existencia del usuario");
         }
     }
+
 
     public boolean usuarioExiste(String id) {
         boolean usuarioEncontrado = false;
@@ -57,16 +63,22 @@ public class UrWallet implements IUrWalletService {
 
     @Override
     public boolean eliminarUsuario(String id) throws UsuarioException {
-        Usuario usuario = null;
-        boolean flag = false;
-        usuario = obtenerUsuario(id);
-        if (usuario == null)
-            throw new UsuarioException("El usuario no existe");
-        else {
-            getListaUsuarios().remove(usuario);
-            flag = true;
+        try {
+            Usuario usuario = obtenerUsuario(id);
+
+            if (usuario == null) {
+                throw new UsuarioException("El usuario no existe");
+            } else {
+                getListaUsuarios().remove(usuario);
+                return true;
+            }
+        } catch (UsuarioException e) {
+            System.err.println("Error en eliminarUsuario: " + e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            System.err.println("Error inesperado: " + e.getMessage());
+            throw new UsuarioException("Error inesperado al eliminar el usuario");
         }
-        return flag;
     }
 
     @Override
@@ -80,7 +92,7 @@ public class UrWallet implements IUrWalletService {
         }
         return usuarioEncontrado;
     }
-    
+
     @Override
     public boolean actualizarUsuario(String idActual, Usuario usuario) throws UsuarioException {
         try {
@@ -107,8 +119,6 @@ public class UrWallet implements IUrWalletService {
         }
     }
 
-
-
     /*
     @Override
 
@@ -129,6 +139,29 @@ public class UrWallet implements IUrWalletService {
             return true;
         }
     }
+    @Override
+    public boolean eliminarUsuario(String id) throws UsuarioException {
+        Usuario usuario = null;
+        boolean flag = false;
+        usuario = obtenerUsuario(id);
+        if (usuario == null)
+            throw new UsuarioException("El usuario no existe");
+        else {
+            getListaUsuarios().remove(usuario);
+            flag = true;
+        }
+        return flag;
+    }
+        @Override
+    public boolean verificarUsuarioExistente(String idUser) throws UsuarioException {
+        if (usuarioExiste(idUser)) {
+            throw new UsuarioException("El usuario ya existe");
+        } else {
+            return false;
+        }
+    }
+
+
 
      */
 
