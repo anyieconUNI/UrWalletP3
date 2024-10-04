@@ -4,6 +4,7 @@ module co.urwallet {
 //    requires org.mapstruct;
     requires static lombok;
     requires org.mapstruct;
+    requires java.logging;
 
 
     opens co.urwallet to javafx.fxml;
