@@ -4,12 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
-@NoArgsConstructor
-public class Usuario  {
+public class Usuario implements Serializable {
     private String idUsuario;
     private String cedula;
     private String nombreCompleto;
@@ -18,6 +18,10 @@ public class Usuario  {
     private String contrasena;
     private String direccion;
     private Float saldoDispo;
+
+    public Usuario(){
+
+    }
 
     public Usuario(String cedula, String nombreCompleto, String correo, String contrasena, String idUsuario, String telefono, String direccion, Float saldoDispo) {
         this.idUsuario = idUsuario;
@@ -28,6 +32,14 @@ public class Usuario  {
         this.telefono = telefono;
         this.direccion = direccion;
         this.saldoDispo = saldoDispo;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getTelefono() {
+        return telefono;
     }
 
     public String generaridUsuario() {

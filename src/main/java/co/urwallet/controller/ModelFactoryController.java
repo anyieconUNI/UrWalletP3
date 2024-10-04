@@ -9,6 +9,7 @@ import co.urwallet.mapping.dto.UsuarioDto;
 import co.urwallet.mapping.mappers.UrWalletMapper;
 import co.urwallet.model.UrWallet;
 import co.urwallet.model.Usuario;
+import co.urwallet.utils.Persistencia;
 import co.urwallet.utils.UrWalletUtils;
 import co.urwallet.viewController.HomeViewsUsers;
 import javafx.event.ActionEvent;
@@ -35,7 +36,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     }
     public ModelFactoryController() {
         cargarDatosBase();
-
+        cargarDatosDesdeArchivos();
     }
     private void cargarDatosBase() {
         urWallet = UrWalletUtils.inicializarDatos();
@@ -57,11 +58,28 @@ public class ModelFactoryController implements IModelFactoryControllerService {
                 System.out.println("MODELLLL22"+ user.getCorreo());
 
                 getUrWallet().agregarUsuario(user);
+                guardarPerUsers();
+                cargarDatosDesdeArchivos();
             }
             return true;
         }catch (UsuarioException e){
             e.getMessage();
             return false;
+        }
+    }
+    private void cargarDatosDesdeArchivos() {
+        urWallet = new UrWallet();
+        try {
+            Persistencia.cargarDatosArchivos(urWallet);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void guardarPerUsers(){
+        try{
+            Persistencia.guardarUsuario(getUrWallet().getListaUsuarios());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     @Override
