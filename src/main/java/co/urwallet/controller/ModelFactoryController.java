@@ -52,7 +52,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public boolean agregarUsers(UsuarioDto usuarioDto) {
         try{
             System.out.println("MODELLLL"+ usuarioDto.correo());
-            if(!urWallet.verificarUsuarioExistente(usuarioDto.idUsuario())){
+            if(!urWallet.verificarUsuarioExistente(usuarioDto.cedula())){
                 Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
                 System.out.println("MODELLLL22"+ user.getCorreo());
 
@@ -60,7 +60,6 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             }
             return true;
         }catch (UsuarioException e){
-            e.printStackTrace();
             e.getMessage();
             return false;
         }

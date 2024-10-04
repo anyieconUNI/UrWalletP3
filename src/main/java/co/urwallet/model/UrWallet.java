@@ -12,30 +12,27 @@ public class UrWallet implements IUrWalletService {
 //    ArrayList<Admin> listaAdmins = new ArrayList<>();
 //    ArrayList<Cuenta> listaCuentas = new ArrayList<>();
 
-//
+    //
     public UrWallet() {
     }
-    public ArrayList<Usuario> getListaUsers(){
+
+    public ArrayList<Usuario> getListaUsers() {
         return listaUsuarios;
     }
+
     public void agregarUsuario(Usuario nuevoUsuario) throws UsuarioException {
-        if (nuevoUsuario.getCorreo() == null) {
-            throw new UsuarioException("El correo no puede ser nulo");
-        }
+//        if (nuevoUsuario.getCorreo() == null) {
+//            throw new UsuarioException("El correo no puede ser nulo");
+//        }
         getListaUsers().add(nuevoUsuario);
     }
 
     @Override
     public boolean verificarUsuarioExistente(String idUser) throws UsuarioException {
-        try {
-            if (usuarioExiste(idUser)) {
-                throw new UsuarioException("El usuario ya existe");
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            System.err.println("Error inesperado en verificarUsuarioExistente: " + e.getMessage());
-            throw new UsuarioException("Error inesperado al verificar la existencia del usuario");
+        if (usuarioExiste(idUser)) {
+            throw new UsuarioException("El usuario ya existe");
+        } else {
+            return false;
         }
     }
 
@@ -43,16 +40,17 @@ public class UrWallet implements IUrWalletService {
     public boolean usuarioExiste(String id) {
         boolean usuarioEncontrado = false;
         for (Usuario usuario : getListaUsers()) {
-            if (usuario.getIdUsuario().equalsIgnoreCase(id)) {
+            if (usuario.getCedula().equalsIgnoreCase(id)) {
                 usuarioEncontrado = true;
                 break;
             }
         }
         return usuarioEncontrado;
     }
+
     public Usuario buscarUserLogin(String email) {
         for (Usuario user : getListaUsers()) {
-            System.out.println("AQQQQQQQQQQQQQQQQQQ"+user.getCorreo() +email);
+            System.out.println("AQQQQQQQQQQQQQQQQQQ" + user.getCorreo() + email);
             // Verificar si el correo es nulo antes de hacer la comparación
             if (user.getCorreo() != null && user.getCorreo().equalsIgnoreCase(email)) {
                 return user;
@@ -289,7 +287,6 @@ public class UrWallet implements IUrWalletService {
 //        }
 //        return consultarSaldoRecursivo(identificacion, index + 1, saldo);
 //    }
-
 
 
 }

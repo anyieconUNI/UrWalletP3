@@ -16,7 +16,7 @@
             <Font name="Candara Bold" size="20.0" />
         </font>
     </Label>
-    <Button layoutX="140.0" layoutY="289.0" minHeight="30.0" minWidth="100.0" onAction="#iniciarSesionUser" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #00093c;" text="Iniciar sesión" textFill="WHITE">
+    <Button layoutX="140.0" layoutY="289.0" minHeight="35.0" minWidth="100.0" onAction="#iniciarSesionUser" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #00093c;" text="Iniciar sesión" textFill="WHITE">
         <font>
             <Font name="Candara" size="14.0" />
         </font></Button>
