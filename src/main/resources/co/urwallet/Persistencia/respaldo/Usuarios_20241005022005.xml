@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="21.0.3" class="java.beans.XMLDecoder">
+ <object class="co.urwallet.model.UrWallet" id="UrWallet0">
+  <void property="listaUsers">
+   <void method="add">
+    <object class="co.urwallet.model.Usuario">
+     <void property="cedula">
+      <string>000</string>
+     </void>
+     <void property="contrasena">
+      <string>0</string>
+     </void>
+     <void property="correo">
+      <string>0</string>
+     </void>
+     <void property="direccion">
+      <string>0</string>
+     </void>
+     <void property="idUsuario">
+      <string>c02b9a45-686b-4eb3-af42-343f90c98fd9</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>0</string>
+     </void>
+     <void property="saldoDispo">
+      <float>0.0</float>
+     </void>
+     <void property="telefono">
+      <string>0</string>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>

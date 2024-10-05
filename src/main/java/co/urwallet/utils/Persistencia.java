@@ -5,15 +5,15 @@ import co.urwallet.model.Usuario;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Persistencia {
-    private static final String RUTA_ARCHIVO_USUARIOS = "src/main/resources/co/urwallet/Persistencia/Usuarios.txt";
+    private static final String RUTA_ARCHIVO_USUARIOS = "src/main/resources/co/urwallet/Persistencia/archivos/Usuarios.txt";
     private static final String RUTA_ARCHIVO_LOG = "src/main/resources/co/urwallet/Persistencia/Log/UrWalletLog.txt";
+    private static final String RUTA_ARCHIVO_MODELO_urWallet_BINARIO ="src/main/resources/co/urwallet/Persistencia/model.dat";
+
+    private static final String RUTA_ARCHIVO_MODELO_urWallet_XML ="src/main/resources/co/urwallet/Persistencia/model.xml";
+    private static final String RUTA_RESPALDO = "src/main/resources/co/urwallet/Persistencia/respaldo/";
 
     public static void cargarDatosArchivos(UrWallet urWallet) throws FileNotFoundException, IOException {
         //cargar archivo de users
@@ -59,11 +59,55 @@ public class Persistencia {
     public static void guardaRegistroLog(String mensajeLog, int nivel, String accion){
         ArchivoUtils.guardarRegistroLog(mensajeLog, nivel, accion, RUTA_ARCHIVO_LOG);
     }
-    private static final String RUTA_RESPALDO = "src/main/resources/co/urwallet/Persistencia/respaldo/";
 
-    public static void copiarArchivos() throws IOException {
-        String archivoOrigen = "src/main/resources/co/urwallet/Persistencia/Usuarios.txt";
-        ArchivoUtils.copiarArchivos(archivoOrigen,RUTA_RESPALDO,"Usuarios_",".txt");
+    public static void guardarRecursourWalletBinario(UrWallet urWallet) {
+        try {
+            ArchivoUtils.salvarRecursoSerializado(RUTA_ARCHIVO_MODELO_urWallet_BINARIO, urWallet);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    public static UrWallet cargarRecursoUrWalletBinario() {
+
+        UrWallet urWallet = null;
+
+        try {
+            urWallet = (UrWallet) ArchivoUtils.cargarRecursoSerializado(RUTA_ARCHIVO_MODELO_urWallet_BINARIO);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return urWallet;
+    }
+    public static void guardarRecursoBancoXML(UrWallet urWallet) {
+        try {
+            ArchivoUtils.salvarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_urWallet_XML, urWallet);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    public static UrWallet cargarRecursoUrWalletXML() {
+
+        UrWallet urWallet = null;
+
+        try {
+            urWallet = (UrWallet) ArchivoUtils.cargarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_urWallet_XML);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return urWallet;
 
     }
+    public static void copiarArchivos() throws IOException {
+        String archivoOrigen = RUTA_ARCHIVO_USUARIOS;
+        ArchivoUtils.copiarArchivos(archivoOrigen,RUTA_RESPALDO,"Usuarios_",".txt");
+
+        String archivoOrigenXML = RUTA_ARCHIVO_MODELO_urWallet_XML;
+        ArchivoUtils.copiarArchivos(archivoOrigenXML,RUTA_RESPALDO,"Usuarios_",".xml");
+
+    }
+
 }

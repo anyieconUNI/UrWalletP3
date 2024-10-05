@@ -36,3 +36,147 @@ oct 05, 2024 12:20:09 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
 INFORMACIÓN: Copy,Se creo una copia en respaldo,2024-10-05
 oct 05, 2024 12:20:09 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
 INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:04:32 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-10-05
+oct 05, 2024 1:04:32 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:04:35 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:04:41 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:04:51 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 1:08:41 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-10-05
+oct 05, 2024 1:08:41 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:08:44 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:08:51 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:09:01 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 1:12:35 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:12:47 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:12:51 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:16:58 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:17:00 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:17:06 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:25:24 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:25:27 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:25:32 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:25:40 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 1:27:05 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:27:07 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:27:12 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:27:25 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 1:28:10 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:28:12 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:28:17 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:28:25 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 1:31:52 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:31:54 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:31:59 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:32:07 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 1:32:17 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Update,Se han actualizado correctamente los datos,2024-10-05
+oct 05, 2024 1:46:01 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:46:03 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:46:11 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:46:18 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 1:47:01 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:47:03 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:47:10 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:47:17 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 1:51:20 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:51:22 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:51:30 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:51:36 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 1:54:09 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:54:14 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:54:19 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:54:25 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 1:54:30 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+ADVERTENCIA: Warning,No se ha creado,2024-10-05
+oct 05, 2024 1:54:32 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Update,Se han actualizado correctamente los datos,2024-10-05
+oct 05, 2024 1:54:45 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:55:00 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 1:55:02 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 1:55:13 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 2:09:08 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 2:09:15 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 2:09:25 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 2:09:31 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 2:13:59 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 2:14:01 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 2:14:05 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 2:14:13 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-10-05
+oct 05, 2024 2:14:51 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 2:14:53 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 2:15:01 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 2:17:45 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Copy,Se creo una copia en respaldo,2024-10-05
+oct 05, 2024 2:17:45 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 2:20:05 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Copy,Se creo una copia en respaldo,2024-10-05
+oct 05, 2024 2:20:05 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-10-05
+oct 05, 2024 2:20:08 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05
+oct 05, 2024 2:20:14 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-10-05

@@ -4,10 +4,12 @@ import co.urwallet.exceptions.UsuarioException;
 import co.urwallet.model.Services.IUrWalletService;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Getter
-public class UrWallet implements IUrWalletService {
+public class UrWallet implements IUrWalletService , Serializable {
+    private static final long serialVersionUID = 1L;
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 //    ArrayList<Admin> listaAdmins = new ArrayList<>();
 //    ArrayList<Cuenta> listaCuentas = new ArrayList<>();
@@ -20,6 +22,9 @@ public class UrWallet implements IUrWalletService {
         return listaUsuarios;
     }
 
+    public  void setListaUsers(ArrayList<Usuario> listaClientes){
+        this.listaUsuarios = listaUsuarios;
+    }
     public void agregarUsuario(Usuario nuevoUsuario) throws UsuarioException {
 //        if (nuevoUsuario.getCorreo() == null) {
 //            throw new UsuarioException("El correo no puede ser nulo");

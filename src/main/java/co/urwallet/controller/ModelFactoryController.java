@@ -28,33 +28,61 @@ import java.util.List;
 public class ModelFactoryController implements IModelFactoryControllerService {
     UrWallet urWallet;
     UrWalletMapper mapper = UrWalletMapper.INSTANCE;
+
     private static class SingletonHolder {
         private final static ModelFactoryController eINSTANCE = new ModelFactoryController();
     }
+
     public static ModelFactoryController getInstance() {
         return SingletonHolder.eINSTANCE;
     }
+
     public ModelFactoryController() {
         cargarDatosBase();
-        cargarDatosDesdeArchivos();
+//        cargarDatosDesdeArchivos();
+//        cargarRecursoUrWalletBinario();
         copiarArchivos();
+        cargarRecursoUrWalletXML();
+        if (urWallet == null) {
+            cargarDatosBase();
+            guardarRecursoBancoXML();
+        }
         guardaRegistroLog("Inicio de sesión", 1, "inicioSesión");
 
     }
+
     private void cargarDatosDesdeArchivos() {
         urWallet = new UrWallet();
         try {
             Persistencia.cargarDatosArchivos(urWallet);
-            guardaRegistroLog("Se han cargado los datos correctamente",1,"Get");
+            guardaRegistroLog("Se han cargado los datos correctamente", 1, "Get");
         } catch (IOException e) {
-            guardaRegistroLog("No se han cargado los datos",2,"Warning");
+            guardaRegistroLog("No se han cargado los datos", 2, "Warning");
             throw new RuntimeException(e);
         }
     }
-    private void guardaRegistroLog(String mensajeLog, int nivel, String accion){
-        Persistencia.guardaRegistroLog(mensajeLog,nivel,accion);
+
+    private void guardaRegistroLog(String mensajeLog, int nivel, String accion) {
+        Persistencia.guardaRegistroLog(mensajeLog, nivel, accion);
     }
-    private void copiarArchivos(){
+
+    private void guardarRecursourWalletBinario() {
+        Persistencia.guardarRecursourWalletBinario(urWallet);
+    }
+
+    private void cargarRecursoUrWalletBinario() {
+        urWallet = Persistencia.cargarRecursoUrWalletBinario();
+    }
+
+    private void cargarRecursoUrWalletXML() {
+        urWallet = Persistencia.cargarRecursoUrWalletXML();
+    }
+
+    private void guardarRecursoBancoXML() {
+        Persistencia.guardarRecursoBancoXML(urWallet);
+    }
+
+    private void copiarArchivos() {
         try {
             Persistencia.copiarArchivos();
             guardaRegistroLog("Se creo una copia en respaldo", 1, "Copy");
@@ -62,95 +90,107 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             throw new RuntimeException(e);
         }
     }
+
     private void cargarDatosBase() {
         urWallet = UrWalletUtils.inicializarDatos();
     }
-    public UrWallet getUrWallet(){
+
+    public UrWallet getUrWallet() {
         return urWallet;
     }
+
     @Override
     public List<UsuarioDto> obtenerUser() {
-        return  mapper.getUsuariosDto(urWallet.getListaUsers());
+        return mapper.getUsuariosDto(urWallet.getListaUsers());
     }
 
     @Override
     public boolean agregarUsers(UsuarioDto usuarioDto) {
-        try{
-            System.out.println("MODELLLL"+ usuarioDto.correo());
-            if(!urWallet.verificarUsuarioExistente(usuarioDto.cedula())){
+        try {
+            System.out.println("MODELLLL" + usuarioDto.correo());
+            if (!urWallet.verificarUsuarioExistente(usuarioDto.cedula())) {
                 Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
-                System.out.println("MODELLLL22"+ user.getCorreo());
+                System.out.println("MODELLLL22" + user.getCorreo());
 
                 getUrWallet().agregarUsuario(user);
-                guardarPerUsers();
-                guardaRegistroLog("Se han agregado un nuevo usuario",1,"Create");
-                copiarArchivos();
+//                guardarPerUsers();
+//                guardarRecursourWalletBinario();
+                guardarRecursoBancoXML();
+                guardaRegistroLog("Se han agregado un nuevo usuario", 1, "Create");
+//                copiarArchivos();
             }
             return true;
-        }catch (UsuarioException e){
+        } catch (UsuarioException e) {
             e.getMessage();
-            guardaRegistroLog("No se ha creado",2,"Warning");
+            guardaRegistroLog("No se ha creado", 2, "Warning");
             return false;
         }
     }
 
-    public void guardarPerUsers(){
-        try{
+    public void guardarPerUsers() {
+        try {
             Persistencia.guardarUsuario(getUrWallet().getListaUsuarios());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public Usuario iniciarSesion(LoginDto loginDto) throws LoginException {
         Usuario users = getUrWallet().buscarUserLogin(loginDto.email());
         if (users != null && users.getContrasena().equals(loginDto.contrasena())) {
-            guardaRegistroLog("Se ha iniciado corecctamente la sesión",1,"Get");
+            guardaRegistroLog("Se ha iniciado corecctamente la sesión", 1, "Get");
             return users;
         } else {
-            guardaRegistroLog("Email o contraseña incorrecta",2,"Warning");
+            guardaRegistroLog("Email o contraseña incorrecta", 2, "Warning");
             throw new LoginException("Email o contraseña incorrecta");
         }
     }
 
     @Override
-    public boolean actualizarUser(String idUser,UsuarioDto usuarioDto){
-        try{
-            System.out.println("actualizar"+idUser);
+    public boolean actualizarUser(String idUser, UsuarioDto usuarioDto) {
+        try {
+            System.out.println("actualizar" + idUser);
             Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
-            System.out.println("MQAPERRRR ID"+ user.getIdUsuario());
-            getUrWallet().actualizarUsuario(idUser,user);
-            guardarPerUsers();
-            guardaRegistroLog("Se han actualizado correctamente los datos",1,"Update");
-            copiarArchivos();
+            System.out.println("MQAPERRRR ID" + user.getIdUsuario());
+            getUrWallet().actualizarUsuario(idUser, user);
+            //                guardarPerUsers();
+//                guardarRecursourWalletBinario();
+            guardarRecursoBancoXML();
+            guardaRegistroLog("Se han actualizado correctamente los datos", 1, "Update");
+//            copiarArchivos();
             return true;
-        }catch (UsuarioException e){
+        } catch (UsuarioException e) {
             e.getMessage();
-            guardaRegistroLog("No se pudo actualizar el dato",2,"Warning");
+            guardaRegistroLog("No se pudo actualizar el dato", 2, "Warning");
             return false;
         }
     }
+
     @Override
-    public boolean eliminarUsuario(String idUser){
+    public boolean eliminarUsuario(String idUser) {
         boolean flagExiste = false;
         try {
             flagExiste = getUrWallet().eliminarUsuario(idUser);
-            guardarPerUsers();
-            guardaRegistroLog("Se ha eliminado el usuario",1,"Delete");
-            copiarArchivos();
+            //                guardarPerUsers();
+//                guardarRecursourWalletBinario();
+            guardarRecursoBancoXML();
+            guardaRegistroLog("Se ha eliminado el usuario", 1, "Delete");
+//            copiarArchivos();
         } catch (UsuarioException e) {
-            guardaRegistroLog("No se pudo eliminar",2,"Warning");
+            guardaRegistroLog("No se pudo eliminar", 2, "Warning");
             throw new RuntimeException(e);
         }
         return flagExiste;
     }
+
     public FXMLLoader navegarVentana(String nombreArchivoFxml, String tituloVentana, Usuario usuarioLogueado) {
         FXMLLoader loader = null;
         try {
             URL fxmlLocation = UrWalletApp.class.getResource(nombreArchivoFxml);
 
             if (fxmlLocation == null) {
-                guardaRegistroLog("No se pudo localizar el archivo FXML",2,"Warning");
+                guardaRegistroLog("No se pudo localizar el archivo FXML", 2, "Warning");
                 throw new IOException("No se pudo localizar el archivo FXML: " + nombreArchivoFxml);
             }
 
@@ -171,7 +211,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             stage.setResizable(false);
             stage.setTitle(tituloVentana);
             stage.show();
-            guardaRegistroLog("Se ha Ingresado a una nueva pantalla",1,"New");
+            guardaRegistroLog("Se ha Ingresado a una nueva pantalla", 1, "New");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -182,6 +222,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         }
         return loader;
     }
+
     @Override
     public void mostrarMensaje(String titulo, String mensaje, Alert.AlertType tipo) {
         Alert alert = new Alert(tipo);
@@ -189,6 +230,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+
     @Override
     public void cerrarVentana(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

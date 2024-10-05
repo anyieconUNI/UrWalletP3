@@ -194,14 +194,13 @@ public class ArchivoUtils {
     }
 
     public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
-
-        XMLEncoder codificadorXML;
-
-        codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
-        codificadorXML.writeObject(objeto);
-        codificadorXML.close();
-
+        System.out.println("Serializando objeto: " + objeto.getClass().getName());
+        try (XMLEncoder codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo))) {
+            codificadorXML.writeObject(objeto);
+            codificadorXML.flush();
+        }
     }
+
 
     public static void copiarArchivos(String RutaOrigen,String RUTA_RESPALDO, String nombre,String tipoArchivo) throws IOException {
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
