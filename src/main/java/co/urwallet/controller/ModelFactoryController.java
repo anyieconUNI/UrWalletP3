@@ -39,8 +39,13 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 
     public ModelFactoryController() {
         cargarDatosBase();
+//        guardarPerUsers();
+
 //        cargarDatosDesdeArchivos();
+        guardarRecursourWalletBinario();
 //        cargarRecursoUrWalletBinario();
+//        guardarRecursoBancoXML();
+
         copiarArchivos();
         cargarRecursoUrWalletXML();
         if (urWallet == null) {
@@ -104,6 +109,11 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         return mapper.getUsuariosDto(urWallet.getListaUsers());
     }
 
+    private void agregarDatosGenerales(){
+        guardarPerUsers();
+        guardarRecursourWalletBinario();
+        guardarRecursoBancoXML();
+    }
     @Override
     public boolean agregarUsers(UsuarioDto usuarioDto) {
         try {
@@ -113,9 +123,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
                 System.out.println("MODELLLL22" + user.getCorreo());
 
                 getUrWallet().agregarUsuario(user);
-//                guardarPerUsers();
-//                guardarRecursourWalletBinario();
-                guardarRecursoBancoXML();
+                agregarDatosGenerales();
                 guardaRegistroLog("Se han agregado un nuevo usuario", 1, "Create");
 //                copiarArchivos();
             }
@@ -154,9 +162,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
             System.out.println("MQAPERRRR ID" + user.getIdUsuario());
             getUrWallet().actualizarUsuario(idUser, user);
-            //                guardarPerUsers();
-//                guardarRecursourWalletBinario();
-            guardarRecursoBancoXML();
+            agregarDatosGenerales();
             guardaRegistroLog("Se han actualizado correctamente los datos", 1, "Update");
 //            copiarArchivos();
             return true;
@@ -172,9 +178,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         boolean flagExiste = false;
         try {
             flagExiste = getUrWallet().eliminarUsuario(idUser);
-            //                guardarPerUsers();
-//                guardarRecursourWalletBinario();
-            guardarRecursoBancoXML();
+            agregarDatosGenerales();
             guardaRegistroLog("Se ha eliminado el usuario", 1, "Delete");
 //            copiarArchivos();
         } catch (UsuarioException e) {
