@@ -37,6 +37,30 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public ModelFactoryController() {
         cargarDatosBase();
         cargarDatosDesdeArchivos();
+        copiarArchivos();
+        guardaRegistroLog("Inicio de sesión", 1, "inicioSesión");
+
+    }
+    private void cargarDatosDesdeArchivos() {
+        urWallet = new UrWallet();
+        try {
+            Persistencia.cargarDatosArchivos(urWallet);
+            guardaRegistroLog("Se han cargado los datos correctamente",1,"Get");
+        } catch (IOException e) {
+            guardaRegistroLog("No se han cargado los datos",2,"Warning");
+            throw new RuntimeException(e);
+        }
+    }
+    private void guardaRegistroLog(String mensajeLog, int nivel, String accion){
+        Persistencia.guardaRegistroLog(mensajeLog,nivel,accion);
+    }
+    private void copiarArchivos(){
+        try {
+            Persistencia.copiarArchivos();
+            guardaRegistroLog("Se creo una copia en respaldo", 1, "Copy");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     private void cargarDatosBase() {
         urWallet = UrWalletUtils.inicializarDatos();
@@ -59,22 +83,17 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 
                 getUrWallet().agregarUsuario(user);
                 guardarPerUsers();
-                cargarDatosDesdeArchivos();
+                guardaRegistroLog("Se han agregado un nuevo usuario",1,"Create");
+                copiarArchivos();
             }
             return true;
         }catch (UsuarioException e){
             e.getMessage();
+            guardaRegistroLog("No se ha creado",2,"Warning");
             return false;
         }
     }
-    private void cargarDatosDesdeArchivos() {
-        urWallet = new UrWallet();
-        try {
-            Persistencia.cargarDatosArchivos(urWallet);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
     public void guardarPerUsers(){
         try{
             Persistencia.guardarUsuario(getUrWallet().getListaUsuarios());
@@ -86,8 +105,10 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public Usuario iniciarSesion(LoginDto loginDto) throws LoginException {
         Usuario users = getUrWallet().buscarUserLogin(loginDto.email());
         if (users != null && users.getContrasena().equals(loginDto.contrasena())) {
+            guardaRegistroLog("Se ha iniciado corecctamente la sesión",1,"Get");
             return users;
         } else {
+            guardaRegistroLog("Email o contraseña incorrecta",2,"Warning");
             throw new LoginException("Email o contraseña incorrecta");
         }
     }
@@ -99,9 +120,13 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
             System.out.println("MQAPERRRR ID"+ user.getIdUsuario());
             getUrWallet().actualizarUsuario(idUser,user);
+            guardarPerUsers();
+            guardaRegistroLog("Se han actualizado correctamente los datos",1,"Update");
+            copiarArchivos();
             return true;
         }catch (UsuarioException e){
             e.getMessage();
+            guardaRegistroLog("No se pudo actualizar el dato",2,"Warning");
             return false;
         }
     }
@@ -110,7 +135,11 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         boolean flagExiste = false;
         try {
             flagExiste = getUrWallet().eliminarUsuario(idUser);
+            guardarPerUsers();
+            guardaRegistroLog("Se ha eliminado el usuario",1,"Delete");
+            copiarArchivos();
         } catch (UsuarioException e) {
+            guardaRegistroLog("No se pudo eliminar",2,"Warning");
             throw new RuntimeException(e);
         }
         return flagExiste;
@@ -121,6 +150,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             URL fxmlLocation = UrWalletApp.class.getResource(nombreArchivoFxml);
 
             if (fxmlLocation == null) {
+                guardaRegistroLog("No se pudo localizar el archivo FXML",2,"Warning");
                 throw new IOException("No se pudo localizar el archivo FXML: " + nombreArchivoFxml);
             }
 
@@ -141,6 +171,8 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             stage.setResizable(false);
             stage.setTitle(tituloVentana);
             stage.show();
+            guardaRegistroLog("Se ha Ingresado a una nueva pantalla",1,"New");
+
         } catch (IOException e) {
             e.printStackTrace();
             mostrarMensaje("Error al cargar la ventana", "No se pudo cargar " + nombreArchivoFxml + ": " + e.getMessage(), Alert.AlertType.ERROR);
