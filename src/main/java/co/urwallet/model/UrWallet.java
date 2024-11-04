@@ -1,5 +1,7 @@
 package co.urwallet.model;
 
+import co.urwallet.exceptions.CuentaException;
+import co.urwallet.exceptions.TransaccionException;
 import co.urwallet.exceptions.UsuarioException;
 import co.urwallet.model.Services.IUrWalletService;
 import lombok.Getter;
@@ -11,8 +13,8 @@ import java.util.ArrayList;
 public class UrWallet implements IUrWalletService , Serializable {
     private static final long serialVersionUID = 1L;
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
-//    ArrayList<Admin> listaAdmins = new ArrayList<>();
-//    ArrayList<Cuenta> listaCuentas = new ArrayList<>();
+    ArrayList<Cuenta> listaCuentas = new ArrayList<>();
+    ArrayList<Transaccion> listaTransaccion = new ArrayList<>();
 
     //
     public UrWallet() {
@@ -21,14 +23,25 @@ public class UrWallet implements IUrWalletService , Serializable {
     public ArrayList<Usuario> getListaUsers() {
         return listaUsuarios;
     }
-
+    public ArrayList<Cuenta> getListaCuentas() {
+        return listaCuentas;
+    }
     public  void setListaUsers(ArrayList<Usuario> listaClientes){
         this.listaUsuarios = listaUsuarios;
     }
+    public void setListaCuentas(ArrayList<Cuenta> listaCuentas) {
+        this.listaCuentas = listaCuentas;
+    }
+
+    public ArrayList<Transaccion> getListaTransaccion() {
+        return listaTransaccion;
+    }
+
+    public void setListaTransaccion(ArrayList<Transaccion> listaTransaccion) {
+        this.listaTransaccion = listaTransaccion;
+    }
+
     public void agregarUsuario(Usuario nuevoUsuario) throws UsuarioException {
-//        if (nuevoUsuario.getCorreo() == null) {
-//            throw new UsuarioException("El correo no puede ser nulo");
-//        }
         getListaUsers().add(nuevoUsuario);
     }
 
@@ -121,7 +134,90 @@ public class UrWallet implements IUrWalletService , Serializable {
             throw new UsuarioException("Error inesperado al actualizar el usuario");
         }
     }
+    public void agregarCuenta(Cuenta nuevaCuenta) throws CuentaException {
+        getListaCuentas().add(nuevaCuenta);
+    }
+    @Override
+    public boolean actualizarCuenta(String idActual, Cuenta cuenta) throws CuentaException {
+        try {
+            System.out.print("AQUIIIIIIIIIIIIIII" + idActual);
+            Cuenta cuentaActual = obtenerCuenta(idActual);
 
+            if (cuentaActual == null) {
+                throw new CuentaException("La cuenta no existe");
+            } else {
+                cuentaActual.setNombreCuenta(cuenta.getNombreCuenta());
+                cuentaActual.setTipoCuenta(cuenta.getTipoCuenta());
+                cuentaActual.setSaldo(cuenta.getSaldo());
+                return true;
+            }
+        } catch (CuentaException e) {
+            // Manejo específico de UsuarioException
+            System.err.println("Error en actualizarUsuario: " + e.getMessage());
+            throw e; // Vuelve a lanzar la excepción
+        } catch (Exception e) {
+            // Manejo de cualquier otra excepción no prevista
+            System.err.println("Error inesperado: " + e.getMessage());
+            throw new CuentaException("Error inesperado al actualizar el usuario");
+        }
+    }
+    @Override
+    public boolean eliminarCuenta(String id) throws CuentaException {
+        try {
+            Cuenta cuenta = obtenerCuenta(id);
+
+            if (cuenta == null) {
+                throw new CuentaException("La cuenta no existe");
+            } else {
+                getListaCuentas().remove(cuenta);
+                return true;
+            }
+        } catch (CuentaException e) {
+            System.err.println("Error en eliminar : " + e.getMessage());
+            throw e;
+        }
+    }
+    @Override
+    public Cuenta obtenerCuenta(String id) {
+        Cuenta cuentaEncontrado = null;
+        for (Cuenta cuenta : getListaCuentas()) {
+            if (cuenta.getNumeCuenta().equalsIgnoreCase(id)) {
+                cuentaEncontrado = cuenta;
+                break;
+            }
+        }
+        return cuentaEncontrado;
+    }
+    @Override
+    public boolean verificarCuentaExistente(String idCuenta) throws CuentaException {
+        if (cuentaExiste(idCuenta)) {
+            throw new CuentaException("La cuenta ya existe");
+        } else {
+            return false;
+        }
+    }
+    public boolean cuentaExiste(String id) {
+        boolean cuentaEncontrado = false;
+        for (Cuenta cuenta : getListaCuentas()) {
+            if (cuenta.getNumeCuenta().equalsIgnoreCase(id)) {
+                cuentaEncontrado = true;
+                break;
+            }
+        }
+        return cuentaEncontrado;
+    }
+
+    public void agregarTransaccion(Transaccion nuevaTransaccion) throws TransaccionException {
+        getListaTransaccion().add(nuevaTransaccion);
+    }
+    @Override
+    public boolean verificarCuentaExistenteTrans(String idCuenta) throws TransaccionException {
+        if (!cuentaExiste(idCuenta)) {
+            throw new TransaccionException("La cuenta no existe");
+        } else {
+            return false;
+        }
+    }
     /*
     @Override
 

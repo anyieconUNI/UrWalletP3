@@ -2,6 +2,7 @@ package co.urwallet.viewController;
 
 import co.urwallet.controller.HomeUsersController;
 import co.urwallet.mapping.dto.UsuarioDto;
+import co.urwallet.model.Cuenta;
 import co.urwallet.model.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 public class HomeViewsUsers {
@@ -100,6 +102,7 @@ public class HomeViewsUsers {
         Float saldo = usuarioLogueado.getSaldoDispo();
         String id = usuarioLogueado.getIdUsuario();
         String password = usuarioLogueado.getContrasena();
+        List<Cuenta> cuentasBancarias = usuarioLogueado.getCuentasBancarias();
         return new UsuarioDto(
                 id,
                 txtIdentificacion.getText(),
@@ -108,7 +111,8 @@ public class HomeViewsUsers {
                 txtCorreo.getText(),
                 password,
                 txtDireccion.getText(),
-                saldo
+                saldo,
+                cuentasBancarias
         );
     }
     private boolean datosValidos(UsuarioDto usuarioDto) {

@@ -1,7 +1,9 @@
 package co.urwallet.controller.service;
 
 import co.urwallet.exceptions.LoginException;
+import co.urwallet.mapping.dto.CuentaDto;
 import co.urwallet.mapping.dto.LoginDto;
+import co.urwallet.mapping.dto.TransaccionDto;
 import co.urwallet.mapping.dto.UsuarioDto;
 import co.urwallet.model.Usuario;
 import javafx.event.ActionEvent;
@@ -12,6 +14,7 @@ import java.util.List;
 public interface IModelFactoryControllerService {
 
     List<UsuarioDto> obtenerUser();
+    List<CuentaDto> obtenerCuentas();
 
     boolean agregarUsers(UsuarioDto usuarioDto);
 
@@ -19,6 +22,14 @@ public interface IModelFactoryControllerService {
     boolean actualizarUser(String idUser, UsuarioDto usuarioDto);
 
     boolean eliminarUsuario(String idUser);
+
+    boolean agregarCuenta(CuentaDto cuentaDto);
+
+    boolean actualizarCuenta(String idCuenta, CuentaDto cuentaDto);
+
+    boolean eliminarCuenta(String idCuenta);
+
+    boolean agregarTrasaccion(TransaccionDto transaccionDto);
 
     void mostrarMensaje(String titulo, String mensaje, Alert.AlertType tipo);
     Usuario iniciarSesion(LoginDto loginDto) throws LoginException;

@@ -1,5 +1,9 @@
 package co.urwallet.mapping.dto;
 
+import co.urwallet.model.Cuenta;
+
+import java.util.List;
+
 public record UsuarioDto (
         String idUsuario,
         String cedula,
@@ -8,6 +12,7 @@ public record UsuarioDto (
         String correo,
         String contrasena,
         String direccion,
-        Float saldoDispo
+        Float saldoDispo,
+        List<Cuenta> cuentasBancarias
 ){
 }

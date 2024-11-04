@@ -2,11 +2,17 @@ package co.urwallet.controller;
 
 import co.urwallet.UrWalletApp;
 import co.urwallet.controller.service.IModelFactoryControllerService;
+import co.urwallet.exceptions.CuentaException;
 import co.urwallet.exceptions.LoginException;
+import co.urwallet.exceptions.TransaccionException;
 import co.urwallet.exceptions.UsuarioException;
+import co.urwallet.mapping.dto.CuentaDto;
 import co.urwallet.mapping.dto.LoginDto;
+import co.urwallet.mapping.dto.TransaccionDto;
 import co.urwallet.mapping.dto.UsuarioDto;
 import co.urwallet.mapping.mappers.UrWalletMapper;
+import co.urwallet.model.Cuenta;
+import co.urwallet.model.Transaccion;
 import co.urwallet.model.UrWallet;
 import co.urwallet.model.Usuario;
 import co.urwallet.utils.Persistencia;
@@ -41,13 +47,13 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         cargarDatosBase();
 //        guardarPerUsers();
 
-//        cargarDatosDesdeArchivos();
-        guardarRecursourWalletBinario();
+        cargarDatosDesdeArchivos();
+//        guardarRecursourWalletBinario();
 //        cargarRecursoUrWalletBinario();
 //        guardarRecursoBancoXML();
 
         copiarArchivos();
-        cargarRecursoUrWalletXML();
+//        cargarRecursoUrWalletXML();
         if (urWallet == null) {
             cargarDatosBase();
             guardarRecursoBancoXML();
@@ -108,6 +114,10 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public List<UsuarioDto> obtenerUser() {
         return mapper.getUsuariosDto(urWallet.getListaUsers());
     }
+    @Override
+    public List<CuentaDto> obtenerCuentas() {
+        return mapper.getCuentaDto(urWallet.getListaCuentas());
+    }
 
     private void agregarDatosGenerales(){
         guardarPerUsers();
@@ -125,7 +135,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
                 getUrWallet().agregarUsuario(user);
                 agregarDatosGenerales();
                 guardaRegistroLog("Se han agregado un nuevo usuario", 1, "Create");
-//                copiarArchivos();
+                copiarArchivos();
             }
             return true;
         } catch (UsuarioException e) {
@@ -162,7 +172,11 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
             System.out.println("MQAPERRRR ID" + user.getIdUsuario());
             getUrWallet().actualizarUsuario(idUser, user);
-            agregarDatosGenerales();
+            try {
+                agregarDatosGenerales();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             guardaRegistroLog("Se han actualizado correctamente los datos", 1, "Update");
 //            copiarArchivos();
             return true;
@@ -187,7 +201,69 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         }
         return flagExiste;
     }
+    @Override
+    public boolean agregarCuenta(CuentaDto cuentaDto) {
+        try {
+            System.out.println("MODELLLL" + cuentaDto.numeCuenta());
+            if (!urWallet.verificarCuentaExistente(cuentaDto.numeCuenta())) {
+                Cuenta cuenta = mapper.cuentaToCuentaDto(cuentaDto);
+                System.out.println("MODELLLL22" + cuenta.getIdCuenta());
+                getUrWallet().agregarCuenta(cuenta);
+            }
+            return true;
+        } catch (CuentaException e) {
+            e.getMessage();
+            return false;
+        }
+    }
 
+    @Override
+    public boolean actualizarCuenta(String idCuenta, CuentaDto cuentaDto) {
+        try {
+            System.out.println("actualizar" + idCuenta);
+            Cuenta cuenta = mapper.cuentaToCuentaDto(cuentaDto);
+            System.out.println("MQAPERRRR ID" + cuenta.getNumeCuenta());
+            getUrWallet().actualizarCuenta(idCuenta, cuenta);
+//            copiarArchivos();
+            return true;
+        } catch (CuentaException e) {
+            e.getMessage();
+//            guardaRegistroLog("No se pudo actualizar el dato", 2, "Warning");
+            return false;
+        }
+    }
+    @Override
+    public boolean eliminarCuenta(String idCuenta) {
+        boolean flagExiste = false;
+        try {
+            flagExiste = getUrWallet().eliminarCuenta(idCuenta);
+            agregarDatosGenerales();
+            guardaRegistroLog("Se ha eliminado la cuenta", 1, "Delete");
+//            copiarArchivos();
+        } catch (CuentaException e) {
+            guardaRegistroLog("No se pudo eliminar la cuenta", 2, "Warning");
+            throw new RuntimeException(e);
+        }
+        return flagExiste;
+    }
+
+    @Override
+    public boolean agregarTrasaccion(TransaccionDto transaccionDto) {
+        try {
+            System.out.println("MODELLLL" + transaccionDto.cuentaOrigen());
+            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen().getNumeCuenta())) {
+                if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino().getNumeCuenta())) {
+                    Transaccion transaccion = mapper.transaccionToTransaccionDto(transaccionDto);
+                    System.out.println("TRANSDSSSSSSSSSSSSSS" + transaccion.getIdTransaccion());
+                    getUrWallet().agregarTransaccion(transaccion);
+                }
+            }
+            return true;
+        } catch (TransaccionException e) {
+            e.getMessage();
+            return false;
+        }
+    }
     public FXMLLoader navegarVentana(String nombreArchivoFxml, String tituloVentana, Usuario usuarioLogueado) {
         FXMLLoader loader = null;
         try {

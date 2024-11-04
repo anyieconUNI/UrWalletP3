@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class Admin extends Persona{
+public class Admin{
     private String nombre;
     private String apellido;
     private String correo;

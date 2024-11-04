@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.urwallet.viewController.TransferenciasViewsControllers"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <SplitPane dividerPositions="0.49537037037037024" layoutX="4.0" layoutY="8.0" orientation="VERTICAL" prefHeight="533.0" prefWidth="726.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="260.0" prefWidth="741.0">
+                    <children>
+                        <Label layoutX="17.0" layoutY="40.0" text="Descripción:" textFill="#00093c">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Label>
+                        <TextArea fx:id="tareaDescripcion" layoutX="120.0" layoutY="35.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
+
+                        <Label layoutX="17.0" layoutY="80.0" text="Monto:">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="txtMonto" layoutX="120.0" layoutY="75.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
+
+                        <Label layoutX="17.0" layoutY="450.0" text="Cuenta Origen:" textFill="#00093c">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Label>
+                        <ComboBox fx:id="cmbCuentaOrigen" layoutX="450.0" layoutY="120.0" prefWidth="250.0" />
+
+                        <Label layoutX="17.0" layoutY="450.0" text="Cuenta Destino:" textFill="#00093c">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Label>
+                        <ComboBox fx:id="cmbCuentaDestino" layoutX="450.0" layoutY="160.0" prefWidth="250.0" />
+
+
+                        <Label layoutX="17.0" layoutY="120.0"  text="Tipo de transacción:" textFill="#00093c">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Label>
+                        <ComboBox fx:id="cmbTipoTrnsaccion" layoutX="120.0" layoutY="120.0" prefWidth="150.0">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Retiro" />
+                                    <String fx:value="Deposito" />
+                                    <String fx:value="Transferencia" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <Label layoutX="17.0" layoutY="120.0"  text="Categoria:" textFill="#00093c">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Label>
+                        <ComboBox fx:id="cmbCategoria" layoutX="120.0" layoutY="120.0" prefWidth="150.0">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Comida" />
+                                    <String fx:value="Transporte" />
+                                    <String fx:value="Entretenimiento" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+
+                        <Button fx:id="btnNuevo" layoutX="160.0" layoutY="202.0" mnemonicParsing="false" onAction="#limpiarTransferenciaAction" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: #00093c;" text="Limpiar" textFill="WHITE">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Button>
+
+                        <Button fx:id="btnAgregar" layoutX="450.0" layoutY="202.0" mnemonicParsing="false" onAction="#agregarTransferenciaAction" prefHeight="20.0" prefWidth="106.0" style="-fx-background-color: #00093c;" text="Agregar" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                    </children>
+
+                </AnchorPane>
+
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="724.0">
+                    <children>
+                        <TableView fx:id="tableTransaccion" layoutX="49.0" layoutY="14.0" prefHeight="200.0" prefWidth="627.0" style="-fx-border-color: #187173;">
+                            <columns>
+                                <TableColumn fx:id="tcFecha" prefWidth="75.0" text="Fecha" />
+                                <TableColumn fx:id="tcTipoTrasacc" prefWidth="100.0" text="Tipo de Transacción" />
+                                <TableColumn fx:id="tcMonto" prefWidth="100.0" text="Monto" />
+                                <TableColumn fx:id="tcDescripcion" prefWidth="100.0" text="Descripcion" />
+                                <TableColumn fx:id="tcCuetaOrigen" prefWidth="100.0" text="Cuenta Origen" />
+                                <TableColumn fx:id="tcCuentaDestino" prefWidth="100.0" text="Cuenta Destino" />
+                                <TableColumn fx:id="tcCategoria" prefWidth="100.0" text="Categoria" />
+                            </columns>
+                        </TableView>
+
+                    </children>
+
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+
+</AnchorPane>

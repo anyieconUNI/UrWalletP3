@@ -1,4 +1,8 @@
 package co.urwallet.mapping.mappers;
+import co.urwallet.mapping.dto.CuentaDto;
+import co.urwallet.mapping.dto.TransaccionDto;
+import co.urwallet.model.Cuenta;
+import co.urwallet.model.Transaccion;
 import co.urwallet.model.Usuario;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
@@ -21,4 +25,21 @@ public interface UrWalletMapper {
 
     // Mapea una lista de Usuarios a una lista de UsuarioDto
     List<UsuarioDto> getUsuariosDto(List<Usuario> listaUsuarios);
+
+    //////////////////////////
+    CuentaDto cuentaToCuentaDto(Cuenta cuenta);
+
+    // Mapea de UsuarioDto a Usuario
+    Cuenta cuentaToCuentaDto(CuentaDto cuentaDto);
+
+    // Mapea una lista de Usuarios a una lista de UsuarioDto
+    List<CuentaDto> getCuentaDto(List<Cuenta> listaCuentas);
+
+    TransaccionDto transaccionToTransaccionDto(Transaccion transaccion);
+
+    // Mapea de UsuarioDto a Usuario
+    Transaccion transaccionToTransaccionDto(TransaccionDto transaccionDto);
+
+    // Mapea una lista de Usuarios a una lista de UsuarioDto
+    List<TransaccionDto> getTransaccionDto(List<Transaccion> listaTransaccion);
 }

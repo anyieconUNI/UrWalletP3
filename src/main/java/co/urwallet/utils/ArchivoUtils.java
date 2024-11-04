@@ -49,13 +49,6 @@ public class ArchivoUtils {
         }
         bfr.close();
         fr.close();
-
-        // Imprimir el contenido leído
-        System.out.println("Contenido del archivo:");
-        for (String line : contenido) {
-            System.out.println(line);
-        }
-
         return contenido;
     }
 

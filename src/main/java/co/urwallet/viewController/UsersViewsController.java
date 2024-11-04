@@ -3,6 +3,7 @@ package co.urwallet.viewController;
 import co.urwallet.controller.RegistroUsersController;
 import co.urwallet.controller.UsersController;
 import co.urwallet.mapping.dto.UsuarioDto;
+import co.urwallet.model.Cuenta;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class UsersViewsController {
@@ -101,7 +104,8 @@ public class UsersViewsController {
                     usuarioActualizado.correo(),
                     usuarioActualizado.contrasena(),
                     usuarioActualizado.direccion(),
-                    userSeleccionado.saldoDispo()
+                    userSeleccionado.saldoDispo(),
+                    userSeleccionado.cuentasBancarias()
             );
 
             boolean resultado = usersController.actualizarUser(userSeleccionado.idUsuario(),usuarioActualizado);
@@ -173,6 +177,7 @@ public class UsersViewsController {
     private UsuarioDto contruirRegistroAdmin(){
         Float saldo = 0.0f;
         String id = UUID.randomUUID().toString();
+        List<Cuenta> cuentasBancarias = new ArrayList<>();
         return new UsuarioDto(
                 id,
                 txtCedula.getText(),
@@ -181,7 +186,8 @@ public class UsersViewsController {
                 txtCorreo.getText(),
                 txtContrasena.getText(),
                 txtDireccion.getText(),
-                saldo
+                saldo,
+                cuentasBancarias
         );
     }
     private boolean datosValidos(UsuarioDto userDto) {

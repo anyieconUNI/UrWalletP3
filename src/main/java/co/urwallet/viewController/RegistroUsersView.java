@@ -2,6 +2,7 @@ package co.urwallet.viewController;
 
 import co.urwallet.controller.RegistroUsersController;
 import co.urwallet.mapping.dto.UsuarioDto;
+import co.urwallet.model.Cuenta;
 import co.urwallet.model.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class RegistroUsersView {
@@ -58,6 +61,7 @@ public class RegistroUsersView {
     private UsuarioDto contruirRegistroAdmin(){
         Float saldo = 0.0f;
         String id = UUID.randomUUID().toString();
+        List<Cuenta> cuentasBancarias = new ArrayList<>();
         return new UsuarioDto(
                 id,
                 txtIdentificacion.getText(),
@@ -66,7 +70,8 @@ public class RegistroUsersView {
                 txtCorreo.getText(),
                 txtPassword.getText(),
                 txtDireccion.getText(),
-                saldo
+                saldo,
+                cuentasBancarias
         );
     }
     private boolean datosValidos(UsuarioDto registroDto) {

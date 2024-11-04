@@ -1,6 +1,9 @@
 package co.urwallet.model.Services;
 
+import co.urwallet.exceptions.CuentaException;
+import co.urwallet.exceptions.TransaccionException;
 import co.urwallet.exceptions.UsuarioException;
+import co.urwallet.model.Cuenta;
 import co.urwallet.model.Usuario;
 
 public interface IUrWalletService {
@@ -25,4 +28,14 @@ public interface IUrWalletService {
     //
     Usuario obtenerUsuario(String id);
     boolean actualizarUsuario(String idActual, Usuario usuario) throws UsuarioException;
+
+    boolean actualizarCuenta(String idActual, Cuenta cuenta) throws CuentaException;
+
+    boolean eliminarCuenta(String id) throws CuentaException;
+
+    Cuenta obtenerCuenta(String id);
+
+    boolean verificarCuentaExistente(String idCuenta) throws CuentaException;
+
+    boolean verificarCuentaExistenteTrans(String idCuenta) throws TransaccionException;
 }
