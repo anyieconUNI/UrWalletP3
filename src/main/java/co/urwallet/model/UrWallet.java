@@ -210,6 +210,15 @@ public class UrWallet implements IUrWalletService , Serializable {
     public void agregarTransaccion(Transaccion nuevaTransaccion) throws TransaccionException {
         getListaTransaccion().add(nuevaTransaccion);
     }
+    public void agregarPrecioACuenta(float precio, Cuenta cuenta){
+        float saldoActual = cuenta.getSaldo();
+        cuenta.setSaldo(saldoActual+precio);
+        System.out.println("ACTUALIZA");
+    }
+    public void restarPrecioACuenta(float precio, Cuenta cuenta){
+        float saldoActual = cuenta.getSaldo();
+        cuenta.setSaldo(saldoActual-precio);
+    }
     @Override
     public boolean verificarCuentaExistenteTrans(String idCuenta) throws TransaccionException {
         if (!cuentaExiste(idCuenta)) {
@@ -218,6 +227,8 @@ public class UrWallet implements IUrWalletService , Serializable {
             return false;
         }
     }
+
+
     /*
     @Override
 

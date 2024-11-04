@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="21.0.3" class="java.beans.XMLDecoder">
+ <object class="co.urwallet.model.UrWallet" id="UrWallet0">
+  <void property="listaUsers">
+   <void method="add">
+    <object class="co.urwallet.model.Usuario">
+     <void property="cedula">
+      <string>1</string>
+     </void>
+     <void property="contrasena">
+      <string>1</string>
+     </void>
+     <void property="correo">
+      <string>1</string>
+     </void>
+     <void property="direccion">
+      <string>1</string>
+     </void>
+     <void property="idUsuario">
+      <string>1f49d2a9-561e-4cd7-9bf4-1d527fa9a577</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>2</string>
+     </void>
+     <void property="saldoDispo">
+      <float>0.0</float>
+     </void>
+     <void property="telefono">
+      <string>66</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Usuario">
+     <void property="cedula">
+      <string>2</string>
+     </void>
+     <void property="contrasena">
+      <string>2</string>
+     </void>
+     <void property="correo">
+      <string>2</string>
+     </void>
+     <void property="direccion">
+      <string>2</string>
+     </void>
+     <void property="idUsuario">
+      <string>4fa2586e-5a4c-4342-a47a-eeb471022857</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>2</string>
+     </void>
+     <void property="saldoDispo">
+      <float>0.0</float>
+     </void>
+     <void property="telefono">
+      <string>2</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Usuario">
+     <void property="cedula">
+      <string>10</string>
+     </void>
+     <void property="contrasena">
+      <string>5</string>
+     </void>
+     <void property="correo">
+      <string>4</string>
+     </void>
+     <void property="direccion">
+      <string>5</string>
+     </void>
+     <void property="idUsuario">
+      <string>fb52303a-fe94-4e4e-9bbe-5624b27cd18b</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>2</string>
+     </void>
+     <void property="saldoDispo">
+      <float>0.0</float>
+     </void>
+     <void property="telefono">
+      <string>3</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Usuario">
+     <void property="cedula">
+      <string>12</string>
+     </void>
+     <void property="contrasena">
+      <string>7</string>
+     </void>
+     <void property="correo">
+      <string>4</string>
+     </void>
+     <void property="direccion">
+      <string>5</string>
+     </void>
+     <void property="idUsuario">
+      <string>42f4d2c8-c9e3-4558-9497-1b107efcacbd</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>3</string>
+     </void>
+     <void property="saldoDispo">
+      <float>0.0</float>
+     </void>
+     <void property="telefono">
+      <string>6</string>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>

@@ -11,8 +11,8 @@ public record TransaccionDto(
          String tipoTransaccion,
          float monto,
          String descripcion,
-         Cuenta cuentaOrigen,
-         Cuenta cuentaDestino,
+         String cuentaOrigen,
+         String cuentaDestino,
          String categoria
 ) {
 }

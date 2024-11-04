@@ -16,6 +16,8 @@ public interface IModelFactoryControllerService {
     List<UsuarioDto> obtenerUser();
     List<CuentaDto> obtenerCuentas();
 
+    List<TransaccionDto> obtenerTrasaccion();
+
     boolean agregarUsers(UsuarioDto usuarioDto);
 
 
@@ -30,6 +32,10 @@ public interface IModelFactoryControllerService {
     boolean eliminarCuenta(String idCuenta);
 
     boolean agregarTrasaccion(TransaccionDto transaccionDto);
+
+    void SumarSaldo(TransaccionDto transaccionDto);
+
+    void RestarSaldo(TransaccionDto transaccionDto);
 
     void mostrarMensaje(String titulo, String mensaje, Alert.AlertType tipo);
     Usuario iniciarSesion(LoginDto loginDto) throws LoginException;
