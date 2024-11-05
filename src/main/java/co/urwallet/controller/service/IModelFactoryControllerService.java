@@ -37,6 +37,13 @@ public interface IModelFactoryControllerService {
 
     void RestarSaldo(TransaccionDto transaccionDto);
 
+    boolean asignarCuentaAUsuario(String cedulaUsuario, String numeroCuenta);
+
+    List<CuentaDto> obtenerCuentasNoAsignadas();
+
+
+    Usuario obtenerUsuarioPorCedula(String cedula);
+
     void mostrarMensaje(String titulo, String mensaje, Alert.AlertType tipo);
     Usuario iniciarSesion(LoginDto loginDto) throws LoginException;
 

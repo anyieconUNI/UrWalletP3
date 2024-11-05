@@ -5,7 +5,7 @@
    <void method="add">
     <object class="co.urwallet.model.Usuario">
      <void property="cedula">
-      <string>11</string>
+      <string>1</string>
      </void>
      <void property="contrasena">
       <string>1</string>

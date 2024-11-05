@@ -160,8 +160,9 @@ public class TransferenciasViewsControllers {
             mensaje += "La cuenta Destino es invalido \n";
         if(transaccionDto.categoria() == null || transaccionDto.categoria().equals(""))
             mensaje += "La categoria es invalido \n";
-//        if(transaccionDto.cuentaDestino() ==  transaccionDto.cuentaDestino())
-//            mensaje += "La cuenta Destino y la cuenta origen no pueden ser igual \n";
+        if (transaccionDto.cuentaOrigen() != null && transaccionDto.cuentaOrigen().equals(transaccionDto.cuentaDestino()) && transaccionDto.cuentaDestino().equals(transaccionDto.cuentaOrigen())) {
+            mensaje += "La cuenta Origen y la cuenta Destino no pueden ser la misma \n";
+        }
         if(mensaje.equals("")){
             return true;
         }else{

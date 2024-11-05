@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.AsignarCuentaUserViewControllers">
+    <children>
+        <SplitPane dividerPositions="0.49537037037037024" layoutX="4.0" layoutY="8.0" orientation="VERTICAL" prefHeight="533.0" prefWidth="726.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="260.0" prefWidth="741.0">
+                    <children>
+                        <Label layoutX="17.0" layoutY="40.0" text="Cliente:" textFill="#00093c">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Label>
+                        <ComboBox fx:id="cmbCliente" layoutX="70.0" layoutY="35.0" prefWidth="150.0"/>
+
+                        <Label layoutX="362.0" layoutY="40.0" text="Cuenta:">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Label>
+                        <ComboBox fx:id="cbCuenta" layoutX="417.0" layoutY="35.0" prefWidth="150.0"/>
+
+                        <Label layoutX="29.0" layoutY="185.0" text="Buscar  Usuario: ">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="txtBucarUser" layoutX="135.0" layoutY="180.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
+
+
+                        <Button fx:id="btnBuscar" layoutX="408.0" layoutY="180.0" mnemonicParsing="false" onAction="#buscarAcyion" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #00093c;" text="Buscar" textFill="WHITE">
+                            <font>
+                                <Font name="Candara" size="14.0" />
+                            </font>
+                        </Button>
+
+                        <Button fx:id="btnAgregar" layoutX="299.0" layoutY="90.0" mnemonicParsing="false" onAction="#agregarAsignacion" prefHeight="20.0" prefWidth="106.0" style="-fx-background-color: #00093c;" text="Agregar" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                    </children>
+
+                </AnchorPane>
+
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="724.0">
+                    <children>
+                        <TableView fx:id="tableusersCuenta" layoutX="49.0" layoutY="14.0" prefHeight="200.0" prefWidth="627.0" style="-fx-border-color: #187173;">
+                            <columns>
+                                <TableColumn fx:id="tcCedula" prefWidth="75.0" text="Cédula" />
+                                <TableColumn fx:id="tcNombreCompleto" prefWidth="100.0" text="Nombre/User" />
+                                <TableColumn fx:id="tcCorreo" prefWidth="120.0" text="Correo" />
+                                <TableColumn fx:id="tcSaldoDispo" prefWidth="119.1999389648438" text="Saldo/Cuenta" />
+                                <TableColumn fx:id="tcNombreCuenta" prefWidth="119.1999389648438" text="Nombre/cuenta" />
+                                <TableColumn fx:id="tcCuenta" prefWidth="119.1999389648438" text="Numero/cuenta" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

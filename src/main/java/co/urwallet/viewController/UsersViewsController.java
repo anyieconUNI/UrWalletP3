@@ -19,6 +19,7 @@ public class UsersViewsController {
     UsersController usersController;
     ObservableList<UsuarioDto> listaUser = FXCollections.observableArrayList();
     UsuarioDto userSeleccionado;
+    UsersController clientes = new UsersController();
     @FXML
     public TextField txtCedula;
     @FXML
@@ -117,6 +118,7 @@ public class UsersViewsController {
                 listaUser.add(usuarioActualizado);
                 tableusers.refresh();
                 limpiarCamposUsuario();
+                clientes.obtenerUsers();
             } else {
                 usersController.mostrarMensaje("No se pudo actualizar el Usuario", "Error", Alert.AlertType.ERROR);
             }
@@ -145,6 +147,7 @@ public class UsersViewsController {
                 tableusers.refresh();
                 limpiarCamposUsuario();
                 usersController.obtenerUsers();
+                clientes.obtenerUsers();
             }
             else{
                 usersController.mostrarMensaje("Los datos ingresados son invalidos", "Usuario no creado", Alert.AlertType.ERROR);
@@ -165,6 +168,7 @@ public class UsersViewsController {
                 tableusers.getSelectionModel().clearSelection();
                 tableusers.refresh();
                 limpiarCamposUsuario();
+                clientes.obtenerUsers();
             } else {
                 usersController.mostrarMensaje("Notificación Cliente", "No se pudo eliminar el usuario.", Alert.AlertType.ERROR);
             }

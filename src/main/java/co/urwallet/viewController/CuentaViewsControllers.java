@@ -1,5 +1,6 @@
 package co.urwallet.viewController;
 
+import co.urwallet.controller.AsignarCuentaUserControllers;
 import co.urwallet.controller.CuentaControllers;
 import co.urwallet.controller.TrasaccionControllers;
 import co.urwallet.mapping.dto.CuentaDto;
@@ -20,6 +21,7 @@ public class CuentaViewsControllers {
     ObservableList<CuentaDto> listaCuentaDto = FXCollections.observableArrayList();
     CuentaDto cuentaSeleccionada;
     TrasaccionControllers trasaccionControllers = new TrasaccionControllers();
+    AsignarCuentaUserControllers asignarCuentaUserControllers = new AsignarCuentaUserControllers();
     @FXML
     public TextField txtNombreCuenta;
     @FXML
@@ -92,6 +94,7 @@ public class CuentaViewsControllers {
                 limpiarCuenta();
                 cuentaControllers.obtenerCuenta();
                 trasaccionControllers.obtenerCuentas();
+                asignarCuentaUserControllers.obtenerCuentas();
             }
             else{
                 cuentaControllers.mostrarMensaje("Los datos ingresados son invalidos", "Usuario no creado", Alert.AlertType.ERROR);
@@ -113,6 +116,7 @@ public class CuentaViewsControllers {
                 tableCuentas.refresh();
                 limpiarCuenta();
                 trasaccionControllers.obtenerCuentas();
+                asignarCuentaUserControllers.obtenerCuentas();
             } else {
                 cuentaControllers.mostrarMensaje("Notificación Cliente", "No se pudo eliminar el usuario.", Alert.AlertType.ERROR);
             }
@@ -143,6 +147,7 @@ public class CuentaViewsControllers {
                 tableCuentas.refresh();
                 limpiarCuenta();
                 trasaccionControllers.obtenerCuentas();
+                asignarCuentaUserControllers.obtenerCuentas();
             } else {
                 cuentaControllers.mostrarMensaje("No se pudo actualizar el Usuario", "Error", Alert.AlertType.ERROR);
             }

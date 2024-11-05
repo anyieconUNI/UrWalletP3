@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="21.0.3" class="java.beans.XMLDecoder">
  <object class="co.urwallet.model.UrWallet" id="UrWallet0">
+  <void property="listaCuentas">
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta" id="Cuenta0">
+     <void property="idCuenta">
+      <string>7454aac1-5cdf-450d-a9e0-c744d39693f1</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>1</string>
+     </void>
+     <void property="numeCuenta">
+      <string>1</string>
+     </void>
+     <void property="saldo">
+      <float>1.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.urwallet.model.TipoCuenta</class>
+       <string>CORRIENTE</string>
+      </object>
+     </void>
+    </object>
+   </void>
+  </void>
   <void property="listaUsers">
    <void method="add">
     <object class="co.urwallet.model.Usuario">
      <void property="cedula">
-      <string>11</string>
+      <string>1</string>
      </void>
      <void property="contrasena">
       <string>1</string>
@@ -31,7 +55,7 @@
     </object>
    </void>
    <void method="add">
-    <object class="co.urwallet.model.Usuario">
+    <object class="co.urwallet.model.Usuario" id="Usuario0">
      <void property="cedula">
       <string>2</string>
      </void>
@@ -40,6 +64,11 @@
      </void>
      <void property="correo">
       <string>2</string>
+     </void>
+     <void property="cuentasBancarias">
+      <void method="add">
+       <object idref="Cuenta0"/>
+      </void>
      </void>
      <void property="direccion">
       <string>2</string>

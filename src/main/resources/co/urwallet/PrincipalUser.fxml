@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="624.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.UrWalletViewController">
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.urwallet.viewController.PrincipalUserViewsControllers"
+            prefHeight="400.0" prefWidth="600.0">
     <children>
         <TabPane layoutY="-4.0" prefHeight="639.0" prefWidth="701.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab text="Usuarios">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="702.0">
+                        <AnchorPane fx:id="homeUser" minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="702.0">
                             <children>
                                 <SplitPane layoutX="-15.0" layoutY="7.0" orientation="VERTICAL" prefHeight="574.0" prefWidth="702.0">
                                     <items>
-                                        <fx:include source="UsersViewsAdmin.fxml" />
+                                        <fx:include source="HomeUser.fxml" />
                                     </items>
                                 </SplitPane>
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Cuentas">
+                <Tab text="Saldos">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="702.0">
                             <children>
                                 <SplitPane layoutX="-15.0" layoutY="7.0" orientation="VERTICAL" prefHeight="574.0" prefWidth="702.0">
                                     <items>
-                                        <fx:include source="CuentaViews.fxml" />
+                                        <fx:include source="SaldoUser.fxml" />
                                     </items>
                                 </SplitPane>
                             </children>

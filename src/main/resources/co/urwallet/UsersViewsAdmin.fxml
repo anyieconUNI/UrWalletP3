@@ -55,7 +55,6 @@
                         </Label>
                         <TextField fx:id="txtDireccion" layoutX="450.0" layoutY="35.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
 
-
                         <Button fx:id="btnActualizar" layoutX="308.0" layoutY="202.0" mnemonicParsing="false" onAction="#actualizarUserAction" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #00093c;" text="Actualizar" textFill="WHITE">
                             <font>
                                 <Font name="Candara" size="14.0" />

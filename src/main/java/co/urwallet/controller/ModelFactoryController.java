@@ -18,6 +18,7 @@ import co.urwallet.model.Usuario;
 import co.urwallet.utils.Persistencia;
 import co.urwallet.utils.UrWalletUtils;
 import co.urwallet.viewController.HomeViewsUsers;
+import co.urwallet.viewController.PrincipalUserViewsControllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -30,6 +31,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ModelFactoryController implements IModelFactoryControllerService {
     UrWallet urWallet;
@@ -274,8 +276,8 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     @Override
     public void SumarSaldo(TransaccionDto transaccionDto) {
         try {
-            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen())) {
-                Cuenta cuenta = getUrWallet().obtenerCuenta(transaccionDto.cuentaOrigen());
+            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino())) {
+                Cuenta cuenta = getUrWallet().obtenerCuenta(transaccionDto.cuentaDestino());
                 getUrWallet().agregarPrecioACuenta(transaccionDto.monto(), cuenta);
             }
         } catch (TransaccionException e) {
@@ -285,8 +287,8 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     @Override
     public void RestarSaldo(TransaccionDto transaccionDto) {
         try {
-            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino())) {
-                Cuenta cuenta = getUrWallet().obtenerCuenta(transaccionDto.cuentaDestino());
+            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen())) {
+                Cuenta cuenta = getUrWallet().obtenerCuenta(transaccionDto.cuentaOrigen());
                 getUrWallet().restarPrecioACuenta(transaccionDto.monto(), cuenta);
             }
         } catch (TransaccionException e) {
@@ -310,10 +312,12 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             Object controller = loader.getController();
 
             // Si el controlador es de la pantalla HomeUser, le pasamos el usuario logueado
+//            if (controller instanceof PrincipalUserViewsControllers) {
+//                ((PrincipalUserViewsControllers) controller).setUsuarioLogueado(usuarioLogueado);
+//            }
             if (controller instanceof HomeViewsUsers) {
                 ((HomeViewsUsers) controller).setUsuarioLogueado(usuarioLogueado);
             }
-
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -330,6 +334,39 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             mostrarMensaje("Error inesperado", "Ocurrió un error al cargar la ventana: " + e.getMessage(), Alert.AlertType.ERROR);
         }
         return loader;
+    }
+
+    @Override
+    public boolean asignarCuentaAUsuario(String cedulaUsuario, String numeroCuenta) {
+
+        Usuario usuario = urWallet.obtenerUsuarioPorCedula(cedulaUsuario);
+        if (usuario == null) {
+            return false;
+        }
+
+        Cuenta cuenta = urWallet.obtenerCuenta(numeroCuenta);
+        if (cuenta == null) {
+            return false;
+        }
+
+        if (urWallet.cuentaYaAsignada(numeroCuenta)) {
+            return false;
+        }
+
+        usuario.agregarCuenta(cuenta);
+        return true;
+    }
+    @Override
+    public List<CuentaDto> obtenerCuentasNoAsignadas() {
+        List<CuentaDto> todasLasCuentas = obtenerCuentas();
+        return todasLasCuentas.stream()
+                .filter(cuenta -> !urWallet.cuentaYaAsignada(cuenta.numeCuenta()))
+                .collect(Collectors.toList());
+    }
+    @Override
+    public Usuario obtenerUsuarioPorCedula(String cedula) {
+        Usuario usuario = urWallet.obtenerUsuarioPorCedula(cedula);
+        return usuario;
     }
 
     @Override

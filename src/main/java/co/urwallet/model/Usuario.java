@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,9 +20,10 @@ public class Usuario implements Serializable {
     private String contrasena;
     private String direccion;
     private Float saldoDispo;
-    private List<Cuenta> cuentasBancarias;
+    private List<Cuenta> cuentasBancarias = new ArrayList<>();
+    ;
 
-    public Usuario(){
+    public Usuario() {
 
     }
 
@@ -61,7 +63,13 @@ public class Usuario implements Serializable {
         return correo;
     }
 
+    //    public Float getSaldoDispo() {
+//        return saldoDispo;
+//    }
     public Float getSaldoDispo() {
+        saldoDispo = cuentasBancarias.stream()
+                .map(Cuenta::getSaldo)
+                .reduce(0.0f, Float::sum);
         return saldoDispo;
     }
 
@@ -100,6 +108,7 @@ public class Usuario implements Serializable {
     public void setSaldoDispo(Float saldoDispo) {
         this.saldoDispo = saldoDispo;
     }
+
     public List<Cuenta> getCuentasBancarias() {
         return cuentasBancarias;
     }
@@ -107,8 +116,15 @@ public class Usuario implements Serializable {
     public void setCuentasBancarias(List<Cuenta> cuentasBancarias) {
         this.cuentasBancarias = cuentasBancarias;
     }
+
     public String generaridUsuario() {
         this.idUsuario = UUID.randomUUID().toString();
         return idUsuario;
     }
+
+    public void agregarCuenta(Cuenta cuenta) {
+        this.cuentasBancarias.add(cuenta);
+    }
+
+
 }
