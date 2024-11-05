@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.urwallet.viewController.PrincipalUserViewsControllers"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.PrincipalUserViewsControllers">
     <children>
-        <TabPane layoutY="-4.0" prefHeight="639.0" prefWidth="701.0" tabClosingPolicy="UNAVAILABLE">
+        <TabPane prefHeight="636.0" prefWidth="701.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab text="Usuarios">
                     <content>
-                        <AnchorPane fx:id="homeUser" minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="702.0">
+                        <AnchorPane fx:id="homeUser" minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="600.0">
                             <children>
-                                <SplitPane layoutX="-15.0" layoutY="7.0" orientation="VERTICAL" prefHeight="574.0" prefWidth="702.0">
+                                <SplitPane layoutX="43.0" layoutY="104.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="616.0">
                                     <items>
                                         <fx:include source="HomeUser.fxml" />
                                     </items>
@@ -26,24 +21,11 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Saldos">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="702.0">
-                            <children>
-                                <SplitPane layoutX="-15.0" layoutY="7.0" orientation="VERTICAL" prefHeight="574.0" prefWidth="702.0">
-                                    <items>
-                                        <fx:include source="SaldoUser.fxml" />
-                                    </items>
-                                </SplitPane>
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
                 <Tab text="Asignar Cuenta">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="702.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="600.0">
                             <children>
-                                <SplitPane layoutX="-15.0" layoutY="7.0" orientation="VERTICAL" prefHeight="574.0" prefWidth="702.0">
+                                <SplitPane layoutX="-23.0" orientation="VERTICAL" prefHeight="574.0" prefWidth="485.0">
                                     <items>
                                         <fx:include source="AsignarCuentaUser.fxml" />
                                     </items>
@@ -54,11 +36,29 @@
                 </Tab>
                 <Tab text="Transacción">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="702.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="623.0" prefWidth="701.0">
                             <children>
-                                <SplitPane layoutX="-15.0" layoutY="7.0" orientation="VERTICAL" prefHeight="574.0" prefWidth="702.0">
+                                <SplitPane layoutX="-24.0" layoutY="14.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="732.0">
                                     <items>
                                         <fx:include source="Transferencias.fxml" />
+                                    </items>
+                                </SplitPane>
+                        <ImageView fitHeight="52.0" fitWidth="66.0" layoutX="6.0" layoutY="557.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/logo.png" />
+                            </image>
+                        </ImageView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Saldos">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="600.0">
+                            <children>
+                                <SplitPane layoutX="51.0" layoutY="17.0" orientation="VERTICAL" prefHeight="574.0" prefWidth="600.0">
+                                    <items>
+                                        <fx:include source="SaldoUser.fxml" />
                                     </items>
                                 </SplitPane>
                             </children>

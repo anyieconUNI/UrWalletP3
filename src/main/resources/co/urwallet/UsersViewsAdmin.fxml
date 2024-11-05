@@ -4,8 +4,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="542.0" prefWidth="734.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.UsersViewsController">
 
     <children>
@@ -18,42 +16,42 @@
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="txtCedula" layoutX="84.0" layoutY="35.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
+                        <TextField fx:id="txtCedula" layoutX="84.0" layoutY="35.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #00093c;" />
 
                         <Label layoutX="17.0" layoutY="80.0" text="Nombre:">
                             <font>
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="txtNombreCompleto" layoutX="84.0" layoutY="75.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
+                        <TextField fx:id="txtNombreCompleto" layoutX="84.0" layoutY="75.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #00093c;" />
 
                         <Label layoutX="371.0" layoutY="80.0" text="Telefono:" textFill="#00093c">
                             <font>
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="txtTelefono" layoutX="450.0" layoutY="75.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
+                        <TextField fx:id="txtTelefono" layoutX="450.0" layoutY="75.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #00093c;" />
 
                         <Label layoutX="17.0" layoutY="121.0" text="Correo:" textFill="#00093c">
                             <font>
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="txtCorreo" layoutX="84.0" layoutY="116.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
+                        <TextField fx:id="txtCorreo" layoutX="84.0" layoutY="116.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #00093c;" />
 
                         <Label layoutX="371.0" layoutY="121.0" text="Contraseña:" textFill="#00093c">
                             <font>
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <PasswordField fx:id="txtContrasena" layoutX="450.0" layoutY="116.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
+                        <PasswordField fx:id="txtContrasena" layoutX="450.0" layoutY="116.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #00093c;" />
 
                         <Label layoutX="370.0" layoutY="40.0" text="Dirección:" textFill="#00093c">
                             <font>
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="txtDireccion" layoutX="450.0" layoutY="35.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
+                        <TextField fx:id="txtDireccion" layoutX="450.0" layoutY="35.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #00093c;" />
 
                         <Button fx:id="btnActualizar" layoutX="308.0" layoutY="202.0" mnemonicParsing="false" onAction="#actualizarUserAction" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #00093c;" text="Actualizar" textFill="WHITE">
                             <font>
@@ -78,12 +76,12 @@
 
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="724.0">
                     <children>
-                        <TableView fx:id="tableusers" layoutX="49.0" layoutY="14.0" prefHeight="200.0" prefWidth="627.0" style="-fx-border-color: #187173;">
+                        <TableView fx:id="tableusers" layoutX="49.0" layoutY="14.0" prefHeight="200.0" prefWidth="627.0" style="-fx-border-color: #00093c;">
                             <columns>
                                 <TableColumn fx:id="tcCedula" prefWidth="75.0" text="Cédula" />
-                                <TableColumn fx:id="tcNombreCompleto" prefWidth="100.0" text="Nombre Completo" />
-                                <TableColumn fx:id="tcTelefono" prefWidth="90.0" text="Telefono" />
-                                <TableColumn fx:id="tcCorreo" prefWidth="120.0" text="Correo" />
+                                <TableColumn fx:id="tcNombreCompleto" prefWidth="114.0" text="Nombre Completo" />
+                                <TableColumn fx:id="tcTelefono" prefWidth="101.0" text="Telefono" />
+                                <TableColumn fx:id="tcCorreo" prefWidth="95.0" text="Correo" />
                                 <TableColumn fx:id="tcDireccion" prefWidth="120.0" text="Dirección" />
                                 <TableColumn fx:id="tcSaldoDispo" prefWidth="119.1999389648438" text="Saldo Disponible" />
                             </columns>

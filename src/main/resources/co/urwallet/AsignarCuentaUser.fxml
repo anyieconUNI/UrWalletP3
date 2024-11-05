@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -10,46 +11,54 @@
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="260.0" prefWidth="741.0">
                     <children>
-                        <Label layoutX="17.0" layoutY="40.0" text="Cliente:" textFill="#00093c">
+                        <Label layoutX="87.0" layoutY="109.0" text="Cliente:" textFill="#00093c">
                             <font>
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <ComboBox fx:id="cmbCliente" layoutX="70.0" layoutY="35.0" prefWidth="150.0"/>
+                        <ComboBox fx:id="cmbCliente" layoutX="143.0" layoutY="103.0" prefHeight="29.0" prefWidth="180.0" style="-fx-background-color: #00093c;" />
 
-                        <Label layoutX="362.0" layoutY="40.0" text="Cuenta:">
+                        <Label layoutX="362.0" layoutY="109.0" text="Cuenta:">
                             <font>
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <ComboBox fx:id="cbCuenta" layoutX="417.0" layoutY="35.0" prefWidth="150.0"/>
+                        <ComboBox fx:id="cbCuenta" layoutX="419.0" layoutY="103.0" prefHeight="29.0" prefWidth="180.0" style="-fx-background-color: #00093c;" />
 
-                        <Label layoutX="29.0" layoutY="185.0" text="Buscar  Usuario: ">
+                        <Label layoutX="122.0" layoutY="224.0" text="Buscar  Usuario: ">
                             <font>
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="txtBucarUser" layoutX="135.0" layoutY="180.0" prefHeight="25.0" prefWidth="251.0" style="-fx-border-color: #187173;" />
+                        <TextField fx:id="txtBucarUser" layoutX="227.0" layoutY="219.0" prefHeight="25.0" prefWidth="251.0" promptText="Cedula" style="-fx-border-color: #00093c;">
+                     <font>
+                        <Font name="Candara" size="14.0" />
+                     </font></TextField>
 
 
-                        <Button fx:id="btnBuscar" layoutX="408.0" layoutY="180.0" mnemonicParsing="false" onAction="#buscarAcyion" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #00093c;" text="Buscar" textFill="WHITE">
+                        <Button fx:id="btnBuscar" layoutX="492.0" layoutY="219.0" mnemonicParsing="false" onAction="#buscarAcyion" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #00093c;" text="Buscar" textFill="WHITE">
                             <font>
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Button>
 
-                        <Button fx:id="btnAgregar" layoutX="299.0" layoutY="90.0" mnemonicParsing="false" onAction="#agregarAsignacion" prefHeight="20.0" prefWidth="106.0" style="-fx-background-color: #00093c;" text="Agregar" textFill="WHITE">
+                        <Button fx:id="btnAgregar" layoutX="300.0" layoutY="161.0" mnemonicParsing="false" onAction="#agregarAsignacion" prefHeight="20.0" prefWidth="106.0" style="-fx-background-color: #ff6a6a;" text="Agregar" textFill="WHITE">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="Candara" size="14.0" />
                             </font>
                         </Button>
+                  <ImageView fitHeight="71.0" fitWidth="106.0" layoutX="309.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@img/logo.png" />
+                      </image>
+                  </ImageView>
                     </children>
 
                 </AnchorPane>
 
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="724.0">
                     <children>
-                        <TableView fx:id="tableusersCuenta" layoutX="49.0" layoutY="14.0" prefHeight="200.0" prefWidth="627.0" style="-fx-border-color: #187173;">
+                        <TableView fx:id="tableusersCuenta" layoutX="36.0" layoutY="14.0" prefHeight="200.0" prefWidth="653.0" style="-fx-border-color: #00093c;">
                             <columns>
                                 <TableColumn fx:id="tcCedula" prefWidth="75.0" text="Cédula" />
                                 <TableColumn fx:id="tcNombreCompleto" prefWidth="100.0" text="Nombre/User" />
