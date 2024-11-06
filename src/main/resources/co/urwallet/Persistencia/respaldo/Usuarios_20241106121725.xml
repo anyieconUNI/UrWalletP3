@@ -84,25 +84,6 @@
      </void>
     </object>
    </void>
-   <void method="add">
-    <object class="co.urwallet.model.Cuenta">
-     <void property="idCuenta">
-      <string>f6a0f673-f3d1-478d-a8d8-d07d5f32e51f</string>
-     </void>
-     <void property="nombreCuenta">
-      <string>Cuenta5</string>
-     </void>
-     <void property="numeCuenta">
-      <string>150799</string>
-     </void>
-     <void property="saldo">
-      <float>1000000.0</float>
-     </void>
-     <void property="tipoCuenta">
-      <object idref="TipoCuenta0"/>
-     </void>
-    </object>
-   </void>
   </void>
   <void property="listaUsers">
    <void method="add">

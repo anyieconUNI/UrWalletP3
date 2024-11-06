@@ -3,7 +3,7 @@
  <object class="co.urwallet.model.UrWallet" id="UrWallet0">
   <void property="listaCuentas">
    <void method="add">
-    <object class="co.urwallet.model.Cuenta" id="Cuenta0">
+    <object class="co.urwallet.model.Cuenta">
      <void property="idCuenta">
       <string>1f49d2a9-561e-4cd7-9bf4-1d527fa9a577</string>
      </void>
@@ -11,7 +11,7 @@
       <string>Cuenta1</string>
      </void>
      <void property="numeCuenta">
-      <string>1025</string>
+      <string>Cuenta1</string>
      </void>
      <void property="saldo">
       <float>99995.0</float>
@@ -25,7 +25,48 @@
     </object>
    </void>
    <void method="add">
-    <object class="co.urwallet.model.Cuenta" id="Cuenta1">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="idCuenta">
+      <string>fb52303a-fe94-4e4e-9bbe-5624b27cd18b</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>Cuenta3</string>
+     </void>
+     <void property="numeCuenta">
+      <string>Cuenta3</string>
+     </void>
+     <void property="saldo">
+      <float>40000.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="idCuenta">
+      <string>42f4d2c8-c9e3-4558-9497-1b107efcacbd</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>Cuenta4</string>
+     </void>
+     <void property="numeCuenta">
+      <string>Cuenta4</string>
+     </void>
+     <void property="saldo">
+      <float>45000.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.urwallet.model.TipoCuenta</class>
+       <string>CORRIENTE</string>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
      <void property="idCuenta">
       <string>bd8cd774-9013-44e2-9253-759b2419da91</string>
      </void>
@@ -43,70 +84,10 @@
      </void>
     </object>
    </void>
-   <void method="add">
-    <object class="co.urwallet.model.Cuenta" id="Cuenta2">
-     <void property="idCuenta">
-      <string>fb52303a-fe94-4e4e-9bbe-5624b27cd18b</string>
-     </void>
-     <void property="nombreCuenta">
-      <string>Cuenta3</string>
-     </void>
-     <void property="numeCuenta">
-      <string>1234</string>
-     </void>
-     <void property="saldo">
-      <float>40000.0</float>
-     </void>
-     <void property="tipoCuenta">
-      <object idref="TipoCuenta0"/>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="co.urwallet.model.Cuenta" id="Cuenta3">
-     <void property="idCuenta">
-      <string>42f4d2c8-c9e3-4558-9497-1b107efcacbd</string>
-     </void>
-     <void property="nombreCuenta">
-      <string>Cuenta4</string>
-     </void>
-     <void property="numeCuenta">
-      <string>11345</string>
-     </void>
-     <void property="saldo">
-      <float>45000.0</float>
-     </void>
-     <void property="tipoCuenta">
-      <object class="java.lang.Enum" method="valueOf">
-       <class>co.urwallet.model.TipoCuenta</class>
-       <string>CORRIENTE</string>
-      </object>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="co.urwallet.model.Cuenta">
-     <void property="idCuenta">
-      <string>f6a0f673-f3d1-478d-a8d8-d07d5f32e51f</string>
-     </void>
-     <void property="nombreCuenta">
-      <string>Cuenta5</string>
-     </void>
-     <void property="numeCuenta">
-      <string>150799</string>
-     </void>
-     <void property="saldo">
-      <float>1000000.0</float>
-     </void>
-     <void property="tipoCuenta">
-      <object idref="TipoCuenta0"/>
-     </void>
-    </object>
-   </void>
   </void>
   <void property="listaUsers">
    <void method="add">
-    <object class="co.urwallet.model.Usuario" id="Usuario0">
+    <object class="co.urwallet.model.Usuario">
      <void property="cedula">
       <string>11</string>
      </void>
@@ -115,11 +96,6 @@
      </void>
      <void property="correo">
       <string>1</string>
-     </void>
-     <void property="cuentasBancarias">
-      <void method="add">
-       <object idref="Cuenta3"/>
-      </void>
      </void>
      <void property="direccion">
       <string>1</string>
@@ -136,7 +112,7 @@
     </object>
    </void>
    <void method="add">
-    <object class="co.urwallet.model.Usuario" id="Usuario1">
+    <object class="co.urwallet.model.Usuario">
      <void property="cedula">
       <string>2</string>
      </void>
@@ -145,11 +121,6 @@
      </void>
      <void property="correo">
       <string>2</string>
-     </void>
-     <void property="cuentasBancarias">
-      <void method="add">
-       <object idref="Cuenta1"/>
-      </void>
      </void>
      <void property="direccion">
       <string>2</string>
@@ -166,7 +137,7 @@
     </object>
    </void>
    <void method="add">
-    <object class="co.urwallet.model.Usuario" id="Usuario2">
+    <object class="co.urwallet.model.Usuario">
      <void property="cedula">
       <string>10</string>
      </void>
@@ -175,11 +146,6 @@
      </void>
      <void property="correo">
       <string>4</string>
-     </void>
-     <void property="cuentasBancarias">
-      <void method="add">
-       <object idref="Cuenta0"/>
-      </void>
      </void>
      <void property="direccion">
       <string>5</string>
@@ -196,7 +162,7 @@
     </object>
    </void>
    <void method="add">
-    <object class="co.urwallet.model.Usuario" id="Usuario3">
+    <object class="co.urwallet.model.Usuario">
      <void property="cedula">
       <string>12</string>
      </void>
@@ -205,11 +171,6 @@
      </void>
      <void property="correo">
       <string>4</string>
-     </void>
-     <void property="cuentasBancarias">
-      <void method="add">
-       <object idref="Cuenta2"/>
-      </void>
      </void>
      <void property="direccion">
       <string>5</string>
@@ -222,31 +183,6 @@
      </void>
      <void property="telefono">
       <string>6</string>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="co.urwallet.model.Usuario">
-     <void property="cedula">
-      <string>1047</string>
-     </void>
-     <void property="contrasena">
-      <string>1047</string>
-     </void>
-     <void property="correo">
-      <string>mari@</string>
-     </void>
-     <void property="direccion">
-      <string></string>
-     </void>
-     <void property="idUsuario">
-      <string>e7f316f7-8faa-411c-b630-6e910c98f57f</string>
-     </void>
-     <void property="nombreCompleto">
-      <string>Maria</string>
-     </void>
-     <void property="telefono">
-      <string>312</string>
      </void>
     </object>
    </void>
