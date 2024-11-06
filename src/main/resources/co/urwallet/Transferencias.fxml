@@ -31,14 +31,14 @@
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <ComboBox fx:id="cmbCuentaOrigen" layoutX="475.0" layoutY="77.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #00093c;" />
+                        <ComboBox fx:id="cmbCuentaOrigen" layoutX="475.0" layoutY="77.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #187173;" />
 
                         <Label layoutX="17.0" layoutY="450.0" text="Cuenta Destino:" textFill="#00093c">
                             <font>
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <ComboBox fx:id="cmbCuentaDestino" layoutX="475.0" layoutY="36.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #00093c;" />
+                        <ComboBox fx:id="cmbCuentaDestino" layoutX="475.0" layoutY="36.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #187173;" />
 
 
                         <Label layoutX="347.0" layoutY="122.0" text="Tipo de transacción:" textFill="#00093c">
@@ -46,7 +46,7 @@
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <ComboBox fx:id="cmbTipoTrnsaccion" layoutX="475.0" layoutY="118.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #00093c;">
+                        <ComboBox fx:id="cmbTipoTrnsaccion" layoutX="475.0" layoutY="118.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #187173;">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
                                     <String fx:value="Retiro" />
@@ -60,7 +60,7 @@
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <ComboBox fx:id="cmbCategoria" layoutX="475.0" layoutY="159.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #00093c;">
+                        <ComboBox fx:id="cmbCategoria" layoutX="475.0" layoutY="159.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #187173;">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
                                     <String fx:value="Comida" />
