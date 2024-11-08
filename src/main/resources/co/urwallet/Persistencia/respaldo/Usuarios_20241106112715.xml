@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="21.0.5" class="java.beans.XMLDecoder">
+ <object class="co.urwallet.model.UrWallet" id="UrWallet0">
+  <void property="listaCuentas">
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="idCuenta">
+      <string>d3d701e8-f818-4214-8481-b1f4822c03ec</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>Cuenta 1</string>
+     </void>
+     <void property="numeCuenta">
+      <string>18632782472</string>
+     </void>
+     <void property="saldo">
+      <float>180000.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.urwallet.model.TipoCuenta</class>
+       <string>AHORROS</string>
+      </object>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>

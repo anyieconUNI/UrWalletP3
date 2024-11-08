@@ -50,6 +50,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 //        guardarPerUsers();
 
         cargarDatosDesdeArchivos();
+        cargarDatosArchivosCuentas();
 //        guardarRecursourWalletBinario();
 //        cargarRecursoUrWalletBinario();
 //        guardarRecursoBancoXML();
@@ -71,6 +72,16 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             guardaRegistroLog("Se han cargado los datos correctamente", 1, "Get");
         } catch (IOException e) {
             guardaRegistroLog("No se han cargado los datos", 2, "Warning");
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void cargarDatosArchivosCuentas(){
+        try {
+            Persistencia.cargarDatosArchivosCuentas(urWallet);
+            guardaRegistroLog("Se han cargado las cuentas", 1, "Get");
+        }catch (IOException e){
+            guardaRegistroLog("No se han cargado las cuentas", 2, "Warning");
             throw new RuntimeException(e);
         }
     }
@@ -128,6 +139,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 
     private void agregarDatosGenerales(){
         guardarPerUsers();
+        guardarPerCuentas();
         guardarRecursourWalletBinario();
         guardarRecursoBancoXML();
     }
@@ -156,6 +168,14 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         try {
             Persistencia.guardarUsuario(getUrWallet().getListaUsuarios());
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void guardarPerCuentas() {
+        try{
+            Persistencia.guardarCuentas(getUrWallet().getListaCuentas());
+        }catch (IOException e){
             throw new RuntimeException(e);
         }
     }
@@ -216,13 +236,18 @@ public class ModelFactoryController implements IModelFactoryControllerService {
                 Cuenta cuenta = mapper.cuentaToCuentaDto(cuentaDto);
                 System.out.println("MODELLLL22" + cuenta.getIdCuenta());
                 getUrWallet().agregarCuenta(cuenta);
+                agregarDatosGenerales();
+                guardaRegistroLog("Se ha agregado un nuevo cuenta", 1, "Create");
+                copiarArchivos();
             }
             return true;
         } catch (CuentaException e) {
             e.getMessage();
+            guardaRegistroLog("No se ha agregado un nuevo cuenta", 2, "Warning");
             return false;
         }
     }
+
 
     @Override
     public boolean actualizarCuenta(String idCuenta, CuentaDto cuentaDto) {
@@ -231,11 +256,13 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             Cuenta cuenta = mapper.cuentaToCuentaDto(cuentaDto);
             System.out.println("MQAPERRRR ID" + cuenta.getNumeCuenta());
             getUrWallet().actualizarCuenta(idCuenta, cuenta);
-//            copiarArchivos();
+            agregarDatosGenerales();
+            copiarArchivos();
+            guardaRegistroLog("Se ha actualizado la cuenta", 1, "Update");
             return true;
         } catch (CuentaException e) {
             e.getMessage();
-//            guardaRegistroLog("No se pudo actualizar el dato", 2, "Warning");
+            guardaRegistroLog("No se pudo actualizar el dato", 2, "Warning");
             return false;
         }
     }
