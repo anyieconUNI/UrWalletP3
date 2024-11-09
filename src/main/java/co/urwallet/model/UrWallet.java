@@ -12,23 +12,27 @@ import java.util.ArrayList;
 @Getter
 public class UrWallet implements IUrWalletService , Serializable {
     private static final long serialVersionUID = 1L;
+
+    // Listas
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     ArrayList<Cuenta> listaCuentas = new ArrayList<>();
     ArrayList<Transaccion> listaTransaccion = new ArrayList<>();
 
-    //
     public UrWallet() {
     }
 
     public ArrayList<Usuario> getListaUsers() {
         return listaUsuarios;
     }
+
     public ArrayList<Cuenta> getListaCuentas() {
         return listaCuentas;
     }
+
     public  void setListaUsers(ArrayList<Usuario> listaClientes){
         this.listaUsuarios = listaUsuarios;
     }
+
     public void setListaCuentas(ArrayList<Cuenta> listaCuentas) {
         this.listaCuentas = listaCuentas;
     }
@@ -40,6 +44,8 @@ public class UrWallet implements IUrWalletService , Serializable {
     public void setListaTransaccion(ArrayList<Transaccion> listaTransaccion) {
         this.listaTransaccion = listaTransaccion;
     }
+
+    // Métodos de usuarios
 
     public void agregarUsuario(Usuario nuevoUsuario) throws UsuarioException {
         getListaUsers().add(nuevoUsuario);
@@ -134,6 +140,9 @@ public class UrWallet implements IUrWalletService , Serializable {
             throw new UsuarioException("Error inesperado al actualizar el usuario");
         }
     }
+
+    // Métodos de cuentas
+
     public void agregarCuenta(Cuenta nuevaCuenta) throws CuentaException {
         getListaCuentas().add(nuevaCuenta);
     }
@@ -207,6 +216,8 @@ public class UrWallet implements IUrWalletService , Serializable {
         return cuentaEncontrado;
     }
 
+    // Métodos de transacciones
+
     public void agregarTransaccion(Transaccion nuevaTransaccion) throws TransaccionException {
         getListaTransaccion().add(nuevaTransaccion);
     }
@@ -237,6 +248,7 @@ public class UrWallet implements IUrWalletService , Serializable {
     }
 
     // Método para verificar si la cuenta ya está asignada a un usuario
+
     public boolean cuentaYaAsignada(String numeroCuenta) {
         for (Usuario usuario : listaUsuarios) {
             for (Cuenta cuenta : usuario.getCuentasBancarias()) {

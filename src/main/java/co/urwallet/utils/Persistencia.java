@@ -24,6 +24,7 @@ public class Persistencia {
 
 
     // Persistencia de usuarios
+
     public static void cargarDatosArchivos(UrWallet urWallet) throws FileNotFoundException, IOException {
         //cargar archivo de users
         ArrayList<Usuario> usersCargados = cargarUsers();
