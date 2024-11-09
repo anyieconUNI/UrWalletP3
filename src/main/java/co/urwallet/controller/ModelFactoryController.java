@@ -51,6 +51,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 
         cargarDatosDesdeArchivos();
         cargarDatosArchivosCuentas();
+        cargarDatosArchivosTransaccioenes();
 //        guardarRecursourWalletBinario();
 //        cargarRecursoUrWalletBinario();
 //        guardarRecursoBancoXML();
@@ -82,6 +83,16 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             guardaRegistroLog("Se han cargado las cuentas", 1, "Get");
         }catch (IOException e){
             guardaRegistroLog("No se han cargado las cuentas", 2, "Warning");
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void cargarDatosArchivosTransaccioenes(){
+        try {
+            Persistencia.cargarDatosArchivosTransacciones(urWallet);
+            guardaRegistroLog("Se han cargado las transacciones", 1, "Get");
+        }catch (IOException e){
+            guardaRegistroLog("No se han cargado las transacciones", 2, "Warning");
             throw new RuntimeException(e);
         }
     }
@@ -140,6 +151,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     private void agregarDatosGenerales(){
         guardarPerUsers();
         guardarPerCuentas();
+        guardarPerTransferencias();
         guardarRecursourWalletBinario();
         guardarRecursoBancoXML();
     }
@@ -175,6 +187,14 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public void guardarPerCuentas() {
         try{
             Persistencia.guardarCuentas(getUrWallet().getListaCuentas());
+        }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void guardarPerTransferencias(){
+        try{
+            Persistencia.guardarTransacciones(getUrWallet().getListaTransaccion());
         }catch (IOException e){
             throw new RuntimeException(e);
         }
@@ -292,10 +312,14 @@ public class ModelFactoryController implements IModelFactoryControllerService {
                     Transaccion transaccion = mapper.transaccionDtoToTransaccion(transaccionDto);
                     System.out.println("TRANSDSSSSSSSSSSSSSS" + transaccion.getIdTransaccion());
                     getUrWallet().agregarTransaccion(transaccion);
+                    agregarDatosGenerales();
+                    guardaRegistroLog("Se ha agregado una nueva transacción", 1, "Create");
+                    copiarArchivos();
                 }
             }
             return true;
         } catch (TransaccionException e) {
+            guardaRegistroLog("No se pudo agregar la transaccioón", 2, "Warning");
             e.getMessage();
             return false;
         }

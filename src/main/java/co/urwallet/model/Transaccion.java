@@ -1,8 +1,10 @@
 package co.urwallet.model;
 
+import co.urwallet.model.enums.Categoria;
+import co.urwallet.model.enums.TipoTransaccion;
+
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 public class Transaccion implements Serializable {
@@ -27,6 +29,8 @@ public class Transaccion implements Serializable {
         this.cuentaDestino = cuentaDestino;
         this.categoria = categoria;
     }
+
+    public Transaccion() {}
 
     public String getIdTransaccion() {
         return idTransaccion;

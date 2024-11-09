@@ -4,8 +4,6 @@ import co.urwallet.controller.AsignarCuentaUserControllers;
 import co.urwallet.controller.CuentaControllers;
 import co.urwallet.controller.TrasaccionControllers;
 import co.urwallet.mapping.dto.CuentaDto;
-import co.urwallet.mapping.dto.UsuarioDto;
-import co.urwallet.model.TipoCuenta;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;

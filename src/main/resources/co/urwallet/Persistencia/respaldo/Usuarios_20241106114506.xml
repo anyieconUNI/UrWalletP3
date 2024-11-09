@@ -18,7 +18,7 @@
      </void>
      <void property="tipoCuenta">
       <object class="java.lang.Enum" method="valueOf">
-       <class>co.urwallet.model.TipoCuenta</class>
+       <class>co.urwallet.model.enums.TipoCuenta</class>
        <string>CORRIENTE</string>
       </object>
      </void>
@@ -40,7 +40,7 @@
      </void>
      <void property="tipoCuenta">
       <object class="java.lang.Enum" id="TipoCuenta0" method="valueOf">
-       <class>co.urwallet.model.TipoCuenta</class>
+       <class>co.urwallet.model.enums.TipoCuenta</class>
        <string>AHORROS</string>
       </object>
      </void>

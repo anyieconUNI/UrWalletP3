@@ -1,0 +1,1 @@
+20edbc2d-1687-4d7e-9725-c1627c2eb9d5@@pago@@Deposito@@Transporte@@Cuenta(idCuenta=null, numeCuenta=1025, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=34567, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Sat Nov 09 01:13:47 COT 2024@@34.0

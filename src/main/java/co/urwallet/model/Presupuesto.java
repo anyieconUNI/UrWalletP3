@@ -1,5 +1,7 @@
 package co.urwallet.model;
 
+import co.urwallet.model.enums.Categoria;
+
 import java.io.Serializable;
 
 public class Presupuesto implements Serializable {
