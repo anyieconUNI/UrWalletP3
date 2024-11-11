@@ -1,0 +1,1 @@
+9ce036f5-ad3a-4455-8b44-c03bce13e36e@@1@@1@@1@@1@@1@@1@@1.0@@[Cuenta(idCuenta=23598ec3-479d-4e5d-b5cf-aa0968f66caa, numeCuenta=1, nombreCuenta=1, tipoCuenta=CORRIENTE, saldo=1.0)]

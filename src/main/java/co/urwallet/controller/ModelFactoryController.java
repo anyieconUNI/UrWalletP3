@@ -28,8 +28,10 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,6 +53,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 
         cargarDatosDesdeArchivos();
         cargarDatosArchivosCuentas();
+        cargarDatosArchivosTransacciones();
 //        guardarRecursourWalletBinario();
 //        cargarRecursoUrWalletBinario();
 //        guardarRecursoBancoXML();
@@ -82,6 +85,14 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             guardaRegistroLog("Se han cargado las cuentas", 1, "Get");
         }catch (IOException e){
             guardaRegistroLog("No se han cargado las cuentas", 2, "Warning");
+            throw new RuntimeException(e);
+        }
+    }
+    private void cargarDatosArchivosTransacciones(){
+        try {
+            Persistencia.cargarDatosArchivosTransacciones(urWallet);
+            guardaRegistroLog("Se han cargado las cuentas", 1, "Get");
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -166,7 +177,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 
     public void guardarPerUsers() {
         try {
-            Persistencia.guardarUsuario(getUrWallet().getListaUsuarios());
+            Persistencia.guardarUsuario(getUrWallet().getListaUsers());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -176,6 +187,14 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         try{
             Persistencia.guardarCuentas(getUrWallet().getListaCuentas());
         }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void guardarTransferencia() {
+        try {
+            Persistencia.guardarTransacciones(getUrWallet().getListaTransaccion());
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -199,11 +218,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
             System.out.println("MQAPERRRR ID" + user.getIdUsuario());
             getUrWallet().actualizarUsuario(idUser, user);
-            try {
-                agregarDatosGenerales();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            agregarDatosGenerales();
             guardaRegistroLog("Se han actualizado correctamente los datos", 1, "Update");
 //            copiarArchivos();
             return true;
@@ -292,6 +307,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
                     Transaccion transaccion = mapper.transaccionDtoToTransaccion(transaccionDto);
                     System.out.println("TRANSDSSSSSSSSSSSSSS" + transaccion.getIdTransaccion());
                     getUrWallet().agregarTransaccion(transaccion);
+                    guardarTransferencia();
                 }
             }
             return true;
@@ -381,6 +397,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         }
 
         usuario.agregarCuenta(cuenta);
+        agregarDatosGenerales();
         return true;
     }
     @Override

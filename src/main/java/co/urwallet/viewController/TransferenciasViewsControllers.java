@@ -78,7 +78,7 @@ public class TransferenciasViewsControllers {
 //        });
 //    }
     private void initDataBinding() {
-        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha().toString()));
+//        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha().toString()));
         tcTipoTrasacc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipoTransaccion()));
         tcMonto.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().monto())));
         tcDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
@@ -134,11 +134,11 @@ public class TransferenciasViewsControllers {
     }
     private TransaccionDto contruirRegistroTrasaccion(){
         float monto = Float.parseFloat(txtMonto.getText());
-        Date fecha = new Date(System.currentTimeMillis());
+        Date fechaActual = new Date();
         String id = UUID.randomUUID().toString();
         return new TransaccionDto(
                 id,
-                fecha,
+                fechaActual,
                 cmbTipoTrnsaccion.getValue().toString(),
                 monto,
                 tareaDescripcion.getText(),

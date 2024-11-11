@@ -27,6 +27,9 @@ public class Transaccion implements Serializable {
         this.cuentaDestino = cuentaDestino;
         this.categoria = categoria;
     }
+    public Transaccion(){
+
+    }
 
     public String getIdTransaccion() {
         return idTransaccion;

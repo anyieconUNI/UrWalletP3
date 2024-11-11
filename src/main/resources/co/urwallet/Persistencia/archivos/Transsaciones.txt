@@ -1,0 +1,1 @@
+a8a61e13-12c6-4599-9769-98bf548db565@@1@@Retiro@@Comida@@Cuenta(idCuenta=null, numeCuenta=3, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Mon Nov 11 12:54:41 COT 2024@@1.0

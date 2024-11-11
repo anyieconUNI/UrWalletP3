@@ -65,7 +65,7 @@ public class HomeViewsUsers {
 
 
     public void editarUser(ActionEvent actionEvent) {
-        txtIdentificacion.setEditable(true);
+//        txtIdentificacion.setEditable(true);
         txtNombreCompleto.setEditable(true);
         txtCorreo.setEditable(true);
         txtTelefono.setEditable(true);

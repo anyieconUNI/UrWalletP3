@@ -85,7 +85,7 @@ public class UrWallet implements IUrWalletService , Serializable {
             if (usuario == null) {
                 throw new UsuarioException("El usuario no existe");
             } else {
-                getListaUsuarios().remove(usuario);
+                getListaUsers().remove(usuario);
                 return true;
             }
         } catch (UsuarioException e) {
@@ -100,7 +100,7 @@ public class UrWallet implements IUrWalletService , Serializable {
     @Override
     public Usuario obtenerUsuario(String id) {
         Usuario usuarioEncontrado = null;
-        for (Usuario usuario : getListaUsuarios()) {
+        for (Usuario usuario : getListaUsers()) {
             if (usuario.getIdUsuario().equalsIgnoreCase(id)) {
                 usuarioEncontrado = usuario;
                 break;

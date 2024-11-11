@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="21.0.3" class="java.beans.XMLDecoder">
+ <object class="co.urwallet.model.UrWallet" id="UrWallet0">
+  <void property="listaCuentas">
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta" id="Cuenta0">
+     <void property="idCuenta">
+      <string>23598ec3-479d-4e5d-b5cf-aa0968f66caa</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>1</string>
+     </void>
+     <void property="numeCuenta">
+      <string>1</string>
+     </void>
+     <void property="saldo">
+      <float>1.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.urwallet.model.TipoCuenta</class>
+       <string>CORRIENTE</string>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta" id="Cuenta1">
+     <void property="idCuenta">
+      <string>946536af-8d1d-49a6-b57d-44b42299d9ec</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>3</string>
+     </void>
+     <void property="numeCuenta">
+      <string>3</string>
+     </void>
+     <void property="saldo">
+      <float>3.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.urwallet.model.TipoCuenta</class>
+       <string>AHORROS</string>
+      </object>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="listaUsers">
+   <void method="add">
+    <object class="co.urwallet.model.Usuario">
+     <void property="cedula">
+      <string>1</string>
+     </void>
+     <void property="contrasena">
+      <string>1</string>
+     </void>
+     <void property="correo">
+      <string>1</string>
+     </void>
+     <void property="direccion">
+      <string>1</string>
+     </void>
+     <void property="idUsuario">
+      <string>9ce036f5-ad3a-4455-8b44-c03bce13e36e</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>1</string>
+     </void>
+     <void property="telefono">
+      <string>1</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Usuario" id="Usuario0">
+     <void property="cedula">
+      <string>2</string>
+     </void>
+     <void property="contrasena">
+      <string>2</string>
+     </void>
+     <void property="correo">
+      <string>2</string>
+     </void>
+     <void property="cuentasBancarias">
+      <void method="add">
+       <object idref="Cuenta0"/>
+      </void>
+     </void>
+     <void property="direccion">
+      <string>2</string>
+     </void>
+     <void property="idUsuario">
+      <string>22b658d7-8866-4306-a2e3-a8cc25b418c7</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>2</string>
+     </void>
+     <void property="telefono">
+      <string>2</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Usuario" id="Usuario1">
+     <void property="cedula">
+      <string>3</string>
+     </void>
+     <void property="contrasena">
+      <string>3</string>
+     </void>
+     <void property="correo">
+      <string>3</string>
+     </void>
+     <void property="cuentasBancarias">
+      <void method="add">
+       <object idref="Cuenta1"/>
+      </void>
+     </void>
+     <void property="direccion">
+      <string>3</string>
+     </void>
+     <void property="idUsuario">
+      <string>43849e58-0fdf-4a2a-97ce-15e639f49574</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>hola</string>
+     </void>
+     <void property="telefono">
+      <string>3</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Usuario">
+     <void property="cedula">
+      <string>4</string>
+     </void>
+     <void property="contrasena">
+      <string>4</string>
+     </void>
+     <void property="correo">
+      <string>4</string>
+     </void>
+     <void property="direccion">
+      <string>4</string>
+     </void>
+     <void property="idUsuario">
+      <string>bcd67364-e04c-4e7a-a984-f3e1ad82d4d1</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>4</string>
+     </void>
+     <void property="telefono">
+      <string>4</string>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>
