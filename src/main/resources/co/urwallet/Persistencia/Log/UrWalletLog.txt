@@ -3486,3 +3486,33 @@ nov 11, 2024 9:03:56 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
 INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-11
 nov 11, 2024 9:03:57 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
 INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-11
+nov 11, 2024 9:08:01 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Copy,Se creo una copia en respaldo,2024-11-11
+nov 11, 2024 9:08:02 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-11
+nov 11, 2024 9:08:10 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-11
+nov 11, 2024 9:08:15 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-11
+nov 11, 2024 9:08:17 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-11
+nov 11, 2024 9:10:31 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Copy,Se creo una copia en respaldo,2024-11-11
+nov 11, 2024 9:10:31 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-11
+nov 11, 2024 9:10:38 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-11
+nov 11, 2024 9:10:42 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-11
+nov 11, 2024 9:10:43 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-11
+nov 11, 2024 9:13:47 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Copy,Se creo una copia en respaldo,2024-11-11
+nov 11, 2024 9:13:47 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-11
+nov 11, 2024 9:13:51 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-11
+nov 11, 2024 9:13:59 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-11
+nov 11, 2024 9:14:00 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-11

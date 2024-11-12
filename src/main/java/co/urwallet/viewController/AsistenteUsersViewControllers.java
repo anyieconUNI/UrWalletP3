@@ -5,18 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import co.urwallet.controller.ModelFactoryController;
-import co.urwallet.controller.service.IModelFactoryControllerService;
-import co.urwallet.mapping.dto.UsuarioDto;
-import co.urwallet.model.Categoria;
 import co.urwallet.model.Transaccion;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
-import java.awt.*;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.stream.Collectors;
 
@@ -35,24 +27,20 @@ public class AsistenteUsersViewControllers implements Runnable {
 
     public void setUsuarioLogueado(Usuario usuarioLogueado) {
         usuario = usuarioLogueado;
-        chatArea.appendText("Asistente: ¡Hola!" + usuario.getNombreCompleto() + " Soy tu asistente UrWallet financiero. ¿En qué puedo ayudarte hoy?\n");
-
+        chatArea.appendText("Asistente: ¡Hola!" + usuario.getNombreCompleto() + " Soy tu asistente UrWallet financiero. ¿En qué puedo ayudarte hoy?\n"+
+                "Nuestro menú disponible:\n"+
+                "ahorro\n"+ "gasto\n"+ "inversión\n"+"saldo\n"+"consultar\n");
         sendButton.setOnAction(event -> handleSendAction());
-
         Thread chatThread = new Thread(this);
         chatThread.setDaemon(true);
         chatThread.start();
 
     }
-
-
     public AsistenteUsersViewControllers() {
         this.modelFactoryService = ModelFactoryController.getInstance();
         this.messageQueue = new LinkedBlockingQueue<>();
         this.isRunning = true;
-
     }
-
     @Override
     public void run() {
         while (isRunning) {
@@ -66,7 +54,6 @@ public class AsistenteUsersViewControllers implements Runnable {
             }
         }
     }
-
     private void handleSendAction() {
         String userMessage = inputField.getText().trim();
         if (!userMessage.isEmpty()) {
@@ -75,7 +62,6 @@ public class AsistenteUsersViewControllers implements Runnable {
             messageQueue.add(userMessage);
         }
     }
-
     private String processUserInput(String userMessage) {
         if (userMessage.toLowerCase().contains("ahorro")) {
             return ahorro();
@@ -90,7 +76,8 @@ public class AsistenteUsersViewControllers implements Runnable {
         } else if (userMessage.toLowerCase().contains("recomendación")) {
             return "Te sugiero ahorrar al menos el 20% de tus ingresos mensuales. Si necesitas más detalles, dime tu consulta.";
         } else {
-            return "Lo siento, no entiendo tu consulta. ¿Puedes reformularla?";
+            return "Lo siento, no entiendo tu consulta. ¿Puedes reformularla?\n"+ "Nuestro menú disponible:\n"+
+                    "ahorro\n"+ "gasto\n"+ "inversión\n"+"saldo\n"+"consultar\n";
         }
     }
 
@@ -182,7 +169,7 @@ public class AsistenteUsersViewControllers implements Runnable {
                 .collect(Collectors.toList());
 
         if (transferenciasRecibidas.isEmpty()) {
-            return "No se encontraron transferencias recibidas para el usuario con cédula " + usuario.getCedula() + ".";
+            return  usuario.getCedula() + " ,No se encontraron transferencias recibidas .";
         }
         StringBuilder resumen = new StringBuilder("Transferencias recibidas:\n");
         for (var transaccion : transferenciasRecibidas) {
