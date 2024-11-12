@@ -6,13 +6,14 @@ import java.util.Date;
 import java.util.List;
 
 public record TransaccionDto(
-         String idTransaccion,
-         Date fecha,
-         String tipoTransaccion,
-         float monto,
-         String descripcion,
-         String cuentaOrigen,
-         String cuentaDestino,
-         String categoria
+        String idTransaccion,
+        Date fecha,
+        String tipoTransaccion,
+        float monto,
+        String descripcion,
+        String cuentaOrigen,
+        String cuentaDestino,
+        String categoria
 ) {
 }
+

@@ -5,6 +5,7 @@ import co.urwallet.mapping.dto.CuentaDto;
 import co.urwallet.mapping.dto.LoginDto;
 import co.urwallet.mapping.dto.TransaccionDto;
 import co.urwallet.mapping.dto.UsuarioDto;
+import co.urwallet.model.UrWallet;
 import co.urwallet.model.Usuario;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
@@ -12,6 +13,8 @@ import javafx.scene.control.Alert;
 import java.util.List;
 
 public interface IModelFactoryControllerService {
+
+    UrWallet getUrWallet();
 
     List<UsuarioDto> obtenerUser();
     List<CuentaDto> obtenerCuentas();

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.urwallet.viewController.AsistenteUsersViewControllers"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <TextArea fx:id="chatArea" layoutX="20.0" layoutY="20.0" prefHeight="300.0" prefWidth="560.0" editable="false" />
+
+    <!-- Campo de entrada para el mensaje -->
+    <TextField fx:id="inputField" layoutX="20.0" layoutY="330.0" prefWidth="440.0" promptText="Escribe tu mensaje aquí..." />
+
+    <!-- Botón para enviar el mensaje -->
+    <Button fx:id="sendButton" layoutX="470.0" layoutY="330.0" prefWidth="100.0" text="Enviar" />
+
+</AnchorPane>

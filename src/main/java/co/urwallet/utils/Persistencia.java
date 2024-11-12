@@ -240,7 +240,6 @@ public class Persistencia {
         }
         return transacciones;
     }
-
     // LOG, BINARIO Y XML
 
     public static void guardaRegistroLog(String mensajeLog, int nivel, String accion) {

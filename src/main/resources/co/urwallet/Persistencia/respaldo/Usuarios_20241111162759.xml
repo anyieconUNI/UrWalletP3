@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="21.0.2" class="java.beans.XMLDecoder">
+<java version="21.0.3" class="java.beans.XMLDecoder">
  <object class="co.urwallet.model.UrWallet" id="UrWallet0">
   <void property="listaCuentas">
    <void method="add">
@@ -85,44 +85,6 @@
     </object>
    </void>
   </void>
-  <void property="listaTransaccion">
-   <void method="add">
-    <object class="co.urwallet.model.Transaccion">
-     <void property="categoria">
-      <object class="java.lang.Enum" method="valueOf">
-       <class>co.urwallet.model.Categoria</class>
-       <string>Entretenimiento</string>
-      </object>
-     </void>
-     <void property="cuentaDestino">
-      <object class="co.urwallet.model.Cuenta">
-       <void property="idCuenta">
-        <string>Cuenta(idCuenta=946536af-8d1d-49a6-b57d-44b42299d9ec, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)</string>
-       </void>
-      </object>
-     </void>
-     <void property="cuentaOrigen">
-      <object class="co.urwallet.model.Cuenta">
-       <void property="idCuenta">
-        <string>Cuenta(idCuenta=946536af-8d1d-49a6-b57d-44b42299d9ec, numeCuenta=3, nombreCuenta=null, tipoCuenta=null, saldo=null)</string>
-       </void>
-      </object>
-     </void>
-     <void property="descripcion">
-      <string>1</string>
-     </void>
-     <void property="idTransaccion">
-      <string>2aabbe47-2f2a-403b-91c5-0e89a4749756</string>
-     </void>
-     <void property="tipoTransaccion">
-      <object class="java.lang.Enum" method="valueOf">
-       <class>co.urwallet.model.TipoTransaccion</class>
-       <string>Deposito</string>
-      </object>
-     </void>
-    </object>
-   </void>
-  </void>
   <void property="listaUsers">
    <void method="add">
     <object class="co.urwallet.model.Usuario" id="Usuario0">
@@ -163,7 +125,7 @@
       <string>9ce036f5-ad3a-4455-8b44-c03bce13e36e</string>
      </void>
      <void property="nombreCompleto">
-      <string>Maria</string>
+      <string>1</string>
      </void>
      <void property="telefono">
       <string>1</string>

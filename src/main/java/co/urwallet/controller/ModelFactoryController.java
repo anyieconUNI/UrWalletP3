@@ -17,8 +17,8 @@ import co.urwallet.model.UrWallet;
 import co.urwallet.model.Usuario;
 import co.urwallet.utils.Persistencia;
 import co.urwallet.utils.UrWalletUtils;
+import co.urwallet.viewController.AsistenteUsersViewControllers;
 import co.urwallet.viewController.HomeViewsUsers;
-import co.urwallet.viewController.PrincipalUserViewsControllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -28,10 +28,8 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.text.ParseException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,9 +49,9 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         cargarDatosBase();
 //        guardarPerUsers();
 
-        cargarDatosDesdeArchivos();
-        cargarDatosArchivosCuentas();
-        cargarDatosArchivosTransacciones();
+//        cargarDatosDesdeArchivos();
+//        cargarDatosArchivosCuentas();
+//        cargarDatosArchivosTransacciones();
 //        guardarRecursourWalletBinario();
 //        cargarRecursoUrWalletBinario();
 //        guardarRecursoBancoXML();
@@ -129,7 +127,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     private void cargarDatosBase() {
         urWallet = UrWalletUtils.inicializarDatos();
     }
-
+    @Override
     public UrWallet getUrWallet() {
         return urWallet;
     }
@@ -358,8 +356,11 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 //            if (controller instanceof PrincipalUserViewsControllers) {
 //                ((PrincipalUserViewsControllers) controller).setUsuarioLogueado(usuarioLogueado);
 //            }
-            if (controller instanceof HomeViewsUsers) {
-                ((HomeViewsUsers) controller).setUsuarioLogueado(usuarioLogueado);
+//            if (controller instanceof HomeViewsUsers) {
+//                ((HomeViewsUsers) controller).setUsuarioLogueado(usuarioLogueado);
+//            }
+            if (controller instanceof AsistenteUsersViewControllers) {
+                ((AsistenteUsersViewControllers) controller).setUsuarioLogueado(usuarioLogueado);
             }
             Scene scene = new Scene(root);
             Stage stage = new Stage();
