@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -7,22 +9,18 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-
 <?import javafx.scene.text.Font?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.urwallet.viewController.EstadistecasViewsControllers"
-            prefHeight="400.0" prefWidth="600.0">
+
+<AnchorPane prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.EstadistecasViewsControllers">
     <!-- Título -->
-    <Label layoutX="220.0" layoutY="14.0" prefHeight="22.0" prefWidth="369.0" text="Estadísticas de Transacciones" textFill="#776fd1">
+    <Label layoutX="185.0" layoutY="14.0" prefHeight="22.0" prefWidth="230.0" text="Estadísticas de Transacciones" textFill="#00093c">
         <font>
             <Font name="Candara Bold" size="18.0" />
         </font>
     </Label>
 
     <!-- ComboBox para seleccionar estadísticas -->
-    <ComboBox fx:id="cmbEstadistica" layoutX="150.0" layoutY="50.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: #187173;">
+    <ComboBox fx:id="cmbEstadistica" layoutX="68.0" layoutY="51.0" prefHeight="25.0" prefWidth="388.0" style="-fx-background-color: #187173;">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="Gastos mas comunes" />
@@ -33,15 +31,14 @@
     </ComboBox>
 
     <!-- Botón para buscar -->
-    <Button fx:id="btnBuscar" layoutX="470.0" layoutY="50.0" mnemonicParsing="false" onAction="#buscarAction" prefHeight="27.0" prefWidth="88.0"
-            style="-fx-background-color: #00093c;" text="Buscar" textFill="WHITE">
+    <Button fx:id="btnBuscar" layoutX="470.0" layoutY="50.0" mnemonicParsing="false" onAction="#buscarAction" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #00093c;" text="Buscar" textFill="WHITE">
         <font>
             <Font name="Candara" size="14.0" />
         </font>
     </Button>
 
     <!-- BarChart para mostrar las estadísticas -->
-    <BarChart fx:id="barChart" layoutX="50.0" layoutY="100.0" prefHeight="280.0" prefWidth="500.0">
+    <BarChart fx:id="barChart" layoutX="50.0" layoutY="100.0" prefHeight="280.0" prefWidth="500.0" style="-fx-alternative-column-fill-visible: #00093c; -fx-alternative-row-fill-visible: #187173; -fx-background-color: #ffffff;">
         <xAxis>
             <CategoryAxis label="Categoría / Usuario" />
         </xAxis>

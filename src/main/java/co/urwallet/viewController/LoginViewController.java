@@ -49,7 +49,9 @@ public class LoginViewController implements ILoginControllerService {
                     Usuario user = loginController.inicioUser(loginDto);
                     mostrarMensaje("Inicio de sesión", "Inicio de sesión exitoso", "Bienvenido, " + user.getNombreCompleto(), Alert.AlertType.INFORMATION);
                     if (user != null) {
-                        ModelFactoryController.getInstance().navegarVentana("AsistenteUsers.fxml", "User", user);
+                        //ModelFactoryController.getInstance().navegarVentana("AsistenteUsers.fxml", "User", user);
+                        ModelFactoryController.getInstance().navegarVentana("PrincipalUser.fxml", "User", user);
+
                     }
                 } catch (LoginException e) {
                     mostrarMensaje("Inicio de sesión", "Error de inicio de sesión", e.getMessage(), Alert.AlertType.ERROR);
