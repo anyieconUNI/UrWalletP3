@@ -6,6 +6,9 @@ module co.urwallet {
     requires org.mapstruct;
     requires java.logging;
     requires java.desktop;
+    requires kernel;
+    requires layout;
+    requires io;
 
 
     opens co.urwallet to javafx.fxml;
