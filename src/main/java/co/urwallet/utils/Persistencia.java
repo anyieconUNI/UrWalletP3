@@ -2,6 +2,7 @@ package co.urwallet.utils;
 
 import co.urwallet.model.*;
 
+import java.util.Locale;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
@@ -165,6 +166,27 @@ public class Persistencia {
     }
 
     public static void guardarTransacciones(ArrayList<Transaccion> listaTransaccion) throws IOException {
+        StringBuilder contenido = new StringBuilder();
+        for (Transaccion transaccion : listaTransaccion) {
+            contenido.append(transaccion.getIdTransaccion()).append("@@")
+                    .append(transaccion.getDescripcion()).append("@@")
+                    .append(transaccion.getTipoTransaccion()).append("@@")
+                    .append(transaccion.getCategoria()).append("@@");
+
+            Cuenta cuentaOrigen = transaccion.getCuentaOrigen();
+            contenido.append("numeCuentaOrigen=").append(cuentaOrigen.getNumeCuenta()).append("@@");
+
+            Cuenta cuentaDestino = transaccion.getCuentaDestino();
+            contenido.append("numeCuentaDestino=").append(cuentaDestino.getNumeCuenta()).append("@@");
+
+            contenido.append(transaccion.getFecha()).append("@@")
+                    .append(transaccion.getMonto()).append("\n");
+        }
+        ArchivoUtils.guardarArchivo(RUTA_ARCHIVO_TRANSSACCION, contenido.toString(), false);
+    }
+
+    /*
+    public static void guardarTransacciones(ArrayList<Transaccion> listaTransaccion) throws IOException {
         // TODO Auto-generated method stub
         String contenido = "";
         for (Transaccion transacciones : listaTransaccion) {
@@ -174,6 +196,8 @@ public class Persistencia {
         }
         ArchivoUtils.guardarArchivo(RUTA_ARCHIVO_TRANSSACCION, contenido, false);
     }
+
+     */
 
     public static void cargarDatosArchivosTransacciones(UrWallet urWallet) throws FileNotFoundException, IOException {
         //cargar archivo de cuentas
@@ -186,32 +210,103 @@ public class Persistencia {
     public static ArrayList<Transaccion> cargarTransacciones() throws FileNotFoundException, IOException {
         ArrayList<Transaccion> transacciones = new ArrayList<>();
         ArrayList<String> contenido = ArchivoUtils.leerArchivo(RUTA_ARCHIVO_TRANSSACCION);
+        String linea;
+
+        for (String item : contenido) {
+            linea = item;
+            Transaccion transaccion = new Transaccion();
+
+            // Separar por los delimitadores "@@"
+            String[] partes = linea.split("@@");
+
+            transaccion.setIdTransaccion(partes[0]);
+            transaccion.setDescripcion(partes[1]);
+
+            // Establecer tipo de transacción
+            String tipoTransStr = partes[2];
+            TipoTransaccion tipoTransaccion;
+            try {
+                tipoTransaccion = TipoTransaccion.valueOf(tipoTransStr.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                tipoTransaccion = TipoTransaccion.Deposito;  // Valor por defecto
+                System.out.println("Tipo de transacción no válido: " + tipoTransStr + ". Usando valor por defecto.");
+            }
+            transaccion.setTipoTransaccion(tipoTransaccion);
+
+            // Establecer categoría
+            String categoriaStr = partes[3];
+            Categoria categoria;
+            try {
+                categoria = Categoria.valueOf(categoriaStr.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                categoria = Categoria.Entretenimiento;  // Valor por defecto
+                System.out.println("Categoría no válida: " + categoriaStr + ". Usando valor por defecto.");
+            }
+            transaccion.setCategoria(categoria);
+
+            // Establecer cuenta origen
+            Cuenta cuentaOrigen = new Cuenta();
+            String[] cuentaOrigenParts = partes[4].replace("Cuenta(idCuenta=", "").replace(")", "").split(", ");
+            cuentaOrigen.setNumeCuenta(cuentaOrigenParts[1].split("=")[1]);
+            transaccion.setCuentaOrigen(cuentaOrigen);
+
+            // Establecer cuenta destino
+            Cuenta cuentaDestino = new Cuenta();
+            String[] cuentaDestinoParts = partes[5].replace("Cuenta(idCuenta=", "").replace(")", "").split(", ");
+            cuentaDestino.setNumeCuenta(cuentaDestinoParts[1].split("=")[1]);
+            transaccion.setCuentaDestino(cuentaDestino);
+
+            try {
+                Date fecha = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH).parse(partes[6]);
+                transaccion.setFecha(fecha);
+            } catch (ParseException e) {
+                System.out.println("Formato de fecha no válido: " + partes[6]);
+            }
+
+            try {
+                float monto = Float.parseFloat(partes[7]);
+                transaccion.setMonto(monto);
+            } catch (NumberFormatException e) {
+                System.out.println("Formato de monto no válido: " + partes[7]);
+            }
+
+            transacciones.add(transaccion);
+        }
+
+        return transacciones;
+    }
+
+
+
+
+
+
+/*
+    public static ArrayList<Transaccion> cargarTransacciones() throws FileNotFoundException, IOException {
+        ArrayList<Transaccion> transacciones = new ArrayList<>();
+        ArrayList<String> contenido = ArchivoUtils.leerArchivo(RUTA_ARCHIVO_TRANSSACCION);
 
         for (String linea : contenido) {
             Transaccion transaccion = new Transaccion();
 
-            String[] partes = linea.split("@@"); // Dividir toda la línea
+            String[] partes = linea.split("@@");
 
-            // Verificar que haya suficientes partes para evitar errores de índice
             if (partes.length < 8) {
                 System.out.println("Error en el formato de la línea: " + linea);
-                continue; // Saltar esta línea si no tiene el formato adecuado
+                continue;
             }
 
-            // Asignación de los campos de la transacción
             transaccion.setIdTransaccion(partes[0]);
             transaccion.setDescripcion(partes[1]);
-
-            // Tipo de transacción
             TipoTransaccion tipoTransaccion;
             try {
                 tipoTransaccion = TipoTransaccion.valueOf(partes[2].toUpperCase());
             } catch (IllegalArgumentException e) {
-                tipoTransaccion = TipoTransaccion.Deposito; // Valor por defecto
+                tipoTransaccion = TipoTransaccion.Deposito;
                 System.out.println("Tipo de transacción no válido: " + partes[2] + ". Usando valor por defecto.");
             }
             transaccion.setTipoTransaccion(tipoTransaccion);
-            
+
             Categoria categoria;
             try {
                 categoria = Categoria.valueOf(partes[3].toUpperCase());
@@ -249,6 +344,8 @@ public class Persistencia {
         }
         return transacciones;
     }
+
+ */
 
 
     // LOG, BINARIO Y XML
