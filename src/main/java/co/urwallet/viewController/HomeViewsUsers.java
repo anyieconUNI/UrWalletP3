@@ -39,7 +39,15 @@ public class HomeViewsUsers {
     @FXML
     public Button actualizar;
     private Usuario usuarioLogueado;
-
+    private static HomeViewsUsers instance;
+    public HomeViewsUsers() {
+        if (instance == null) {
+            instance = this;
+        }
+    }
+    public static HomeViewsUsers getInstance() {
+        return instance;
+    }
     @FXML
     public void initialize() {
         homeUsersController = new HomeUsersController();

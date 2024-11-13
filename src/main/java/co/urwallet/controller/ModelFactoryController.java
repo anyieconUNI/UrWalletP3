@@ -19,6 +19,7 @@ import co.urwallet.utils.Persistencia;
 import co.urwallet.utils.UrWalletUtils;
 import co.urwallet.viewController.AsistenteUsersViewControllers;
 import co.urwallet.viewController.HomeViewsUsers;
+import co.urwallet.viewController.PrincipalUserViewsControllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -336,6 +337,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             e.getMessage();
         }
     }
+
     public FXMLLoader navegarVentana(String nombreArchivoFxml, String tituloVentana, Usuario usuarioLogueado) {
         FXMLLoader loader = null;
         try {
@@ -353,15 +355,15 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             Object controller = loader.getController();
 
             // Si el controlador es de la pantalla HomeUser, le pasamos el usuario logueado
-//            if (controller instanceof PrincipalUserViewsControllers) {
-//                ((PrincipalUserViewsControllers) controller).setUsuarioLogueado(usuarioLogueado);
-//            }
+            if (controller instanceof PrincipalUserViewsControllers) {
+                ((PrincipalUserViewsControllers) controller).setUsuarioLogueado(usuarioLogueado);
+            }
 //            if (controller instanceof HomeViewsUsers) {
 //                ((HomeViewsUsers) controller).setUsuarioLogueado(usuarioLogueado);
 //            }
-            if (controller instanceof AsistenteUsersViewControllers) {
-                ((AsistenteUsersViewControllers) controller).setUsuarioLogueado(usuarioLogueado);
-            }
+//            if (controller instanceof AsistenteUsersViewControllers) {
+//                ((AsistenteUsersViewControllers) controller).setUsuarioLogueado(usuarioLogueado);
+//            }
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
