@@ -52,6 +52,7 @@ public class TransferenciasViewsControllers {
     public TableColumn<TransaccionDto, String> tcCuentaDestino;
     @FXML
     public TableColumn<TransaccionDto, String> tcCategoria;
+
     public TransferenciasViewsControllers() {
         if (instance == null) {
             instance = this;

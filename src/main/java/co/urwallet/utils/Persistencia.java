@@ -174,6 +174,7 @@ public class Persistencia {
         }
         ArchivoUtils.guardarArchivo(RUTA_ARCHIVO_TRANSSACCION, contenido, false);
     }
+
     public static void cargarDatosArchivosTransacciones(UrWallet urWallet) throws FileNotFoundException, IOException {
         //cargar archivo de cuentas
         ArrayList<Transaccion> transaccionesCargados = cargarTransacciones();
@@ -185,61 +186,71 @@ public class Persistencia {
     public static ArrayList<Transaccion> cargarTransacciones() throws FileNotFoundException, IOException {
         ArrayList<Transaccion> transacciones = new ArrayList<>();
         ArrayList<String> contenido = ArchivoUtils.leerArchivo(RUTA_ARCHIVO_TRANSSACCION);
-        String linea;
 
-        for (String item : contenido) {
-            linea = item;
+        for (String linea : contenido) {
             Transaccion transaccion = new Transaccion();
-            transaccion.setIdTransaccion(linea.split("@@")[0]);
-            transaccion.setDescripcion(linea.split("@@")[1]);
-            String tipoTransStr = linea.split("@@")[2];
+
+            String[] partes = linea.split("@@"); // Dividir toda la línea
+
+            // Verificar que haya suficientes partes para evitar errores de índice
+            if (partes.length < 8) {
+                System.out.println("Error en el formato de la línea: " + linea);
+                continue; // Saltar esta línea si no tiene el formato adecuado
+            }
+
+            // Asignación de los campos de la transacción
+            transaccion.setIdTransaccion(partes[0]);
+            transaccion.setDescripcion(partes[1]);
+
+            // Tipo de transacción
             TipoTransaccion tipoTransaccion;
             try {
-                tipoTransaccion = TipoTransaccion.valueOf(tipoTransStr.toUpperCase());
+                tipoTransaccion = TipoTransaccion.valueOf(partes[2].toUpperCase());
             } catch (IllegalArgumentException e) {
-                tipoTransaccion = TipoTransaccion.Deposito;
-                System.out.println("Tipo de transacción no válido: " + tipoTransStr + ". Usando valor por defecto.");
+                tipoTransaccion = TipoTransaccion.Deposito; // Valor por defecto
+                System.out.println("Tipo de transacción no válido: " + partes[2] + ". Usando valor por defecto.");
             }
             transaccion.setTipoTransaccion(tipoTransaccion);
-
-            String categoriaStr = linea.split("@@")[3];
+            
             Categoria categoria;
             try {
-                categoria = Categoria.valueOf(categoriaStr.toUpperCase());
+                categoria = Categoria.valueOf(partes[3].toUpperCase());
             } catch (IllegalArgumentException e) {
                 categoria = Categoria.Entretenimiento;
-                System.out.println("Categoría no válida: " + categoriaStr + ". Usando valor por defecto.");
+                System.out.println("Categoría no válida: " + partes[3] + ". Usando valor por defecto.");
             }
             transaccion.setCategoria(categoria);
 
-            String cuentaOrigenStr = linea.split("@@")[4];
             Cuenta cuentaOrigen = new Cuenta();
-            cuentaOrigen.setIdCuenta(cuentaOrigenStr);
+            cuentaOrigen.setIdCuenta(partes[4]);
             transaccion.setCuentaOrigen(cuentaOrigen);
 
-            String cuentaDestinoStr = linea.split("@@")[5];
             Cuenta cuentaDestino = new Cuenta();
-            cuentaDestino.setIdCuenta(cuentaDestinoStr);
+            cuentaDestino.setIdCuenta(partes[5]);
             transaccion.setCuentaDestino(cuentaDestino);
 
-            String fechaStr = linea.split("@@")[4];
+            String fechaStr = partes[6];
             try {
                 Date fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
                 transaccion.setFecha(fecha);
             } catch (ParseException e) {
                 System.out.println("Formato de fecha no válido: " + fechaStr);
             }
-            String montoStr = linea.split("@@")[5];
+
+            String montoStr = partes[7];
             try {
                 float monto = Float.parseFloat(montoStr);
                 transaccion.setMonto(monto);
             } catch (NumberFormatException e) {
                 System.out.println("Formato de monto no válido: " + montoStr);
             }
+
             transacciones.add(transaccion);
         }
         return transacciones;
     }
+
+
     // LOG, BINARIO Y XML
 
     public static void guardaRegistroLog(String mensajeLog, int nivel, String accion) {

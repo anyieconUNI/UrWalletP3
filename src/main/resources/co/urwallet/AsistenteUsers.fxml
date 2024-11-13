@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.urwallet.viewController.AsistenteUsersViewControllers"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.AsistenteUsersViewControllers">
 
-    <TextArea fx:id="chatArea" layoutX="20.0" layoutY="20.0" prefHeight="300.0" prefWidth="560.0" editable="false" />
+    <TextArea fx:id="chatArea" editable="false" layoutX="12.0" layoutY="14.0" prefHeight="300.0" prefWidth="586.0" style="-fx-border-color: #00093c;">
+      <font>
+         <Font name="Candara" size="14.0" />
+      </font></TextArea>
 
     <!-- Campo de entrada para el mensaje -->
-    <TextField fx:id="inputField" layoutX="20.0" layoutY="330.0" prefWidth="440.0" promptText="Escribe tu mensaje aquí..." />
+    <TextField fx:id="inputField" layoutX="12.0" layoutY="330.0" prefHeight="27.0" prefWidth="476.0" promptText="Escribe tu mensaje aquí..." style="-fx-background-color: #00093c;">
+      <font>
+         <Font name="Candara" size="14.0" />
+      </font></TextField>
 
     <!-- Botón para enviar el mensaje -->
-    <Button fx:id="sendButton" layoutX="470.0" layoutY="330.0" prefWidth="100.0" text="Enviar" />
+    <Button fx:id="sendButton" layoutX="498.0" layoutY="330.0" prefWidth="100.0" style="-fx-background-color: #00093c;" text="Enviar" textFill="WHITE">
+      <font>
+         <Font name="Candara" size="14.0" />
+      </font></Button>
 
 </AnchorPane>

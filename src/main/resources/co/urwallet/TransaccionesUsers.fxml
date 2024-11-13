@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.urwallet.viewController.TransaccionesUsersViewsControllers"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.TransferenciasUsersViewsControllers">
+
+                <Label layoutX="28.0" layoutY="40.0" text="Descripción:" textFill="#00093c">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                </Label>
+                <TextArea fx:id="tareaDescripcion" layoutX="117.0" layoutY="42.0" prefHeight="95.0" prefWidth="214.0" style="-fx-border-color: #00093c;" />
+
+                <Label layoutX="28.0" layoutY="163.0" text="Monto:">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="txtMonto" layoutX="117.0" layoutY="158.0" prefHeight="27.0" prefWidth="214.0" style="-fx-border-color: #00093c;" />
+                <ComboBox fx:id="cmbCuentaOrigen" layoutX="475.0" layoutY="77.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #187173;" />
+                <ComboBox fx:id="cmbCuentaDestino" layoutX="475.0" layoutY="36.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #187173;" />
+
+
+                <Label layoutX="347.0" layoutY="122.0" text="Tipo de transacción:" textFill="#00093c">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="cmbTipoTrnsaccion" layoutX="475.0" layoutY="118.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #187173;">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Retiro" />
+                            <String fx:value="Deposito" />
+                            <String fx:value="Transferencia" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Label layoutX="347.0" layoutY="163.0" prefHeight="17.0" prefWidth="61.0" text="Categoria:" textFill="#00093c">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="cmbCategoria" layoutX="475.0" layoutY="159.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #187173;">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Comida" />
+                            <String fx:value="Transporte" />
+                            <String fx:value="Entretenimiento" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Button fx:id="btnNuevo" layoutX="215.0" layoutY="204.0" mnemonicParsing="false" onAction="#limpiarTransferenciaAction" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: #00093c;" text="Limpiar" textFill="WHITE">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                </Button>
+
+                <Button fx:id="btnAgregar" layoutX="355.0" layoutY="204.0" mnemonicParsing="false" onAction="#agregarTransferenciaAction" prefHeight="27.0" prefWidth="106.0" style="-fx-background-color: #00093c;" text="Agregar" textFill="WHITE">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                </Button>
+                <Label layoutX="350.0" layoutY="81.0" text="Cuenta Origen:">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="348.0" layoutY="40.0" text="Cuenta Destino:">
+                    <font>
+                        <Font name="Candara" size="14.0" />
+                    </font>
+                </Label>
+
+                <TableView fx:id="tableTransaccion" layoutX="28.0" layoutY="271.0" prefHeight="200.0" prefWidth="645.0" style="-fx-border-color: #00093c;">
+                    <columns>
+                        <TableColumn fx:id="tcFecha" prefWidth="63.0" text="Fecha" />
+                        <TableColumn fx:id="tcTipoTrasacc" prefWidth="127.0" text="Tipo de Transacción" />
+                        <TableColumn fx:id="tcMonto" prefWidth="85.0" text="Monto" />
+                        <TableColumn fx:id="tcDescripcion" prefWidth="96.0" text="Descripcion" />
+                        <TableColumn fx:id="tcCuetaOrigen" prefWidth="89.0" text="Cuenta Origen" />
+                        <TableColumn fx:id="tcCuentaDestino" prefWidth="97.0" text="Cuenta Destino" />
+                        <TableColumn fx:id="tcCategoria" prefWidth="101.0" text="Categoria" />
+                    </columns>
+                </TableView>
 
 </AnchorPane>

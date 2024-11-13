@@ -1,36 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.PrincipalUserViewsControllers">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.PrincipalUserViewsControllers">
     <children>
-        <TabPane prefHeight="636.0" prefWidth="701.0" tabClosingPolicy="UNAVAILABLE">
+        <TabPane prefHeight="550.0" prefWidth="701.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab text="Usuarios">
+                <Tab text="Perfil">
                     <content>
-                        <AnchorPane fx:id="homeUser" minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="600.0">
+                        <AnchorPane fx:id="homeUser" minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="600.0" style="-fx-background-color: #ffffff;">
                             <children>
-                                <SplitPane layoutX="43.0" layoutY="104.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="616.0">
+                                <SplitPane layoutX="51.0" layoutY="50.0" orientation="VERTICAL" prefHeight="422.0" prefWidth="600.0" style="-fx-background-color: #ffffff;">
                                     <items>
                                         <fx:include source="HomeUser.fxml" />
                                     </items>
                                 </SplitPane>
-                        <ImageView fitHeight="77.0" fitWidth="182.0" layoutX="261.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/logo.png" />
-                            </image>
-                        </ImageView>
+                                <ImageView fitHeight="65.0" fitWidth="110.0" layoutX="299.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@img/logo.png" />
+                                    </image>
+                                </ImageView>
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="58.0" layoutX="-3.0" layoutY="466.0" stroke="#00093c" strokeType="INSIDE" width="708.0" />
+                                <ImageView fitHeight="71.0" fitWidth="158.0" layoutX="14.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@img/logoL.png" />
+                                    </image>
+                                </ImageView>
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
                 <Tab text="Saldos">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="600.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="600.0" style="-fx-background-color: white;">
                             <children>
-                                <SplitPane layoutX="51.0" layoutY="17.0" orientation="VERTICAL" prefHeight="574.0" prefWidth="600.0">
+                                <SplitPane layoutX="-7.0" orientation="VERTICAL" prefHeight="552.0" prefWidth="607.0" style="-fx-background-color: white;">
                                     <items>
                                         <fx:include source="SaldoUser.fxml" />
                                     </items>
@@ -41,14 +51,34 @@
                 </Tab>
                 <Tab text="Asistente">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="600.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="600.0" style="-fx-background-color: #ffffff;">
                             <children>
-                                <SplitPane layoutX="51.0" layoutY="17.0" orientation="VERTICAL" prefHeight="574.0" prefWidth="600.0">
+                                <SplitPane layoutX="51.0" layoutY="67.0" orientation="VERTICAL" prefHeight="366.0" prefWidth="610.0" style="-fx-background-color: #ffffff;">
                                     <items>
                                         <fx:include source="AsistenteUsers.fxml" />
                                     </items>
                                 </SplitPane>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="72.0" layoutY="449.0" stroke="#00093c" strokeType="INSIDE" width="701.0" />
+                        <ImageView fitHeight="42.0" fitWidth="58.0" layoutX="25.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/logo1.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="66.0" fitWidth="238.0" layoutX="232.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@img/logoC.png" />
+                            </image>
+                        </ImageView>
                             </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Transacción">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0">
+                                        <fx:include source="TransaccionesUsers.fxml" />
+                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="24.0" layoutY="502.0" stroke="#00093c" strokeType="INSIDE" width="701.0" />
+
                         </AnchorPane>
                     </content>
                 </Tab>
