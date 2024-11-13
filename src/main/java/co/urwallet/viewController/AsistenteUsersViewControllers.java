@@ -12,7 +12,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.stream.Collectors;
 
-public class AsistenteUsersViewControllers implements Runnable {
+public class AsistenteUsersViewControllers extends Thread {
     @FXML
     private TextArea chatArea;
     @FXML
@@ -23,7 +23,10 @@ public class AsistenteUsersViewControllers implements Runnable {
     private final ModelFactoryController modelFactoryService;
     private final BlockingQueue<String> messageQueue;
     private volatile boolean isRunning;
-
+    private static AsistenteUsersViewControllers instance;
+    public static AsistenteUsersViewControllers getInstance() {
+        return instance;
+    }
 
     public void setUsuarioLogueado(Usuario usuarioLogueado) {
         usuario = usuarioLogueado;
@@ -37,6 +40,9 @@ public class AsistenteUsersViewControllers implements Runnable {
 
     }
     public AsistenteUsersViewControllers() {
+        if (instance == null) {
+            instance = this;
+        }
         this.modelFactoryService = ModelFactoryController.getInstance();
         this.messageQueue = new LinkedBlockingQueue<>();
         this.isRunning = true;
