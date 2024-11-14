@@ -1,11 +1,11 @@
-f077cf2b-ccce-4f64-b82e-e7457d94929b@@Transacción 1@@Deposito@@Entretenimiento@@numeCuenta=1001@@numeCuenta=2001@@Wed Nov 13 15:50:16 COT 2024@@10.0
-9faadc29-8aa5-4afe-a2ed-487d7891f8bd@@Transacción 2@@Retiro@@Transporte@@numeCuenta=1001@@numeCuenta=2001@@Wed Nov 13 15:50:16 COT 2024@@20.0
-d4f425f7-2d1b-4e20-9148-edd9eee34836@@Transacción 3@@Deposito@@Entretenimiento@@numeCuenta=1001@@numeCuenta=2001@@Wed Nov 13 15:50:16 COT 2024@@30.0
-bc619e3d-0049-4bc4-8ed5-7520afef9493@@Transacción 4@@Retiro@@Transporte@@numeCuenta=1001@@numeCuenta=2001@@Wed Nov 13 15:50:16 COT 2024@@40.0
-00f8a230-353a-42dd-99b3-345fa27c132e@@Transacción 5@@Deposito@@Entretenimiento@@numeCuenta=1001@@numeCuenta=2001@@Wed Nov 13 15:50:16 COT 2024@@50.0
-b9809a6f-3d12-44a9-bbbc-684b49248582@@Transacción 6@@Retiro@@Transporte@@numeCuenta=1001@@numeCuenta=2001@@Wed Nov 13 15:50:16 COT 2024@@60.0
-a946fcf8-9dc9-44cd-b564-41fd77715d3a@@Transacción 7@@Deposito@@Entretenimiento@@numeCuenta=1001@@numeCuenta=2001@@Wed Nov 13 15:50:16 COT 2024@@70.0
-cbdd39a4-dc56-4d55-902a-90f63bcd4103@@Transacción 8@@Retiro@@Transporte@@numeCuenta=1001@@numeCuenta=2001@@Wed Nov 13 15:50:16 COT 2024@@80.0
-d003028e-cc42-48c6-836e-ece4d39781c2@@Transacción 9@@Deposito@@Entretenimiento@@numeCuenta=1001@@numeCuenta=2001@@Wed Nov 13 15:50:16 COT 2024@@90.0
-9358afd5-8278-438d-a33a-fe5715d41797@@Transacción 10@@Retiro@@Transporte@@numeCuenta=1001@@numeCuenta=2001@@Wed Nov 13 15:50:16 COT 2024@@100.0
-b8bf47f8-1f16-4fe2-bfe0-35089c6e2ec9@@pago@@Deposito@@Comida@@numeCuentaorigen=2001@@numeCuenta=1001@@Wed Nov 13 15:51:00 COT 2024@@25.0
+d7c0b1a0-7cd3-4bbf-b44b-27aa7b53e102@@Transacción 1@@Deposito@@Entretenimiento@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@10.0
+98a94aa8-10fc-4c9f-8c84-ea823326c7a6@@Transacción 2@@Retiro@@Transporte@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@20.0
+00837fb4-22b7-4690-b543-d9e67ad60b10@@Transacción 3@@Deposito@@Entretenimiento@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@30.0
+a0722d28-9a99-465f-9e30-5545817db642@@Transacción 4@@Retiro@@Transporte@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@40.0
+3558783b-402a-408d-a353-3e9bcc14e77f@@Transacción 5@@Deposito@@Entretenimiento@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@50.0
+7597d87a-3525-4043-9305-5a09485674bc@@Transacción 6@@Retiro@@Transporte@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@60.0
+c995197b-5cf5-4ff9-814c-7327579a2ae2@@Transacción 7@@Deposito@@Entretenimiento@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@70.0
+2b45d132-894c-4abf-8bce-492b6f6f9e6a@@Transacción 8@@Retiro@@Transporte@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@80.0
+07dd2eda-b367-4c67-b2f5-f1e2bc30df85@@Transacción 9@@Deposito@@Entretenimiento@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@90.0
+4213ba33-c5b8-48d9-8ebd-f71bb5aa8bb1@@Transacción 10@@Retiro@@Transporte@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@100.0
+d307889e-e591-449c-8aba-f85a007a34a4@@pago@@Retiro@@Comida@@numeCuentaOrigen=2001@@numeCuentaDestino=1001@@Thu Nov 14 18:43:58 COT 2024@@21.0

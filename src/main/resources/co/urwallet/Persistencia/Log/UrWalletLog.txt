@@ -3816,3 +3816,13 @@ nov 14, 2024 6:33:08 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
 INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-14
 nov 14, 2024 6:33:13 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
 INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-14
+nov 14, 2024 6:43:03 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Copy,Se creo una copia en respaldo,2024-11-14
+nov 14, 2024 6:43:03 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-14
+nov 14, 2024 6:43:08 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-14
+nov 14, 2024 6:43:19 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-14
+nov 14, 2024 6:43:22 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-14
