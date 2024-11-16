@@ -1,11 +1,10 @@
-d7c0b1a0-7cd3-4bbf-b44b-27aa7b53e102@@Transacción 1@@Deposito@@Entretenimiento@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@10.0
-98a94aa8-10fc-4c9f-8c84-ea823326c7a6@@Transacción 2@@Retiro@@Transporte@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@20.0
-00837fb4-22b7-4690-b543-d9e67ad60b10@@Transacción 3@@Deposito@@Entretenimiento@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@30.0
-a0722d28-9a99-465f-9e30-5545817db642@@Transacción 4@@Retiro@@Transporte@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@40.0
-3558783b-402a-408d-a353-3e9bcc14e77f@@Transacción 5@@Deposito@@Entretenimiento@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@50.0
-7597d87a-3525-4043-9305-5a09485674bc@@Transacción 6@@Retiro@@Transporte@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@60.0
-c995197b-5cf5-4ff9-814c-7327579a2ae2@@Transacción 7@@Deposito@@Entretenimiento@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@70.0
-2b45d132-894c-4abf-8bce-492b6f6f9e6a@@Transacción 8@@Retiro@@Transporte@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@80.0
-07dd2eda-b367-4c67-b2f5-f1e2bc30df85@@Transacción 9@@Deposito@@Entretenimiento@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@90.0
-4213ba33-c5b8-48d9-8ebd-f71bb5aa8bb1@@Transacción 10@@Retiro@@Transporte@@numeCuentaOrigen=1001@@numeCuentaDestino=2001@@Thu Nov 14 18:43:03 COT 2024@@100.0
-d307889e-e591-449c-8aba-f85a007a34a4@@pago@@Retiro@@Comida@@numeCuentaOrigen=2001@@numeCuentaDestino=1001@@Thu Nov 14 18:43:58 COT 2024@@21.0
+e9fba1bc-e071-4d5c-8230-cdf3153228d0@@1@@Deposito@@Entretenimiento@@Cuenta(idCuenta=null, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=2, nombreCuenta=null, tipoCuenta=null, saldo=null)@@1.0@@16/11/2024
+55baac45-1748-44c3-a326-5e9ea8087da7@@1@@Deposito@@Entretenimiento@@Cuenta(idCuenta=null, numeCuenta=2, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)@@1.0@@16/11/2024
+ee163022-7de7-4372-9602-0763dfdd9129@@1@@Retiro@@Transporte@@Cuenta(idCuenta=null, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=2, nombreCuenta=null, tipoCuenta=null, saldo=null)@@1.0@@16/11/2024
+c91006e6-8e83-4579-be3e-cd9f73269eb5@@1@@Retiro@@Comida@@Cuenta(idCuenta=null, numeCuenta=2, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)@@1.0@@16/11/2024
+6f92b4ec-ba77-4c6e-b7ef-bb5811874cb0@@1@@Retiro@@Comida@@Cuenta(idCuenta=null, numeCuenta=2, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)@@1.0@@16/11/2024
+043f9714-da8e-479b-a256-4b9ae5a9eff7@@11@@Deposito@@Comida@@Cuenta(idCuenta=null, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=2, nombreCuenta=null, tipoCuenta=null, saldo=null)@@1.0@@16/11/2024
+2a1c6bc5-76fc-431c-a04f-a19126d3e404@@1@@Retiro@@Transporte@@Cuenta(idCuenta=null, numeCuenta=2, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)@@2.0@@16/11/2024
+844ee395-2e90-4cca-a08b-0c44b2a27d7c@@11@@Retiro@@Comida@@Cuenta(idCuenta=null, numeCuenta=2, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)@@1.0@@16/11/2024
+3ceee5b0-a8ed-4718-bb37-2da9dc70474c@@222@@Deposito@@Comida@@Cuenta(idCuenta=null, numeCuenta=3, nombreCuenta=null, tipoCuenta=null, saldo=null)@@Cuenta(idCuenta=null, numeCuenta=1, nombreCuenta=null, tipoCuenta=null, saldo=null)@@2.0@@16/11/2024
+586c7349-c010-4641-829c-15f050a37592@@1@@Retiro@@Comida@@Cuenta(idCuenta=5873a82c-53ca-4560-94d8-ee6d362eabad, numeCuenta=1, nombreCuenta=1, tipoCuenta=AHORROS, saldo=1.0)@@Cuenta(idCuenta=6c02753a-6120-4ee8-8f6c-927a7fed54d5, numeCuenta=2, nombreCuenta=2, tipoCuenta=AHORROS, saldo=2.0)@@1.0@@16/11/2024

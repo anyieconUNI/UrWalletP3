@@ -2,9 +2,14 @@ package co.urwallet.viewController;
 
 import co.urwallet.controller.CuentaControllers;
 import co.urwallet.controller.TrasaccionControllers;
+import co.urwallet.controller.UsersController;
 import co.urwallet.mapping.dto.CuentaDto;
 import co.urwallet.mapping.dto.TransaccionDto;
+import co.urwallet.mapping.dto.UsuarioDto;
+import co.urwallet.model.Categoria;
 import co.urwallet.model.Cuenta;
+import co.urwallet.model.TipoTransaccion;
+import co.urwallet.model.Usuario;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -13,13 +18,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class TransferenciasUsersViewsControllers {
-    TrasaccionControllers trasaccionControllers = new TrasaccionControllers();
+    public ComboBox<String> cbBuscarPorCategory;
+    TrasaccionControllers trasaccionControllers;
     CuentaControllers cuentaControllers = new CuentaControllers();
     TransaccionDto transaccionSeleccionada;
     private static TransferenciasUsersViewsControllers instance;
@@ -52,47 +60,89 @@ public class TransferenciasUsersViewsControllers {
     public TableColumn<TransaccionDto, String> tcCuentaDestino;
     @FXML
     public TableColumn<TransaccionDto, String> tcCategoria;
+    private Usuario usuarioLogeado;
 
     public TransferenciasUsersViewsControllers() {
         if (instance == null) {
             instance = this;
         }
     }
+
     public static TransferenciasUsersViewsControllers getInstance() {
         return instance;
     }
+
+
     @FXML
     public void initialize() {
+        trasaccionControllers = new TrasaccionControllers();
+
+    }
+
+    public void setUsuarioLogueado(Usuario usuarioLog) {
+        System.out.println("HOOLA TRANBS" + usuarioLog);
+        this.usuarioLogeado = usuarioLog;
         cargarCuentas();
         initDataBinding();
         obtenerTransaccion();
         tableTransaccion.getItems().clear();
         tableTransaccion.setItems(listaTransaccion);
     }
+
     private void obtenerTransaccion() {
-        listaTransaccion.addAll(trasaccionControllers.obtenerTrasaccion());
+        List<TransaccionDto> todasLasTransacciones = trasaccionControllers.obtenerTrasaccion();
+        List<TransaccionDto> transaccionesFiltradas = todasLasTransacciones.stream()
+                .filter(transaccion -> usuarioLogeado.getCuentasBancarias().stream()
+                        .anyMatch(cuentaBancaria -> cuentaBancaria.getNumeCuenta().equals(transaccion.cuentaOrigen().getNumeCuenta())))
+                .collect(Collectors.toList());
+        listaTransaccion.addAll(transaccionesFiltradas);
+        ObservableList<String> categorias = FXCollections.observableArrayList(
+                Arrays.stream(Categoria.values())
+                        .map(Enum::name)
+                        .collect(Collectors.toList())
+        );
+
+        cbBuscarPorCategory.setItems(categorias);
     }
+
     private void initDataBinding() {
-        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha().toString()));
-        tcTipoTrasacc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipoTransaccion()));
+        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha()));
+        tcTipoTrasacc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipoTransaccion().toString()));
         tcMonto.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().monto())));
         tcDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
-        tcCuetaOrigen.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaOrigen()));
-        tcCuentaDestino.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaDestino()));
-        tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria()));
+        tcCuetaOrigen.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaOrigen().getNumeCuenta()));
+        tcCuentaDestino.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaDestino().getNumeCuenta()));
+        tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria().toString()));
     }
-    public  void cargarCuentas() {
-        List<CuentaDto> cuentasOrigen = cuentaControllers.obtenerCuenta();
-        ObservableList<String> nombresClientes = FXCollections.observableArrayList(
+
+    public void cargarCuentas() {
+        List<CuentaDto> todasLasCuentas = cuentaControllers.obtenerCuenta();
+
+        List<CuentaDto> cuentasOrigen = todasLasCuentas.stream()
+                .filter(cuenta -> usuarioLogeado.getCuentasBancarias().stream()
+                        .anyMatch(cuentaBancaria -> cuentaBancaria.getIdCuenta().equals(cuenta.idCuenta())))
+                .collect(Collectors.toList());
+        ObservableList<String> nombresClientesOrigen = FXCollections.observableArrayList(
                 cuentasOrigen.stream().map(CuentaDto::numeCuenta).collect(Collectors.toList())
         );
-        cmbCuentaOrigen.setItems(nombresClientes);
-        cmbCuentaDestino.setItems(nombresClientes);
+        cmbCuentaOrigen.setItems(nombresClientesOrigen);
+
+        ObservableList<String> nombresClientesDestino = FXCollections.observableArrayList(
+                todasLasCuentas.stream()
+                        .filter(cuenta -> usuarioLogeado.getCuentasBancarias().stream()
+                                .noneMatch(cuentaBancaria -> cuentaBancaria.getIdCuenta().equals(cuenta.idCuenta())))
+                        .map(CuentaDto::numeCuenta)
+                        .collect(Collectors.toList())
+        );
+
+        cmbCuentaDestino.setItems(nombresClientesDestino);
     }
+
     public void limpiarTransferenciaAction(ActionEvent actionEvent) {
         limpiar();
     }
-    public void limpiar(){
+
+    public void limpiar() {
         tareaDescripcion.setText("");
         txtMonto.setText("");
         cmbCuentaOrigen.setValue("");
@@ -100,10 +150,11 @@ public class TransferenciasUsersViewsControllers {
         cmbTipoTrnsaccion.setValue("");
         cmbCategoria.setValue("");
     }
+
     public void agregarTransferenciaAction(ActionEvent actionEvent) {
-        TransaccionDto transaccionDto  = contruirRegistroTrasaccion();
-        if(datosValidos(transaccionDto)){
-            if(trasaccionControllers.agregarTrasaccion(transaccionDto)){
+        TransaccionDto transaccionDto = contruirRegistroTrasaccion();
+        if (datosValidos(transaccionDto)) {
+            if (trasaccionControllers.agregarTrasaccion(transaccionDto)) {
                 trasaccionControllers.mostrarMensaje("La Transacción se ha creado con éxito", "Notificación Usuario", Alert.AlertType.INFORMATION);
                 listaTransaccion.add(transaccionDto);
                 tableTransaccion.refresh();
@@ -111,48 +162,64 @@ public class TransferenciasUsersViewsControllers {
                 limpiar();
                 trasaccionControllers.SumarSaldo(transaccionDto);
                 trasaccionControllers.RestarrSaldo(transaccionDto);
-            }
-            else{
+            } else {
                 trasaccionControllers.mostrarMensaje("Los datos ingresados son invalidos", "Usuario no creado", Alert.AlertType.ERROR);
             }
         }
     }
-    private TransaccionDto contruirRegistroTrasaccion(){
+
+    private TransaccionDto contruirRegistroTrasaccion() {
         float monto = Float.parseFloat(txtMonto.getText());
         Date fechaActual = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaFormateada = sdf.format(fechaActual);
         String id = UUID.randomUUID().toString();
+        String cuentaOrigenStr = cmbCuentaOrigen.getValue();
+        String cuentaDestinoStr = cmbCuentaDestino.getValue();
+        String tipoSeleccionado = cmbTipoTrnsaccion.getValue().toString();
+        TipoTransaccion tipoTransaccion = TipoTransaccion.valueOf(tipoSeleccionado);
+
+        String cateSelec = cmbCategoria.getValue().toString();
+        Categoria catego = Categoria.valueOf(cateSelec);
+        Cuenta cuentaOrigen = trasaccionControllers.obtenerbyid(cuentaOrigenStr);
+        Cuenta cuentaDestino = trasaccionControllers.obtenerbyid(cuentaDestinoStr);
         return new TransaccionDto(
                 id,
-                fechaActual,
-                cmbTipoTrnsaccion.getValue().toString(),
+                fechaFormateada,
+                tipoTransaccion,
                 monto,
                 tareaDescripcion.getText(),
-                cmbCuentaOrigen.getValue(),
-                cmbCuentaDestino.getValue(),
-                cmbCategoria.getValue().toString()
+                cuentaOrigen,
+                cuentaDestino,
+                catego
         );
     }
+
     private boolean datosValidos(TransaccionDto transaccionDto) {
         String mensaje = "";
         if (transaccionDto.monto() < 0 || transaccionDto.monto() == 0) {
             mensaje += "El monto es inválido \n";
         }
-        if(transaccionDto.tipoTransaccion() == null || transaccionDto.tipoTransaccion().equals(""))
-            mensaje += "El Tipo Transacción es invalido \n" ;
-        if(transaccionDto.cuentaOrigen() == null || transaccionDto.cuentaOrigen().equals(""))
-            mensaje += "La cuenta Origen es invalido \n" ;
-        if(transaccionDto.cuentaDestino() == null || transaccionDto.cuentaDestino().equals(""))
+        if (transaccionDto.tipoTransaccion() == null || transaccionDto.tipoTransaccion().equals(""))
+            mensaje += "El Tipo Transacción es invalido \n";
+        if (transaccionDto.cuentaOrigen() == null || transaccionDto.cuentaOrigen().equals(""))
+            mensaje += "La cuenta Origen es invalido \n";
+        if (transaccionDto.cuentaDestino() == null || transaccionDto.cuentaDestino().equals(""))
             mensaje += "La cuenta Destino es invalido \n";
-        if(transaccionDto.categoria() == null || transaccionDto.categoria().equals(""))
+        if (transaccionDto.categoria() == null || transaccionDto.categoria().equals(""))
             mensaje += "La categoria es invalido \n";
         if (transaccionDto.cuentaOrigen() != null && transaccionDto.cuentaOrigen().equals(transaccionDto.cuentaDestino()) && transaccionDto.cuentaDestino().equals(transaccionDto.cuentaOrigen())) {
             mensaje += "La cuenta Origen y la cuenta Destino no pueden ser la misma \n";
         }
-        if(mensaje.equals("")){
+        if (mensaje.equals("")) {
             return true;
-        }else{
+        } else {
             trasaccionControllers.mostrarMensaje("Notificación", mensaje, Alert.AlertType.WARNING);
             return false;
         }
+    }
+
+    public void buscarAction(ActionEvent actionEvent) {
+
     }
 }

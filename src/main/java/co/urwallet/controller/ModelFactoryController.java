@@ -17,8 +17,6 @@ import co.urwallet.model.UrWallet;
 import co.urwallet.model.Usuario;
 import co.urwallet.utils.Persistencia;
 import co.urwallet.utils.UrWalletUtils;
-import co.urwallet.viewController.AsistenteUsersViewControllers;
-import co.urwallet.viewController.HomeViewsUsers;
 import co.urwallet.viewController.PrincipalUserViewsControllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -47,22 +45,23 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     }
 
     public ModelFactoryController() {
-        cargarDatosBase();
+        urWallet = new UrWallet();
+//        cargarDatosBase();
 //        guardarPerUsers();
 
-//        cargarDatosDesdeArchivos();
-//        cargarDatosArchivosCuentas();
-//        cargarDatosArchivosTransacciones();
+        cargarDatosDesdeArchivos();
+        cargarDatosArchivosCuentas();
+        cargarDatosArchivosTransacciones();
 //        guardarRecursourWalletBinario();
 //        cargarRecursoUrWalletBinario();
 //        guardarRecursoBancoXML();
 
-        copiarArchivos();
+//        copiarArchivos();
 //        cargarRecursoUrWalletXML();
-        if (urWallet == null) {
-            cargarDatosBase();
-            guardarRecursoBancoXML();
-        }
+//        if (urWallet == null) {
+//            cargarDatosBase();
+////            guardarRecursoBancoXML();
+//        }
         guardaRegistroLog("Inicio de sesión", 1, "inicioSesión");
 
     }
@@ -132,6 +131,10 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public UrWallet getUrWallet() {
         return urWallet;
     }
+    @Override
+    public Cuenta obtenerCuentaPorId(String id) {
+        return getUrWallet().obtenerCuenta(id);
+    }
 
     @Override
     public List<UsuarioDto> obtenerUser() {
@@ -144,7 +147,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 
     @Override
     public List<TransaccionDto> obtenerTrasaccion() {
-        return mapper.transaccionesToTransaccionesDto(urWallet.getListaTransaccion());
+        return mapper.gettransaccionesToTransaccionesDto(urWallet.getListaTransaccion());
     }
 
     private void agregarDatosGenerales(){
@@ -299,16 +302,15 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     @Override
     public boolean agregarTrasaccion(TransaccionDto transaccionDto) {
         try {
-            System.out.println("MODELLLL" + transaccionDto.cuentaOrigen());
-            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen())) {
-                if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino())) {
-//                    Transaccion transaccion = mapper.transaccionToTransaccionDto(transaccionDto);
-                    Transaccion transaccion = mapper.transaccionDtoToTransaccion(transaccionDto);
-                    System.out.println("TRANSDSSSSSSSSSSSSSS" + transaccion.getIdTransaccion());
+            System.out.println("HOILAAAAAAAAAAAAAAAAAAAAAAA AAAAA" + transaccionDto.cuentaOrigen());
+//            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen())) {
+//                if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino())) {
+                    Transaccion transaccion = mapper.transaccionToTransaccionDto(transaccionDto);
+                    System.out.println("transss ferererere" + transaccion.getIdTransaccion());
                     getUrWallet().agregarTransaccion(transaccion);
                     guardarTransferencia();
-                }
-            }
+//                }
+//            }
             return true;
         } catch (TransaccionException e) {
             e.getMessage();
@@ -318,8 +320,8 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     @Override
     public void SumarSaldo(TransaccionDto transaccionDto) {
         try {
-            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino())) {
-                Cuenta cuenta = getUrWallet().obtenerCuenta(transaccionDto.cuentaDestino());
+            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen().getNumeCuenta())) {
+                Cuenta cuenta = getUrWallet().obtenerCuenta(transaccionDto.cuentaOrigen().getNumeCuenta());
                 getUrWallet().agregarPrecioACuenta(transaccionDto.monto(), cuenta);
             }
         } catch (TransaccionException e) {
@@ -329,9 +331,11 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     @Override
     public void RestarSaldo(TransaccionDto transaccionDto) {
         try {
-            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen())) {
-                Cuenta cuenta = getUrWallet().obtenerCuenta(transaccionDto.cuentaOrigen());
+            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen().getNumeCuenta())) {
+                Cuenta cuenta = getUrWallet().obtenerCuenta(transaccionDto.cuentaOrigen().getNumeCuenta());
+
                 getUrWallet().restarPrecioACuenta(transaccionDto.monto(), cuenta);
+                System.out.println(cuenta.getNumeCuenta() + cuenta.getSaldo());
             }
         } catch (TransaccionException e) {
             e.getMessage();

@@ -12,6 +12,7 @@ import org.mapstruct.factory.Mappers;
 import co.urwallet.mapping.dto.UsuarioDto;
 
 
+import java.util.ArrayList;
 import java.util.List;
 @Mapper
 public interface UrWalletMapper {
@@ -34,27 +35,9 @@ public interface UrWalletMapper {
 
     // Mapea una lista de Usuarios a una lista de UsuarioDto
     List<CuentaDto> getCuentaDto(List<Cuenta> listaCuentas);
-    // Métodos personalizados para mapear entre Cuenta y String
-    default String map(Cuenta cuenta) {
-        return cuenta != null ? cuenta.getNumeCuenta() : null;
-    }
-    @Named("stringToCuenta")
-    default Cuenta stringToCuenta(String value) {
-        Cuenta cuenta = new Cuenta();
-        cuenta.setNumeCuenta(value);
-        return cuenta;
-    }
+    TransaccionDto clienteToClienteDto(Transaccion cliente);
+    Transaccion transaccionToTransaccionDto(TransaccionDto transaccionDto);
+    List<TransaccionDto> gettransaccionesToTransaccionesDto(ArrayList<Transaccion> listaTransaccion);
 
-    // Mapeo de TransaccionDto a Transaccion, aplicando la conversión de String a Cuenta
-    @Mapping(source = "cuentaOrigen", target = "cuentaOrigen", qualifiedByName = "stringToCuenta")
-    @Mapping(source = "cuentaDestino", target = "cuentaDestino", qualifiedByName = "stringToCuenta")
-    Transaccion transaccionDtoToTransaccion(TransaccionDto transaccionDto);
 
-    // Mapeo de Transaccion a TransaccionDto, aplicando la conversión de Cuenta a String
-    @Mapping(source = "cuentaOrigen.numeCuenta", target = "cuentaOrigen")
-    @Mapping(source = "cuentaDestino.numeCuenta", target = "cuentaDestino")
-    TransaccionDto transaccionToTransaccionDto(Transaccion transaccion);
-
-    // Método para mapear una lista de Transaccion a TransaccionDto
-    List<TransaccionDto> transaccionesToTransaccionesDto(List<Transaccion> listaTransaccion);
 }

@@ -110,6 +110,19 @@ public class AsignarCuentaUserViewControllers {
     }
 
     public void buscarAcyion(ActionEvent actionEvent) {
+        String textoBusqueda = txtBucarUser.getText().toLowerCase();
+        List<UsuarioDto> usuariosFiltrados = clientes.obtenerUsers().stream()
+                .filter(usuario -> {
+
+                    boolean coincideConCedula = usuario.cedula().toLowerCase().contains(textoBusqueda);
+                    boolean coincideConCuenta = usuario.cuentasBancarias().stream()
+                            .anyMatch(cuenta -> cuenta.getNumeCuenta().toLowerCase().contains(textoBusqueda));
+
+                    return coincideConCedula || coincideConCuenta;
+                })
+                .collect(Collectors.toList());
+        listaUserCuen.setAll(usuariosFiltrados);
+        tableusersCuenta.refresh();
     }
 
     public void agregarAsignacion(ActionEvent actionEvent) {

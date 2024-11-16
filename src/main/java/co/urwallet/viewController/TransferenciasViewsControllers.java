@@ -4,7 +4,9 @@ import co.urwallet.controller.CuentaControllers;
 import co.urwallet.controller.TrasaccionControllers;
 import co.urwallet.mapping.dto.CuentaDto;
 import co.urwallet.mapping.dto.TransaccionDto;
+import co.urwallet.model.Categoria;
 import co.urwallet.model.Cuenta;
+import co.urwallet.model.TipoTransaccion;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -13,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -79,13 +82,13 @@ public class TransferenciasViewsControllers {
 //        });
 //    }
     private void initDataBinding() {
-//        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha().toString()));
-        tcTipoTrasacc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipoTransaccion()));
+        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha()));
+        tcTipoTrasacc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipoTransaccion().toString()));
         tcMonto.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().monto())));
         tcDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
-        tcCuetaOrigen.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaOrigen()));
-        tcCuentaDestino.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaDestino()));
-        tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria()));
+        tcCuetaOrigen.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaOrigen().getNumeCuenta()));
+        tcCuentaDestino.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaDestino().getNumeCuenta()));
+        tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria().toString()));
     }
 //    private void mostrarInformacionTransaccion(TransaccionDto transaccionDto) {
 //        if(transaccionDto != null){
@@ -124,9 +127,9 @@ public class TransferenciasViewsControllers {
                 listaTransaccion.add(transaccionDto);
                 tableTransaccion.refresh();
                 trasaccionControllers.obtenerTrasaccion();
-                limpiar();
                 trasaccionControllers.SumarSaldo(transaccionDto);
                 trasaccionControllers.RestarrSaldo(transaccionDto);
+                limpiar();
             }
             else{
                 trasaccionControllers.mostrarMensaje("Los datos ingresados son invalidos", "Usuario no creado", Alert.AlertType.ERROR);
@@ -136,18 +139,34 @@ public class TransferenciasViewsControllers {
     private TransaccionDto contruirRegistroTrasaccion(){
         float monto = Float.parseFloat(txtMonto.getText());
         Date fechaActual = new Date();
+        // Crear el formateador con el formato deseado: dd/MM/yyyy
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        // Formatear la fecha actual
+        String fechaFormateada = sdf.format(fechaActual);
         String id = UUID.randomUUID().toString();
+        String cuentaOrigenStr = cmbCuentaOrigen.getValue();
+        String cuentaDestinoStr = cmbCuentaDestino.getValue();
+
+        String tipoSeleccionado = cmbTipoTrnsaccion.getValue().toString();
+        TipoTransaccion tipoTransaccion = TipoTransaccion.valueOf(tipoSeleccionado);
+
+        String cateSelec = cmbCategoria.getValue().toString();
+        Categoria catego = Categoria.valueOf(cateSelec);
+        Cuenta cuentaOrigen = trasaccionControllers.obtenerbyid(cuentaOrigenStr);
+        Cuenta cuentaDestino = trasaccionControllers.obtenerbyid(cuentaDestinoStr);
         return new TransaccionDto(
                 id,
-                fechaActual,
-                cmbTipoTrnsaccion.getValue().toString(),
+                fechaFormateada,
+                tipoTransaccion,
                 monto,
                 tareaDescripcion.getText(),
-                cmbCuentaOrigen.getValue(),
-                cmbCuentaDestino.getValue(),
-                cmbCategoria.getValue().toString()
+                cuentaOrigen,
+                cuentaDestino,
+                catego
         );
     }
+
     private boolean datosValidos(TransaccionDto transaccionDto) {
         String mensaje = "";
         if (transaccionDto.monto() < 0 || transaccionDto.monto() == 0) {

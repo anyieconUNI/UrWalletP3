@@ -1,4 +1,2 @@
-222222@@999@@Choki Ramírez@@55555@@choki@gmail.com@@111@@MZN@@5000.0@@1:Cuenta Ahorros:1001:AHORROS:5000.0
-333333@@888@@Alex Torres@@66666@@alex@gmail.com@@222@@MZN 2@@3000.0@@2:Cuenta Corriente:2001:CORRIENTE:3000.0
-444444@@777@@Laura García@@77777@@laura@gmail.com@@333@@MZN 3@@10000.0@@3:Cuenta Inversión:3001:INVERSION:10000.0
-
+9c0405ce-efa5-499f-8579-d91a4c645599@@1@@1@@1@@1@@1@@1@@3.0@@9567acc1-b964-429c-9937-17a9781617c5:3:3:AHORROS:3.0
+f89288fe-a2ce-446b-9728-7a8b56175b7a@@4@@4@@4@@4@@4@@4@@1.0@@5873a82c-53ca-4560-94d8-ee6d362eabad:1:1:AHORROS:1.0

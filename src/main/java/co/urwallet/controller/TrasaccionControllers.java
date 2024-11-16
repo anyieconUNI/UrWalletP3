@@ -4,6 +4,10 @@ import co.urwallet.controller.service.IModelFactoryControllerService;
 import co.urwallet.controller.service.TrasaccionControllersService;
 import co.urwallet.mapping.dto.CuentaDto;
 import co.urwallet.mapping.dto.TransaccionDto;
+import co.urwallet.model.Cuenta;
+import co.urwallet.model.Usuario;
+import co.urwallet.viewController.AsistenteUsersViewControllers;
+import co.urwallet.viewController.TransferenciasUsersViewsControllers;
 import co.urwallet.viewController.TransferenciasViewsControllers;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
@@ -27,7 +31,10 @@ public class TrasaccionControllers implements TrasaccionControllersService {
     public List<TransaccionDto> obtenerTrasaccion() {
         return modelFactoryService.obtenerTrasaccion();
     }
-
+    @Override
+    public Cuenta obtenerbyid(String Id){
+        return modelFactoryService.obtenerCuentaPorId(Id);
+    }
     @Override
     public List<CuentaDto> obtenerCuentas() {
         List<CuentaDto> cuentasDos = cuentas.obtenerCuenta();
@@ -51,5 +58,9 @@ public class TrasaccionControllers implements TrasaccionControllersService {
     @Override
     public void cerrarVentana(ActionEvent actionEvent) {
         modelFactoryService.cerrarVentana(actionEvent);
+    }
+
+    public void setUsers(Usuario user) {
+        TransferenciasUsersViewsControllers.getInstance().setUsuarioLogueado(user);
     }
 }

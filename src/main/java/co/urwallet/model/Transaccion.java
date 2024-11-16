@@ -9,7 +9,7 @@ public class Transaccion implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String idTransaccion;
-    private Date fecha;
+    private String fecha;
     private TipoTransaccion tipoTransaccion;
     private float monto;
     private String descripcion;
@@ -17,7 +17,7 @@ public class Transaccion implements Serializable {
     private Cuenta cuentaDestino;
     private Categoria categoria;
 
-    public Transaccion(String idTransaccion, Date fecha, TipoTransaccion tipoTransaccion, float monto, String descripcion, Cuenta cuentaOrigen, Cuenta cuentaDestino, Categoria categoria) {
+    public Transaccion(String idTransaccion, String fecha, TipoTransaccion tipoTransaccion, float monto, String descripcion, Cuenta cuentaOrigen, Cuenta cuentaDestino, Categoria categoria) {
         this.idTransaccion = idTransaccion;
         this.fecha = fecha;
         this.tipoTransaccion = tipoTransaccion;
@@ -39,11 +39,11 @@ public class Transaccion implements Serializable {
         this.idTransaccion = idTransaccion;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

@@ -213,7 +213,7 @@ public class UrWallet implements IUrWalletService , Serializable {
     public void agregarPrecioACuenta(float precio, Cuenta cuenta){
         float saldoActual = cuenta.getSaldo();
         cuenta.setSaldo(saldoActual+precio);
-        System.out.println("ACTUALIZA");
+        System.out.println("ACTUALIZA suma");
     }
     public void restarPrecioACuenta(float precio, Cuenta cuenta){
         float saldoActual = cuenta.getSaldo();
