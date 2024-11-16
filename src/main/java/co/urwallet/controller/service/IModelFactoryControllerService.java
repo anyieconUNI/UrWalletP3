@@ -39,6 +39,8 @@ public interface IModelFactoryControllerService {
 
     boolean agregarTrasaccion(TransaccionDto transaccionDto);
 
+    boolean agregarTrasaccionDeServidor(TransaccionDto transaccionDto);
+
     void SumarSaldo(TransaccionDto transaccionDto);
 
     void RestarSaldo(TransaccionDto transaccionDto);

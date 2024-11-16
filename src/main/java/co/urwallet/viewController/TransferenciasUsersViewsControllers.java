@@ -277,4 +277,13 @@ public class TransferenciasUsersViewsControllers {
        tableTransaccion.refresh();
         obtenerTransaccion();
     }
+
+    public void actualizarTablaTransacciones(TransaccionDto nuevaTransaccion) {
+        if (usuarioLogeado.getCuentasBancarias().stream()
+                .anyMatch(cuenta -> cuenta.getNumeCuenta().equals(nuevaTransaccion.cuentaOrigen().getNumeCuenta()))) {
+            trasaccionControllers.mostrarMensaje("Notificación","Haz hecho una transferencia", Alert.AlertType.INFORMATION);
+            listaTransaccion.add(nuevaTransaccion);
+            tableTransaccion.refresh();
+        }
+    }
 }

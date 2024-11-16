@@ -70,8 +70,8 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     }
 
 
-    public void enviarTransferencia(String mensaje) {
-        clientController.sendMessage(mensaje);
+    public void enviarTransferencia(Transaccion transaccionDto) {
+        clientController.sendTransaction(transaccionDto);
     }
     private void cargarDatosDesdeArchivos() {
         urWallet = new UrWallet();
@@ -325,9 +325,26 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 //                    transaccionDto.monto(),
 //                    transaccionDto.fecha()
 //            );
-            enviarTransferencia(transaccionDto.toString());
+            enviarTransferencia(transaccion);
 //                }
 //            }
+            return true;
+        } catch (TransaccionException e) {
+            e.getMessage();
+            return false;
+        }
+    }
+    @Override
+    public boolean agregarTrasaccionDeServidor(TransaccionDto transaccionDto) {
+        try {
+            System.out.println("HOILAAAAAAAAAAAAAAAAAAAAAAA AAAAA" + transaccionDto.cuentaOrigen());
+//            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen())) {
+//                if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino())) {
+            Transaccion transaccion = mapper.transaccionToTransaccionDto(transaccionDto);
+            System.out.println("transss ferererere" + transaccion.getIdTransaccion());
+            getUrWallet().agregarTransaccion(transaccion);
+            guardarTransferencia();
+//
             return true;
         } catch (TransaccionException e) {
             e.getMessage();

@@ -261,4 +261,9 @@ public class TransferenciasViewsControllers {
         tableTransaccion.refresh();
         obtenerTransaccion();
     }
+
+    public void actualizarTablaTransacciones(TransaccionDto nuevaTransaccion) {
+        listaTransaccion.add(nuevaTransaccion);
+        tableTransaccion.refresh();
+    }
 }
