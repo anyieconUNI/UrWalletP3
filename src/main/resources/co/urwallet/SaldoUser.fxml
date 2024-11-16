@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="528.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.SaldoClienteViewsControllers">
+<AnchorPane prefHeight="528.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.SaldoClienteViewsControllers">
    <children>
       <!-- Panel de navegación a la izquierda -->
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="561.0" layoutY="-11.0" stroke="#00093c" strokeType="INSIDE" width="200.0" />
@@ -32,39 +32,69 @@
       </ImageView>
 
       <!-- Panel Saldo -->
-      <AnchorPane fx:id="panelSaldo" layoutX="200.0" layoutY="50.0" prefHeight="350.0" prefWidth="380.0" visible="true">
-         <Label layoutX="10.0" layoutY="10.0" text="Saldo Actual">
+      <AnchorPane fx:id="panelSaldo" layoutX="206.0" layoutY="48.0" prefHeight="419.0" prefWidth="479.0" visible="false">
+         <Label layoutX="14.0" layoutY="5.0" text="Saldo total actual de tus cuentas:">
             <font>
                <Font name="Candara" size="14.0" />
             </font></Label>
-         <TableView layoutX="32.0" layoutY="57.0" prefHeight="289.0" prefWidth="345.0" style="-fx-border-color: #00093c;">
+         <TableView layoutX="67.0" layoutY="56.0" prefHeight="289.0" prefWidth="345.0" style="-fx-border-color: #00093c;">
            <columns>
              <TableColumn prefWidth="110.4000244140625" text="Num Cuenta" />
              <TableColumn prefWidth="110.0" text="Nombre Cuenta" />
                <TableColumn prefWidth="126.80001831054688" text="Saldo" />
            </columns>
          </TableView>
-         <Label layoutX="233.0" layoutY="408.0" text="Saldo Total: ">
+         <Button fx:id="btnReporte" layoutX="67.0" layoutY="376.0" mnemonicParsing="false" style="-fx-background-color: #00093c;" text="Generar Reporte" textFill="WHITE">
             <font>
                <Font name="Candara" size="14.0" />
             </font>
-         </Label>
+         </Button>
+         <ComboBox fx:id="cmbMes" layoutX="261.0" layoutY="376.0" prefHeight="27.0" prefWidth="151.0" promptText="Mes reporte" style="-fx-border-color: #00093c; -fx-background-color: white;" />
       </AnchorPane>
 
       <!-- Panel Presupuesto -->
-      <AnchorPane fx:id="panelPresupuesto" layoutX="200.0" layoutY="50.0" prefHeight="350.0" prefWidth="380.0" visible="false">
-         <Label layoutX="10.0" layoutY="10.0" text="Resumen de Presupuesto">
+      <AnchorPane fx:id="panelPresupuesto" layoutX="206.0" layoutY="22.0" prefHeight="4.0" prefWidth="480.0" visible="true">
+         <Label layoutX="10.0" layoutY="10.0" text="Resumen de tus Presupuestos y panel de edición:" textFill="#00093c">
             <font>
                <Font name="Candara" size="14.0" />
             </font></Label>
 
-         <TableView layoutX="32.0" layoutY="57.0" prefHeight="289.0" prefWidth="345.0" style="-fx-border-color: #00093c;">
+         <TableView layoutX="67.0" layoutY="42.0" prefHeight="290.0" prefWidth="346.0" style="-fx-border-color: #00093c;">
             <columns>
-               <TableColumn prefWidth="110.4000244140625" text="Categoria" />
-               <TableColumn prefWidth="110.0" text="Monto Limite" />
-               <TableColumn prefWidth="126.80001831054688" text="Monto Total" />
+               <TableColumn prefWidth="83.20002746582031" text="Nombre" />
+               <TableColumn prefWidth="89.39996337890625" text="Monto Límite" />
+               <TableColumn prefWidth="94.20001220703125" text="Monto Total" />
+               <TableColumn prefWidth="76.20001220703125" text="Categoria" />
             </columns>
          </TableView>
+         <Button layoutX="94.0" layoutY="440.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #00093c;" text="Agregar" textFill="WHITE">
+            <font>
+               <Font name="Candara" size="14.0" />
+            </font></Button>
+         <Button layoutX="200.0" layoutY="441.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #00093c;" text="Actualizar" textFill="WHITE">
+            <font>
+               <Font size="14.0" />
+            </font></Button>
+         <Button layoutX="308.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #00093c;" text="Limpiar" textFill="WHITE">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Button>
+         <ComboBox layoutX="67.0" layoutY="391.0" prefHeight="27.0" prefWidth="151.0" promptText="Categoría" style="-fx-background-color: white; -fx-border-color: #00093c;" />
+         <TextField layoutX="67.0" layoutY="353.0" prefHeight="27.0" prefWidth="151.0" promptText="Nombre" style="-fx-background-color: white; -fx-border-color: #00093c;">
+            <font>
+               <Font name="Candara" size="12.0" />
+            </font>
+         </TextField>
+         <TextField layoutX="264.0" layoutY="391.0" prefHeight="26.0" prefWidth="151.0" promptText="Monto Total" style="-fx-background-color: White; -fx-border-color: #00093c;">
+            <font>
+               <Font name="Candara" size="12.0" />
+            </font></TextField>
+         <TextField layoutX="264.0" layoutY="353.0" prefHeight="26.0" prefWidth="151.0" promptText="Monto Límite" style="-fx-background-color: white; -fx-border-color: #00093c;">
+            <font>
+               <Font name="Candara" size="12.0" />
+            </font></TextField>
          </AnchorPane>
+
    </children>
 </AnchorPane>

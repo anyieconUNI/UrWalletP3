@@ -16,7 +16,7 @@
                                 <Font name="Candara" size="14.0" />
                             </font>
                         </Label>
-                        <ComboBox fx:id="cmbCliente" layoutX="143.0" layoutY="103.0" prefHeight="29.0" prefWidth="180.0" style="-fx-background-color: #187173; -fx-text-fill: white;" />
+                        <ComboBox fx:id="cmbCliente" layoutX="143.0" layoutY="103.0" prefHeight="29.0" prefWidth="180.0" style="-fx-border-color: #00093c; -fx-background-color: white;" />
 
                         <Label layoutX="362.0" layoutY="109.0" text="Cuenta:">
                             <font>
@@ -24,7 +24,7 @@
                             </font>
                         </Label>
 
-                        <ComboBox fx:id="cbCuenta" layoutX="419.0" layoutY="103.0" prefHeight="29.0" prefWidth="180.0" style="-fx-background-color: #187173; -fx-text-fill: #ffffff;" />
+                        <ComboBox fx:id="cbCuenta" layoutX="419.0" layoutY="103.0" prefHeight="29.0" prefWidth="180.0" style="-fx-border-color: #00093c; -fx-background-color: #ffffff;" />
 
                         <Label layoutX="122.0" layoutY="224.0" text="Buscar  Usuario: ">
                             <font>

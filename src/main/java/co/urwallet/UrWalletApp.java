@@ -53,7 +53,7 @@ public class UrWalletApp  extends Application {
 
     public static void main(String[] args) throws FileNotFoundException, MalformedURLException {
         launch();
-
+    /*
         String pdfPath = "src/main/resources/co/urwallet/Pdf/presupuesto.pdf"; // donde se va a guaardar el pdf
         String imagePath = "src/main/resources/co/urwallet/img/logo.png";
         String imagePath1 = "src/main/resources/co/urwallet/img/grafica.png";
@@ -83,6 +83,6 @@ public class UrWalletApp  extends Application {
         document.close();
 
         System.out.println("PDF creado exitosamente en: " + pdfPath);
-
+    */
     }
 }

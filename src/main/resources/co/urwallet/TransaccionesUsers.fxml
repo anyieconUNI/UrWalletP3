@@ -21,8 +21,8 @@
                     </font>
                 </Label>
                 <TextField fx:id="txtMonto" layoutX="117.0" layoutY="158.0" prefHeight="27.0" prefWidth="214.0" style="-fx-border-color: #00093c;" />
-                <ComboBox fx:id="cmbCuentaOrigen" layoutX="475.0" layoutY="77.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #187173;" />
-                <ComboBox fx:id="cmbCuentaDestino" layoutX="475.0" layoutY="36.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #187173;" />
+                <ComboBox fx:id="cmbCuentaOrigen" layoutX="475.0" layoutY="77.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #00093c;" />
+                <ComboBox fx:id="cmbCuentaDestino" layoutX="475.0" layoutY="36.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #00093c;" />
 
 
                 <Label layoutX="347.0" layoutY="122.0" text="Tipo de transacción:" textFill="#00093c">
@@ -30,7 +30,7 @@
                         <Font name="Candara" size="14.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="cmbTipoTrnsaccion" layoutX="475.0" layoutY="118.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #187173;">
+                <ComboBox fx:id="cmbTipoTrnsaccion" layoutX="475.0" layoutY="118.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #00093c;">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Retiro" />
@@ -44,7 +44,7 @@
                         <Font name="Candara" size="14.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="cmbCategoria" layoutX="475.0" layoutY="159.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #187173;">
+                <ComboBox fx:id="cmbCategoria" layoutX="475.0" layoutY="159.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #00093c;">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Comida" />

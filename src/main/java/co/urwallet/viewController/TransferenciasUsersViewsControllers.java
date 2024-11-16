@@ -4,8 +4,15 @@ import co.urwallet.controller.CuentaControllers;
 import co.urwallet.controller.TrasaccionControllers;
 import co.urwallet.mapping.dto.CuentaDto;
 import co.urwallet.mapping.dto.TransaccionDto;
-import co.urwallet.model.Cuenta;
-import javafx.beans.property.SimpleFloatProperty;
+import co.urwallet.model.Transaccion;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +20,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -58,9 +67,11 @@ public class TransferenciasUsersViewsControllers {
             instance = this;
         }
     }
+
     public static TransferenciasUsersViewsControllers getInstance() {
         return instance;
     }
+
     @FXML
     public void initialize() {
         cargarCuentas();
@@ -69,9 +80,11 @@ public class TransferenciasUsersViewsControllers {
         tableTransaccion.getItems().clear();
         tableTransaccion.setItems(listaTransaccion);
     }
+
     private void obtenerTransaccion() {
         listaTransaccion.addAll(trasaccionControllers.obtenerTrasaccion());
     }
+
     private void initDataBinding() {
         tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha().toString()));
         tcTipoTrasacc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipoTransaccion()));
@@ -81,6 +94,7 @@ public class TransferenciasUsersViewsControllers {
         tcCuentaDestino.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaDestino()));
         tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria()));
     }
+
     public  void cargarCuentas() {
         List<CuentaDto> cuentasOrigen = cuentaControllers.obtenerCuenta();
         ObservableList<String> nombresClientes = FXCollections.observableArrayList(
@@ -89,9 +103,11 @@ public class TransferenciasUsersViewsControllers {
         cmbCuentaOrigen.setItems(nombresClientes);
         cmbCuentaDestino.setItems(nombresClientes);
     }
+
     public void limpiarTransferenciaAction(ActionEvent actionEvent) {
         limpiar();
     }
+
     public void limpiar(){
         tareaDescripcion.setText("");
         txtMonto.setText("");
@@ -100,6 +116,7 @@ public class TransferenciasUsersViewsControllers {
         cmbTipoTrnsaccion.setValue("");
         cmbCategoria.setValue("");
     }
+
     public void agregarTransferenciaAction(ActionEvent actionEvent) {
         TransaccionDto transaccionDto  = contruirRegistroTrasaccion();
         if(datosValidos(transaccionDto)){
@@ -117,6 +134,7 @@ public class TransferenciasUsersViewsControllers {
             }
         }
     }
+
     private TransaccionDto contruirRegistroTrasaccion(){
         float monto = Float.parseFloat(txtMonto.getText());
         Date fechaActual = new Date();
@@ -132,6 +150,7 @@ public class TransferenciasUsersViewsControllers {
                 cmbCategoria.getValue().toString()
         );
     }
+
     private boolean datosValidos(TransaccionDto transaccionDto) {
         String mensaje = "";
         if (transaccionDto.monto() < 0 || transaccionDto.monto() == 0) {
