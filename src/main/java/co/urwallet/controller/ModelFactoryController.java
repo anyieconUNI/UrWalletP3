@@ -35,6 +35,7 @@ import java.util.stream.Collectors;
 public class ModelFactoryController implements IModelFactoryControllerService {
     UrWallet urWallet;
     UrWalletMapper mapper = UrWalletMapper.INSTANCE;
+    private final ClientController clientController;
 
     private static class SingletonHolder {
         private final static ModelFactoryController eINSTANCE = new ModelFactoryController();
@@ -47,6 +48,8 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public ModelFactoryController() {
         urWallet = new UrWallet();
 //        cargarDatosBase();
+        clientController = new ClientController();
+        clientController.connect(); // Conectar al servidor
 //        guardarPerUsers();
 
         cargarDatosDesdeArchivos();
@@ -66,6 +69,10 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 
     }
 
+
+    public void enviarTransferencia(String mensaje) {
+        clientController.sendMessage(mensaje);
+    }
     private void cargarDatosDesdeArchivos() {
         urWallet = new UrWallet();
         try {
@@ -298,7 +305,9 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         return flagExiste;
     }
 
-
+    public void shutdownClient() {
+        clientController.disconnect(); // Cerrar conexión con el servidor
+    }
     @Override
     public boolean agregarTrasaccion(TransaccionDto transaccionDto) {
         try {
@@ -309,6 +318,14 @@ public class ModelFactoryController implements IModelFactoryControllerService {
                     System.out.println("transss ferererere" + transaccion.getIdTransaccion());
                     getUrWallet().agregarTransaccion(transaccion);
                     guardarTransferencia();
+//            String mensaje = String.format(
+//                    "Nueva transferencia creada:\nCuenta Origen: %s\nCuenta Destino: %s\nMonto: %.2f\nFecha: %s",
+//                    transaccionDto.cuentaOrigen().getNumeCuenta(),
+//                    transaccionDto.cuentaDestino().getNumeCuenta(),
+//                    transaccionDto.monto(),
+//                    transaccionDto.fecha()
+//            );
+            enviarTransferencia(transaccionDto.toString());
 //                }
 //            }
             return true;

@@ -1,5 +1,6 @@
 package co.urwallet;
 
+import co.urwallet.controller.ModelFactoryController;
 import co.urwallet.viewController.HomeViewsController;
 import co.urwallet.viewController.RegistroUsersView;
 import javafx.application.Application;
@@ -27,12 +28,18 @@ import java.net.MalformedURLException;
 public class UrWalletApp  extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
-
+    private ModelFactoryController modelFactoryController;
     @Override
     public void start(Stage stage) throws IOException {
+        modelFactoryController = ModelFactoryController.getInstance();
         this.primaryStage = stage;
         this.primaryStage.setTitle("UrWallet");
         mostrarVentanaPrincipal();
+        stage.setOnCloseRequest(event -> {
+            System.out.println("Cerrando la aplicación...");
+            modelFactoryController.shutdownClient(); // Llamar al método de apagado del cliente
+        });
+
     }
 
     public void mostrarVentanaPrincipal() {
