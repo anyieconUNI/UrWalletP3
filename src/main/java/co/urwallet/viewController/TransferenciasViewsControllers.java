@@ -16,12 +16,24 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class TransferenciasViewsControllers {
+    @FXML
+    public ComboBox<String> cbBuscarPorCategory;
+    @FXML
+    public ComboBox<String> cbBuscarPorType;
+    @FXML
+    public DatePicker dpFechaTransaccion;
+    @FXML
+    public TextField txtCuentaDestino;
+    @FXML
+    public TextField txtCuentaOrigen;
     TrasaccionControllers trasaccionControllers = new TrasaccionControllers();
     CuentaControllers cuentaControllers = new CuentaControllers();
     TransaccionDto transaccionSeleccionada;
@@ -74,6 +86,20 @@ public class TransferenciasViewsControllers {
     }
     private void obtenerTransaccion() {
         listaTransaccion.addAll(trasaccionControllers.obtenerTrasaccion());
+        ObservableList<String> categorias = FXCollections.observableArrayList(
+                Arrays.stream(Categoria.values())
+                        .map(Enum::name)
+                        .collect(Collectors.toList())
+        );
+
+        cbBuscarPorCategory.setItems(categorias);
+        ObservableList<String> tipos = FXCollections.observableArrayList(
+                Arrays.stream(TipoTransaccion.values())
+                        .map(Enum::name)
+                        .collect(Collectors.toList())
+        );
+
+        cbBuscarPorType.setItems(tipos);
     }
 //    private void listenerSelection() {
 //        tableTransaccion.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -189,5 +215,50 @@ public class TransferenciasViewsControllers {
             trasaccionControllers.mostrarMensaje("Notificación", mensaje, Alert.AlertType.WARNING);
             return false;
         }
+    }
+
+    public void buscarAction(ActionEvent actionEvent) {
+        String categoriaSeleccionada = cbBuscarPorCategory.getValue();
+        String tipoTransaccion = cbBuscarPorType.getValue();
+        String cuentaDestinoTexto = txtCuentaDestino.getText().trim();
+        String cuentaOrigenTexto = txtCuentaOrigen.getText().trim();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaSeleccionada;
+        if (dpFechaTransaccion.getValue() != null){
+            fechaSeleccionada = dpFechaTransaccion.getValue().format(formatter);
+        } else {
+            fechaSeleccionada = "";
+        }
+
+        List<TransaccionDto> transaccionesFiltradas = trasaccionControllers.obtenerTrasaccion().stream()
+                .filter(transaccionDto -> {
+                    boolean coincideCategoria = categoriaSeleccionada == null || categoriaSeleccionada.isEmpty() ||
+                            transaccionDto.categoria().name().equalsIgnoreCase(categoriaSeleccionada);
+                    boolean coincideTipo = tipoTransaccion == null || tipoTransaccion.isEmpty() ||
+                            transaccionDto.tipoTransaccion().name().equalsIgnoreCase(categoriaSeleccionada);
+                    boolean coincideCuentaDestino = cuentaDestinoTexto.isEmpty() ||
+                            transaccionDto.cuentaDestino().getNumeCuenta().contains(cuentaDestinoTexto);
+                    boolean coincideConCuentaOrigen = cuentaOrigenTexto.isEmpty() ||
+                            transaccionDto.cuentaOrigen().getNumeCuenta().contains(cuentaOrigenTexto);
+                    boolean coincideFecha = fechaSeleccionada.isEmpty() ||
+                            transaccionDto.fecha().equals(fechaSeleccionada);
+
+                    return coincideCategoria && coincideCuentaDestino && coincideConCuentaOrigen && coincideFecha && coincideTipo;
+                })
+                .collect(Collectors.toList());
+        listaTransaccion.clear();
+        listaTransaccion.setAll(transaccionesFiltradas);
+        tableTransaccion.refresh();
+    }
+
+    public void limparFiltre(ActionEvent actionEvent) {
+        cbBuscarPorCategory.setValue(null);
+        cbBuscarPorType.setValue(null);
+        txtCuentaDestino.setText("");
+        dpFechaTransaccion.setValue(null);
+        txtCuentaOrigen.setText("");
+        listaTransaccion.clear();
+        tableTransaccion.refresh();
+        obtenerTransaccion();
     }
 }

@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +27,14 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class TransferenciasUsersViewsControllers {
+    @FXML
     public ComboBox<String> cbBuscarPorCategory;
+    @FXML
+    public TextField txtCuentaDestino;
+    @FXML
+    public ComboBox<String> cbBuscarPorType;
+    @FXML
+    public DatePicker dpFechaTransaccion;
     TrasaccionControllers trasaccionControllers;
     CuentaControllers cuentaControllers = new CuentaControllers();
     TransaccionDto transaccionSeleccionada;
@@ -103,6 +111,13 @@ public class TransferenciasUsersViewsControllers {
         );
 
         cbBuscarPorCategory.setItems(categorias);
+        ObservableList<String> tipos = FXCollections.observableArrayList(
+                Arrays.stream(TipoTransaccion.values())
+                        .map(Enum::name)
+                        .collect(Collectors.toList())
+        );
+
+        cbBuscarPorType.setItems(tipos);
     }
 
     private void initDataBinding() {
@@ -219,7 +234,47 @@ public class TransferenciasUsersViewsControllers {
         }
     }
 
-    public void buscarAction(ActionEvent actionEvent) {
 
+    public void buscarAction(ActionEvent actionEvent) {
+        String categoriaSeleccionada = cbBuscarPorCategory.getValue();
+        String tipoTransaccion = cbBuscarPorType.getValue();
+        String cuentaDestinoTexto = txtCuentaDestino.getText().trim();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaSeleccionada;
+        if (dpFechaTransaccion.getValue() != null){
+            fechaSeleccionada = dpFechaTransaccion.getValue().format(formatter);
+        } else {
+            fechaSeleccionada = "";
+        }
+
+        List<TransaccionDto> transaccionesFiltradas = trasaccionControllers.obtenerTrasaccion().stream()
+                .filter(transaccionDto -> {
+                    boolean coincideCategoria = categoriaSeleccionada == null || categoriaSeleccionada.isEmpty() ||
+                            transaccionDto.categoria().name().equalsIgnoreCase(categoriaSeleccionada);
+                    boolean coincideTipo = tipoTransaccion == null || tipoTransaccion.isEmpty() ||
+                            transaccionDto.tipoTransaccion().name().equalsIgnoreCase(categoriaSeleccionada);
+                    boolean coincideCuentaDestino = cuentaDestinoTexto.isEmpty() ||
+                            transaccionDto.cuentaDestino().getNumeCuenta().contains(cuentaDestinoTexto);
+                    boolean coincideConCuentaOrigen = usuarioLogeado.getCuentasBancarias().stream()
+                            .anyMatch(cuentaBancaria -> cuentaBancaria.getNumeCuenta().equals(transaccionDto.cuentaOrigen().getNumeCuenta()));
+                    boolean coincideFecha = fechaSeleccionada.isEmpty() ||
+                            transaccionDto.fecha().equals(fechaSeleccionada);
+
+                    return coincideCategoria && coincideCuentaDestino && coincideConCuentaOrigen && coincideFecha && coincideTipo;
+                })
+                .collect(Collectors.toList());
+        listaTransaccion.clear();
+        listaTransaccion.setAll(transaccionesFiltradas);
+        tableTransaccion.refresh();
+    }
+
+    public void limparFiltre(ActionEvent actionEvent) {
+       cbBuscarPorCategory.setValue(null);
+       cbBuscarPorType.setValue(null);
+       txtCuentaDestino.setText("");
+       dpFechaTransaccion.setValue(null);
+        listaTransaccion.clear();
+       tableTransaccion.refresh();
+        obtenerTransaccion();
     }
 }

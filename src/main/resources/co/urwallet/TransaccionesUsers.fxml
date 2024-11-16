@@ -87,17 +87,21 @@
             <TableColumn fx:id="tcCategoria" prefWidth="101.0" text="Categoria" />
         </columns>
     </TableView>
-     <!-- TextField para la búsqueda -->
 
+     <ComboBox fx:id="cbBuscarPorCategory" layoutX="28.0" layoutY="242.0" prefHeight="25.0" prefWidth="100.0" />
+    <ComboBox fx:id="cbBuscarPorType" layoutX="138.0" layoutY="242.0" prefHeight="25.0" prefWidth="94.0" />
+    <DatePicker fx:id="dpFechaTransaccion" layoutX="242.0" layoutY="241.0" prefHeight="27.0" prefWidth="119.0" style="-fx-border-color: #00093c;" />
+    <TextField fx:id="txtCuentaDestino" layoutX="372.0" layoutY="241.0" prefHeight="27.0" prefWidth="135.0" style="-fx-border-color: #00093c;" />
 
-     <!-- Checkbox para habilitar búsqueda adicional (opcional) -->
-     <ComboBox fx:id="cbBuscarPorCategory" layoutX="30.0" layoutY="242.0" prefHeight="25.0" prefWidth="144.0" />
-
-     <!-- Botón de búsqueda -->
-     <Button layoutX="179.0" layoutY="241.0" onAction="#buscarAction" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: #00093c;" text="Buscar" textFill="WHITE">
+    <Button layoutX="518.0" layoutY="241.0" onAction="#buscarAction" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: #00093c;" text="Buscar" textFill="WHITE">
          <font>
              <Font name="Candara" size="14.0" />
          </font>
      </Button>
+    <Button layoutX="600.0" layoutY="241.0" onAction="#limparFiltre" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: #00093c;" text="Limpiar" textFill="WHITE">
+        <font>
+            <Font name="Candara" size="14.0" />
+        </font>
+    </Button>
 
 </AnchorPane>
