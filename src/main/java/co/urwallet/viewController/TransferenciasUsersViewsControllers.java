@@ -88,7 +88,6 @@ public class TransferenciasUsersViewsControllers {
     }
 
     public void setUsuarioLogueado(Usuario usuarioLog) {
-        System.out.println("HOOLA TRANBS" + usuarioLog);
         this.usuarioLogeado = usuarioLog;
         cargarCuentas();
         initDataBinding();

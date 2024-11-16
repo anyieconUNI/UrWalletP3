@@ -2,6 +2,7 @@ package co.urwallet.controller;
 
 import co.urwallet.mapping.dto.TransaccionDto;
 import co.urwallet.model.Transaccion;
+import co.urwallet.viewController.NotificacionesViewsControllers;
 import co.urwallet.viewController.TransferenciasUsersViewsControllers;
 import co.urwallet.viewController.TransferenciasViewsControllers;
 import javafx.application.Platform;
@@ -55,6 +56,7 @@ public class ClientController {
                     Platform.runLater(() -> {
                         ModelFactoryController.getInstance().agregarTrasaccionDeServidor(transaccionDto);
 
+
                         TransferenciasUsersViewsControllers viewController = TransferenciasUsersViewsControllers.getInstance();
                         if (viewController != null) {
                             viewController.actualizarTablaTransacciones(transaccionDto);
@@ -62,6 +64,10 @@ public class ClientController {
                         TransferenciasViewsControllers AsminviewController = TransferenciasViewsControllers.getInstance();
                         if (AsminviewController != null) {
                             AsminviewController.actualizarTablaTransacciones(transaccionDto);
+                        }
+                        NotificacionesViewsControllers notificacionesViewsControllers = NotificacionesViewsControllers.getInstance();
+                        if (notificacionesViewsControllers != null) {
+                            notificacionesViewsControllers.actualizarNoti(transaccionDto);
                         }
                     });
 

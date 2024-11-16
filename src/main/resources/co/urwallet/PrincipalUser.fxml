@@ -82,6 +82,15 @@
                         </AnchorPane>
                     </content>
                 </Tab>
+                <Tab text="Notificaciones">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0">
+                            <fx:include source="NotificacionesViews.fxml" />
+                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="24.0" layoutY="502.0" stroke="#00093c" strokeType="INSIDE" width="701.0" />
+
+                        </AnchorPane>
+                    </content>
+                </Tab>
             </tabs>
         </TabPane>
     </children>

@@ -311,11 +311,9 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     @Override
     public boolean agregarTrasaccion(TransaccionDto transaccionDto) {
         try {
-            System.out.println("HOILAAAAAAAAAAAAAAAAAAAAAAA AAAAA" + transaccionDto.cuentaOrigen());
 //            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen())) {
 //                if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino())) {
                     Transaccion transaccion = mapper.transaccionToTransaccionDto(transaccionDto);
-                    System.out.println("transss ferererere" + transaccion.getIdTransaccion());
                     getUrWallet().agregarTransaccion(transaccion);
                     guardarTransferencia();
 //            String mensaje = String.format(
@@ -337,11 +335,9 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     @Override
     public boolean agregarTrasaccionDeServidor(TransaccionDto transaccionDto) {
         try {
-            System.out.println("HOILAAAAAAAAAAAAAAAAAAAAAAA AAAAA" + transaccionDto.cuentaOrigen());
 //            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen())) {
 //                if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino())) {
             Transaccion transaccion = mapper.transaccionToTransaccionDto(transaccionDto);
-            System.out.println("transss ferererere" + transaccion.getIdTransaccion());
             getUrWallet().agregarTransaccion(transaccion);
             guardarTransferencia();
 //
