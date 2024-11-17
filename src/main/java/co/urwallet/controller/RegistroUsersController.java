@@ -14,7 +14,7 @@ public class RegistroUsersController implements IRegistroControllerService {
     }
     @Override
     public boolean agregarRegistro(UsuarioDto registroDto){
-        return modelFactoryService.agregarUsers(registroDto);
+        return modelFactoryService.agregarUsers(registroDto,false);
     }
 
     @Override

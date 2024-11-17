@@ -1,6 +1,8 @@
 package co.urwallet.controller;
 
+import co.urwallet.model.Cuenta;
 import co.urwallet.model.Transaccion;
+import co.urwallet.model.Usuario;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -43,12 +45,28 @@ public class ServerMain {
 
                     // Retransmitir a todos los clientes
                     broadcastTransaction(transaccion, outputStream);
-                } else if (message instanceof String) {
+                }
+
+                if (message instanceof String) {
                     String receivedMessage = (String) message;
                     System.out.println("Mensaje recibido: " + receivedMessage);
 
                     // Retransmitir el mensaje a todos los clientes
                     broadcastMessage(receivedMessage, outputStream);
+                }
+
+                if (message instanceof Cuenta) {
+                    Cuenta cuenta = (Cuenta) message;
+                    System.out.println("Cuenta recibida: " + cuenta);
+
+                    // Retransmitir la cuenta a todos los clientes
+                    broadcastCuenta(cuenta, outputStream);
+                }
+                if (message instanceof Usuario) {
+                    Usuario usuario= (Usuario) message;
+                    System.out.println("usuario recibida: " + usuario);
+
+                    broadcastUsuario(usuario, outputStream);
                 }
             }
         } catch (Exception e) {
@@ -81,6 +99,31 @@ public class ServerMain {
             if (!client.equals(sender)) {
                 try {
                     client.writeObject(message);
+                    client.flush();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private static void broadcastCuenta(Cuenta cuenta, ObjectOutputStream sender) {
+        for (ObjectOutputStream client : clients) {
+            if (!client.equals(sender)) {
+                try {
+                    client.writeObject(cuenta);
+                    client.flush();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    private static void broadcastUsuario(Usuario usuario, ObjectOutputStream sender) {
+        for (ObjectOutputStream client : clients) {
+            if (!client.equals(sender)) {
+                try {
+                    client.writeObject(usuario);
                     client.flush();
                 } catch (Exception e) {
                     e.printStackTrace();

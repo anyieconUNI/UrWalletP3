@@ -10,6 +10,7 @@ import co.urwallet.model.Categoria;
 import co.urwallet.model.Cuenta;
 import co.urwallet.model.TipoTransaccion;
 import co.urwallet.model.Usuario;
+import co.urwallet.utils.Persistencia;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -18,12 +19,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TransferenciasUsersViewsControllers {
@@ -130,6 +129,7 @@ public class TransferenciasUsersViewsControllers {
     }
 
     public void cargarCuentas() {
+
         List<CuentaDto> todasLasCuentas = cuentaControllers.obtenerCuenta();
 
         List<CuentaDto> cuentasOrigen = todasLasCuentas.stream()

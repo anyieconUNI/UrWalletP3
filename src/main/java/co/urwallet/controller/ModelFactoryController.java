@@ -77,7 +77,13 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public void enviarSolicitud(String msg){
         clientController.sendMessageNotify(msg);
     }
-    private void cargarDatosDesdeArchivos() {
+    public void enviarCuenta(Cuenta cuenta){
+        clientController.sendCuenta(cuenta);
+    }
+    public void enviarUsuarios(Usuario usuario){
+        clientController.sendUsuario(usuario);
+    }
+    public void cargarDatosDesdeArchivos() {
         urWallet = new UrWallet();
         try {
             Persistencia.cargarDatosArchivos(urWallet);
@@ -168,7 +174,30 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         guardarRecursoBancoXML();
     }
     @Override
-    public boolean agregarUsers(UsuarioDto usuarioDto) {
+    public boolean agregarUsers(UsuarioDto usuarioDto, boolean isSocket) {
+        try {
+            System.out.println("MODELLLL" + usuarioDto.correo());
+            if (!urWallet.verificarUsuarioExistente(usuarioDto.cedula())) {
+                Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
+                System.out.println("MODELLLL22" + user.getCorreo());
+
+                getUrWallet().agregarUsuario(user);
+//                if(isSocket){
+                enviarUsuarios(user);
+//                }
+                agregarDatosGenerales();
+                guardaRegistroLog("Se han agregado un nuevo usuario", 1, "Create");
+//                copiarArchivos();
+            }
+            return true;
+        } catch (UsuarioException e) {
+            e.getMessage();
+            guardaRegistroLog("No se ha creado", 2, "Warning");
+            return false;
+        }
+    }
+    @Override
+    public boolean agregarUsersSocket(UsuarioDto usuarioDto, boolean isSocket) {
         try {
             System.out.println("MODELLLL" + usuarioDto.correo());
             if (!urWallet.verificarUsuarioExistente(usuarioDto.cedula())) {
@@ -187,6 +216,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             return false;
         }
     }
+
 
     public void guardarPerUsers() {
         try {
@@ -257,13 +287,14 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         return flagExiste;
     }
     @Override
-    public boolean agregarCuenta(CuentaDto cuentaDto) {
+    public boolean agregarCuenta(CuentaDto cuentaDto, boolean isSocket) {
         try {
             System.out.println("MODELLLL" + cuentaDto.numeCuenta());
             if (!urWallet.verificarCuentaExistente(cuentaDto.numeCuenta())) {
                 Cuenta cuenta = mapper.cuentaToCuentaDto(cuentaDto);
                 System.out.println("MODELLLL22" + cuenta.getIdCuenta());
                 getUrWallet().agregarCuenta(cuenta);
+
                 agregarDatosGenerales();
                 guardaRegistroLog("Se ha agregado un nuevo cuenta", 1, "Create");
                 copiarArchivos();
@@ -317,9 +348,9 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         try {
 //            if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaOrigen())) {
 //                if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino())) {
-                    Transaccion transaccion = mapper.transaccionToTransaccionDto(transaccionDto);
-                    getUrWallet().agregarTransaccion(transaccion);
-                    guardarTransferencia();
+            Transaccion transaccion = mapper.transaccionToTransaccionDto(transaccionDto);
+            getUrWallet().agregarTransaccion(transaccion);
+            guardarTransferencia();
 //            String mensaje = String.format(
 //                    "Nueva transferencia creada:\nCuenta Origen: %s\nCuenta Destino: %s\nMonto: %.2f\nFecha: %s",
 //                    transaccionDto.cuentaOrigen().getNumeCuenta(),
@@ -438,6 +469,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         }
 
         usuario.agregarCuenta(cuenta);
+        enviarCuenta(cuenta);
         agregarDatosGenerales();
         return true;
     }

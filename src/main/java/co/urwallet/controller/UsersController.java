@@ -18,7 +18,7 @@ public class UsersController implements IUsersControllerService {
     }
     @Override
     public boolean agregarUsuario(UsuarioDto registroDto){
-        return modelFactoryService.agregarUsers(registroDto);
+        return modelFactoryService.agregarUsers(registroDto,false);
     }
     @Override
     public boolean actualizarUser(String idUser, UsuarioDto usuarioDto) {

@@ -4,6 +4,7 @@ import co.urwallet.controller.RegistroUsersController;
 import co.urwallet.controller.UsersController;
 import co.urwallet.mapping.dto.UsuarioDto;
 import co.urwallet.model.Cuenta;
+import co.urwallet.model.Usuario;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,7 +47,16 @@ public class UsersViewsController {
     public TableColumn<UsuarioDto, String> tcDireccion;
     @FXML
     public TableColumn<UsuarioDto, String> tcSaldoDispo;
+    private static UsersViewsController instance;
+    public UsersViewsController() {
+        if (instance == null) {
+            instance = this;
+        }
+    }
 
+    public static UsersViewsController getInstance() {
+        return instance;
+    }
     @FXML
     public void initialize() {
         try {
@@ -214,5 +224,32 @@ public class UsersViewsController {
         txtTelefono.setText("");
         txtContrasena.setText("");
         txtDireccion.setText("");
+    }
+
+    public void actualizarTablasUser(Usuario usuario) {
+        System.out.println("SU ESTA ENTRANDO AQUI ");
+        if (usuario != null) {
+            UsuarioDto usuarioDto = new UsuarioDto(
+                    usuario.getIdUsuario(),
+                    usuario.getCedula(),
+                    usuario.getNombreCompleto(),
+                    usuario.getTelefono(),
+                    usuario.getCorreo(),
+                    usuario.getContrasena(),
+                    usuario.getDireccion(),
+                    usuario.getSaldoDispo(),
+                    usuario.getCuentasBancarias()
+            );
+            UsuarioDto existente = listaUser.stream()
+                    .filter(u -> u.idUsuario().equals(usuarioDto.idUsuario()))
+                    .findFirst()
+                    .orElse(null);
+
+            if (existente != null) {
+                listaUser.remove(existente);
+            }
+            listaUser.add(usuarioDto);
+            tableusers.refresh();
+        }
     }
 }

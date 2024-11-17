@@ -5,6 +5,7 @@ import co.urwallet.mapping.dto.CuentaDto;
 import co.urwallet.mapping.dto.TransaccionDto;
 import co.urwallet.model.Cuenta;
 import co.urwallet.model.Usuario;
+import co.urwallet.utils.Persistencia;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -97,12 +99,11 @@ public class SaldoClienteViewsControllers {
         panelPresupuesto.setVisible(true);
         panelSaldo.setVisible(false);
     }
-    private void actualizarSaldo() {
+    public void actualizarSaldo() {
         if (usuarioLogeado != null) {
             double saldoTotal = usuarioLogeado.getCuentasBancarias().stream()
                     .mapToDouble(Cuenta::getSaldo)
                     .sum();
-
             Saldo.setText(String.format("Saldo Total: $ %.2f", saldoTotal));
         } else {
             Saldo.setText("Usuario no logueado.");
@@ -124,4 +125,24 @@ public class SaldoClienteViewsControllers {
     }
 
 
+    public void actualizarTablaCuentasUser(CuentaDto cuentaDto) {
+
+        if (cuentaDto != null) {
+            // Verificar si la cuenta ya está en la lista
+            boolean cuentaExistente = listaCuentaDto.stream()
+                    .anyMatch(cuenta -> cuenta.numeCuenta().equals(cuentaDto.numeCuenta()));
+
+            if (!cuentaExistente) {
+                listaCuentaDto.add(cuentaDto);
+                tableCuentaUser.refresh();
+
+                // Actualizar el saldo total
+                actualizarSaldo();
+            } else {
+                System.out.println("La cuenta ya existe en la tabla.");
+            }
+        } else {
+            System.out.println("Cuenta nula, no se puede agregar.");
+        }
+    }
 }

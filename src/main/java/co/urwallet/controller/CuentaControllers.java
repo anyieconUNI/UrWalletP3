@@ -22,7 +22,7 @@ public class CuentaControllers implements CuentaControllersService {
     }
     @Override
     public boolean agregarCuenta(CuentaDto cuentaDto){
-        return modelFactoryService.agregarCuenta(cuentaDto);
+        return modelFactoryService.agregarCuenta(cuentaDto,false);
     }
     @Override
     public boolean actualizarCuenta(String idCuenta, CuentaDto cuentaDto) {

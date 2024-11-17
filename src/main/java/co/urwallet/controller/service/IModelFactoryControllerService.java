@@ -15,6 +15,7 @@ import java.util.List;
 
 public interface IModelFactoryControllerService {
 
+
     void enviarSolicitud(String msg);
 
     UrWallet getUrWallet();
@@ -22,18 +23,22 @@ public interface IModelFactoryControllerService {
     Cuenta obtenerCuentaPorId(String id);
 
     List<UsuarioDto> obtenerUser();
+
     List<CuentaDto> obtenerCuentas();
 
     List<TransaccionDto> obtenerTrasaccion();
 
-    boolean agregarUsers(UsuarioDto usuarioDto);
+    boolean agregarUsers(UsuarioDto usuarioDto, boolean isSocket);
 
+    boolean agregarUsersSocket(UsuarioDto usuarioDto, boolean isSocket);
+
+    Usuario iniciarSesion(LoginDto loginDto) throws LoginException;
 
     boolean actualizarUser(String idUser, UsuarioDto usuarioDto);
 
     boolean eliminarUsuario(String idUser);
 
-    boolean agregarCuenta(CuentaDto cuentaDto);
+    boolean agregarCuenta(CuentaDto cuentaDto, boolean isSocket);
 
     boolean actualizarCuenta(String idCuenta, CuentaDto cuentaDto);
 
@@ -51,11 +56,9 @@ public interface IModelFactoryControllerService {
 
     List<CuentaDto> obtenerCuentasNoAsignadas();
 
-
     Usuario obtenerUsuarioPorCedula(String cedula);
 
     void mostrarMensaje(String titulo, String mensaje, Alert.AlertType tipo);
-    Usuario iniciarSesion(LoginDto loginDto) throws LoginException;
 
     void cerrarVentana(ActionEvent actionEvent);
 }
