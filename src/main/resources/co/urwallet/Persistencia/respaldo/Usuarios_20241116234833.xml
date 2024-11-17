@@ -79,13 +79,13 @@
       </object>
      </void>
      <void property="idPresupuesto">
-      <string>5180532e-16af-4c01-8c1f-0ba98652d764</string>
+      <string>1a8e2c07-f1c4-447d-a9b0-5523590ecffb</string>
      </void>
      <void property="montoTotal">
       <float>100.0</float>
      </void>
      <void property="nombre">
-      <string>Pre1</string>
+      <string>Nombre</string>
      </void>
     </object>
    </void>
@@ -110,11 +110,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478698</long>
+       <long>1731818155761</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>efa5bed4-bd92-4e96-a46e-33da4079d852</string>
+      <string>24f6f2c5-7be1-462a-8491-d36bcab96da5</string>
      </void>
      <void property="monto">
       <float>10.0</float>
@@ -146,11 +146,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478698</long>
+       <long>1731818155761</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>75e46ab5-2eaf-465b-8f29-40869a7b7eeb</string>
+      <string>a022ac88-84c4-4c9f-9733-2981ca11b5c6</string>
      </void>
      <void property="monto">
       <float>20.0</float>
@@ -179,11 +179,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478698</long>
+       <long>1731818155761</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>fd37f6e8-3079-4a67-a096-b805de6d9af5</string>
+      <string>25dae791-1492-490a-a356-cb9210b035d3</string>
      </void>
      <void property="monto">
       <float>30.0</float>
@@ -209,11 +209,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731818155761</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>bee82573-128d-4690-9154-d7fa5ca17609</string>
+      <string>409edd01-8e60-410a-9153-ed3a72ea2cee</string>
      </void>
      <void property="monto">
       <float>40.0</float>
@@ -239,11 +239,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731818155761</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>559d1228-8f39-46f3-bd32-07359ea3401a</string>
+      <string>f4a8a551-6331-4358-baf1-f8bd3e7a27e0</string>
      </void>
      <void property="monto">
       <float>50.0</float>
@@ -269,11 +269,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731818155761</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>c68ae1ba-1209-4d21-b8fe-007fdd78c32f</string>
+      <string>e7d2d525-6a25-429d-bfbd-52edbae311a3</string>
      </void>
      <void property="monto">
       <float>60.0</float>
@@ -299,11 +299,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731818155761</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>15756520-b523-4f5e-a8f6-db84294ef361</string>
+      <string>b62b390a-e407-43b6-9be5-1b5a51d27e5e</string>
      </void>
      <void property="monto">
       <float>70.0</float>
@@ -329,11 +329,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731818155761</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>281b4f8b-90e7-4e69-8a01-fcca0eaf440b</string>
+      <string>b98d5dbe-baa6-4185-a79e-dd6aee50390d</string>
      </void>
      <void property="monto">
       <float>80.0</float>
@@ -359,11 +359,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731818155761</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>f687e40e-fce5-47f5-9783-2989838a1723</string>
+      <string>4a1f19d4-6147-437f-a85a-5b7227fc3c64</string>
      </void>
      <void property="monto">
       <float>90.0</float>
@@ -389,11 +389,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731818155761</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>c6753bb5-f50a-4f22-b4b1-14019a164158</string>
+      <string>8e68b288-0832-4198-8e36-b2aa539b9429</string>
      </void>
      <void property="monto">
       <float>100.0</float>

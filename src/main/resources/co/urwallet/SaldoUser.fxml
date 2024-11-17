@@ -66,7 +66,7 @@
                <TableColumn fx:id="tcNombre" prefWidth="83.20002746582031" text="Nombre" />
                <TableColumn fx:id="tcMontoGasto" prefWidth="89.39996337890625" text="Monto Gasto" />
                <TableColumn fx:id="tcMontoTotal" prefWidth="94.20001220703125" text="Monto Total" />
-               <TableColumn prefWidth="76.20001220703125" text="Categoria" />
+               <TableColumn fx:id="tcCategoria" prefWidth="76.20001220703125" text="Categoria" />
             </columns>
          </TableView>
          <Button fx:id="btnAgregar" layoutX="67.0" layoutY="443.0" mnemonicParsing="false" onAction="#agregarPresupuestoAction" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #00093c;" text="Agregar" textFill="WHITE">
@@ -82,7 +82,7 @@
                <Font size="14.0" />
             </font>
          </Button>
-         <ComboBox fx:id="cmbCategoria" layoutX="164.0" layoutY="392.0" prefHeight="27.0" prefWidth="151.0" promptText="Categoría" style="-fx-background-color: white; -fx-border-color: #00093c;">
+         <ComboBox fx:id="cmbCategoria" layoutX="67.0" layoutY="393.0" prefHeight="27.0" prefWidth="151.0" promptText="Categoría" style="-fx-background-color: white; -fx-border-color: #00093c;">
             <items>
                <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Comida" />
@@ -105,6 +105,11 @@
                <Font name="Candara" size="14.0" />
             </font>
          </Button>
+         <TextField fx:id="txtMontoGasto" layoutX="262.0" layoutY="394.0" promptText="Monto Gasto" style="-fx-background-color: white; -fx-border-color: #00093c;">
+            <font>
+               <Font name="Candara" size="12.0" />
+            </font>
+         </TextField>
          </AnchorPane>
 
    </children>

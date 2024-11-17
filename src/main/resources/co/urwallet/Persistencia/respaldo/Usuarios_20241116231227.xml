@@ -69,27 +69,6 @@
     </object>
    </void>
   </void>
-  <void property="listaPresupuestos">
-   <void method="add">
-    <object class="co.urwallet.model.Presupuesto">
-     <void property="categoria">
-      <object class="java.lang.Enum" method="valueOf">
-       <class>co.urwallet.model.Categoria</class>
-       <string>Comida</string>
-      </object>
-     </void>
-     <void property="idPresupuesto">
-      <string>5180532e-16af-4c01-8c1f-0ba98652d764</string>
-     </void>
-     <void property="montoTotal">
-      <float>100.0</float>
-     </void>
-     <void property="nombre">
-      <string>Pre1</string>
-     </void>
-    </object>
-   </void>
-  </void>
   <void property="listaTransaccion">
    <void method="add">
     <object class="co.urwallet.model.Transaccion">
@@ -110,11 +89,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478698</long>
+       <long>1731378067625</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>efa5bed4-bd92-4e96-a46e-33da4079d852</string>
+      <string>cde0f2b0-a54f-4231-b1d5-881de4365631</string>
      </void>
      <void property="monto">
       <float>10.0</float>
@@ -146,11 +125,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478698</long>
+       <long>1731378067626</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>75e46ab5-2eaf-465b-8f29-40869a7b7eeb</string>
+      <string>48686c9e-5756-4a91-bae4-d4c6560ee000</string>
      </void>
      <void property="monto">
       <float>20.0</float>
@@ -179,11 +158,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478698</long>
+       <long>1731378067626</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>fd37f6e8-3079-4a67-a096-b805de6d9af5</string>
+      <string>c2c9facc-708d-4a85-93e2-c4c3d37309c1</string>
      </void>
      <void property="monto">
       <float>30.0</float>
@@ -209,11 +188,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731378067627</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>bee82573-128d-4690-9154-d7fa5ca17609</string>
+      <string>d1fcdf44-780b-4958-a1ff-5fb0508d66cc</string>
      </void>
      <void property="monto">
       <float>40.0</float>
@@ -239,11 +218,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731378067627</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>559d1228-8f39-46f3-bd32-07359ea3401a</string>
+      <string>c21e0df2-f467-4eaf-8151-b4cf69a1804d</string>
      </void>
      <void property="monto">
       <float>50.0</float>
@@ -269,11 +248,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731378067627</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>c68ae1ba-1209-4d21-b8fe-007fdd78c32f</string>
+      <string>e0634fb1-f7f0-4274-847c-6b410a1c6406</string>
      </void>
      <void property="monto">
       <float>60.0</float>
@@ -299,11 +278,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731378067627</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>15756520-b523-4f5e-a8f6-db84294ef361</string>
+      <string>9a4857e1-5d69-413a-981f-622ad2db8220</string>
      </void>
      <void property="monto">
       <float>70.0</float>
@@ -329,11 +308,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731378067627</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>281b4f8b-90e7-4e69-8a01-fcca0eaf440b</string>
+      <string>ca1a4c15-b0d2-411f-b24e-a4c04cde5896</string>
      </void>
      <void property="monto">
       <float>80.0</float>
@@ -359,11 +338,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731378067627</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>f687e40e-fce5-47f5-9783-2989838a1723</string>
+      <string>3cfbaa17-ef13-49ea-a0e0-e3eaf84c98fc</string>
      </void>
      <void property="monto">
       <float>90.0</float>
@@ -389,11 +368,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731378067627</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>c6753bb5-f50a-4f22-b4b1-14019a164158</string>
+      <string>f8ffd372-5069-4fa8-a028-a9a147f24cec</string>
      </void>
      <void property="monto">
       <float>100.0</float>
@@ -492,6 +471,31 @@
      </void>
      <void property="telefono">
       <string>77777</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Usuario">
+     <void property="cedula">
+      <string>1047</string>
+     </void>
+     <void property="contrasena">
+      <string>1047</string>
+     </void>
+     <void property="correo">
+      <string>mari@</string>
+     </void>
+     <void property="direccion">
+      <string>b12</string>
+     </void>
+     <void property="idUsuario">
+      <string>78977922-0e88-49c4-8c18-9e1b0632f0cc</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>Mari</string>
+     </void>
+     <void property="telefono">
+      <string>312</string>
      </void>
     </object>
    </void>

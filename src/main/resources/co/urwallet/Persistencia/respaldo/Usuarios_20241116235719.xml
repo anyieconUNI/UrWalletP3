@@ -73,19 +73,19 @@
    <void method="add">
     <object class="co.urwallet.model.Presupuesto">
      <void property="categoria">
-      <object class="java.lang.Enum" method="valueOf">
+      <object class="java.lang.Enum" id="Categoria0" method="valueOf">
        <class>co.urwallet.model.Categoria</class>
-       <string>Comida</string>
+       <string>Transporte</string>
       </object>
      </void>
      <void property="idPresupuesto">
-      <string>5180532e-16af-4c01-8c1f-0ba98652d764</string>
+      <string>03feff9b-9b7b-4787-aefa-c5027f236802</string>
      </void>
      <void property="montoTotal">
       <float>100.0</float>
      </void>
      <void property="nombre">
-      <string>Pre1</string>
+      <string>pre1</string>
      </void>
     </object>
    </void>
@@ -94,7 +94,7 @@
    <void method="add">
     <object class="co.urwallet.model.Transaccion">
      <void property="categoria">
-      <object class="java.lang.Enum" id="Categoria0" method="valueOf">
+      <object class="java.lang.Enum" id="Categoria1" method="valueOf">
        <class>co.urwallet.model.Categoria</class>
        <string>Entretenimiento</string>
       </object>
@@ -110,11 +110,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478698</long>
+       <long>1731819182843</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>efa5bed4-bd92-4e96-a46e-33da4079d852</string>
+      <string>ffe7d735-0e3f-4c32-813e-e9c5cf2c2cdc</string>
      </void>
      <void property="monto">
       <float>10.0</float>
@@ -130,10 +130,7 @@
    <void method="add">
     <object class="co.urwallet.model.Transaccion">
      <void property="categoria">
-      <object class="java.lang.Enum" id="Categoria1" method="valueOf">
-       <class>co.urwallet.model.Categoria</class>
-       <string>Transporte</string>
-      </object>
+      <object idref="Categoria0"/>
      </void>
      <void property="cuentaDestino">
       <object idref="Cuenta1"/>
@@ -146,11 +143,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478698</long>
+       <long>1731819182845</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>75e46ab5-2eaf-465b-8f29-40869a7b7eeb</string>
+      <string>c448feba-be27-4969-bd69-6d7802eb653a</string>
      </void>
      <void property="monto">
       <float>20.0</float>
@@ -166,7 +163,7 @@
    <void method="add">
     <object class="co.urwallet.model.Transaccion">
      <void property="categoria">
-      <object idref="Categoria0"/>
+      <object idref="Categoria1"/>
      </void>
      <void property="cuentaDestino">
       <object idref="Cuenta1"/>
@@ -179,11 +176,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478698</long>
+       <long>1731819182845</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>fd37f6e8-3079-4a67-a096-b805de6d9af5</string>
+      <string>6a699d0e-0928-4994-8d72-00683247664e</string>
      </void>
      <void property="monto">
       <float>30.0</float>
@@ -196,7 +193,7 @@
    <void method="add">
     <object class="co.urwallet.model.Transaccion">
      <void property="categoria">
-      <object idref="Categoria1"/>
+      <object idref="Categoria0"/>
      </void>
      <void property="cuentaDestino">
       <object idref="Cuenta1"/>
@@ -209,11 +206,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731819182845</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>bee82573-128d-4690-9154-d7fa5ca17609</string>
+      <string>b1dc3af0-4fc7-421c-85f9-b647c0a7a434</string>
      </void>
      <void property="monto">
       <float>40.0</float>
@@ -226,7 +223,7 @@
    <void method="add">
     <object class="co.urwallet.model.Transaccion">
      <void property="categoria">
-      <object idref="Categoria0"/>
+      <object idref="Categoria1"/>
      </void>
      <void property="cuentaDestino">
       <object idref="Cuenta1"/>
@@ -239,11 +236,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731819182845</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>559d1228-8f39-46f3-bd32-07359ea3401a</string>
+      <string>1f9adf71-46ba-4181-9d07-a107f8ffcfdf</string>
      </void>
      <void property="monto">
       <float>50.0</float>
@@ -256,7 +253,7 @@
    <void method="add">
     <object class="co.urwallet.model.Transaccion">
      <void property="categoria">
-      <object idref="Categoria1"/>
+      <object idref="Categoria0"/>
      </void>
      <void property="cuentaDestino">
       <object idref="Cuenta1"/>
@@ -269,11 +266,11 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731819182845</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>c68ae1ba-1209-4d21-b8fe-007fdd78c32f</string>
+      <string>23175a92-6b18-49d4-bc3b-42a6e2389023</string>
      </void>
      <void property="monto">
       <float>60.0</float>
@@ -286,7 +283,7 @@
    <void method="add">
     <object class="co.urwallet.model.Transaccion">
      <void property="categoria">
-      <object idref="Categoria0"/>
+      <object idref="Categoria1"/>
      </void>
      <void property="cuentaDestino">
       <object idref="Cuenta1"/>
@@ -299,47 +296,17 @@
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731819182845</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>15756520-b523-4f5e-a8f6-db84294ef361</string>
+      <string>06628e9d-ba19-406e-9da7-ee079151e512</string>
      </void>
      <void property="monto">
       <float>70.0</float>
      </void>
      <void property="tipoTransaccion">
       <object idref="TipoTransaccion0"/>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="co.urwallet.model.Transaccion">
-     <void property="categoria">
-      <object idref="Categoria1"/>
-     </void>
-     <void property="cuentaDestino">
-      <object idref="Cuenta1"/>
-     </void>
-     <void property="cuentaOrigen">
-      <object idref="Cuenta0"/>
-     </void>
-     <void property="descripcion">
-      <string>Transacción 8</string>
-     </void>
-     <void property="fecha">
-      <object class="java.util.Date">
-       <long>1731821478699</long>
-      </object>
-     </void>
-     <void property="idTransaccion">
-      <string>281b4f8b-90e7-4e69-8a01-fcca0eaf440b</string>
-     </void>
-     <void property="monto">
-      <float>80.0</float>
-     </void>
-     <void property="tipoTransaccion">
-      <object idref="TipoTransaccion1"/>
      </void>
     </object>
    </void>
@@ -355,21 +322,21 @@
       <object idref="Cuenta0"/>
      </void>
      <void property="descripcion">
-      <string>Transacción 9</string>
+      <string>Transacción 8</string>
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731819182845</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>f687e40e-fce5-47f5-9783-2989838a1723</string>
+      <string>d3005c26-d560-47da-bc67-7221a9050832</string>
      </void>
      <void property="monto">
-      <float>90.0</float>
+      <float>80.0</float>
      </void>
      <void property="tipoTransaccion">
-      <object idref="TipoTransaccion0"/>
+      <object idref="TipoTransaccion1"/>
      </void>
     </object>
    </void>
@@ -385,15 +352,45 @@
       <object idref="Cuenta0"/>
      </void>
      <void property="descripcion">
+      <string>Transacción 9</string>
+     </void>
+     <void property="fecha">
+      <object class="java.util.Date">
+       <long>1731819182845</long>
+      </object>
+     </void>
+     <void property="idTransaccion">
+      <string>ac3f0d24-6b0e-4ccf-8ab5-dcdb3f59452f</string>
+     </void>
+     <void property="monto">
+      <float>90.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object idref="Cuenta1"/>
+     </void>
+     <void property="cuentaOrigen">
+      <object idref="Cuenta0"/>
+     </void>
+     <void property="descripcion">
       <string>Transacción 10</string>
      </void>
      <void property="fecha">
       <object class="java.util.Date">
-       <long>1731821478699</long>
+       <long>1731819182845</long>
       </object>
      </void>
      <void property="idTransaccion">
-      <string>c6753bb5-f50a-4f22-b4b1-14019a164158</string>
+      <string>351f8fd8-96f1-44a3-9620-3e8323bac2d0</string>
      </void>
      <void property="monto">
       <float>100.0</float>

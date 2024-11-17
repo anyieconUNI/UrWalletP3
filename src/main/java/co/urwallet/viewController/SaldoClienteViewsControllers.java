@@ -74,19 +74,19 @@ public class SaldoClienteViewsControllers implements Initializable {
     private Button btnReporte;
 
     @FXML
-    TableView<PresupuestoDto> tablePresupuestos;
+    public TableView<PresupuestoDto> tablePresupuestos;
 
     @FXML
-    TableColumn<PresupuestoDto, String> tcNombre;
+    public TableColumn<PresupuestoDto, String> tcNombre;
 
     @FXML
-    TableColumn<PresupuestoDto, String> tcMontoGasto;
+    public TableColumn<PresupuestoDto, String> tcMontoGasto;
 
     @FXML
-    TableColumn<PresupuestoDto, String> tcMontoTotal;
+    public TableColumn<PresupuestoDto, String> tcMontoTotal;
 
     @FXML
-    TableColumn<PresupuestoDto, String> tcCategoria;
+    public TableColumn<PresupuestoDto, String> tcCategoria;
 
     @FXML
     public TextField txtNombre;
@@ -132,7 +132,7 @@ public class SaldoClienteViewsControllers implements Initializable {
             mesSeleccionado = (Mes) cmbMes.getValue();
         });
     }
-    
+
     // Crud presuuesto
     // id, nombre, MontoGasto, montoTotal, Categoria
 
@@ -149,7 +149,7 @@ public class SaldoClienteViewsControllers implements Initializable {
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcMontoGasto.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().montoGasto()).asObject().asString());
         tcMontoTotal.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().montoTotal()).asObject().asString());
-     //   tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria().toString()));
+        tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria().toString()));
     }
 
     private void mostrarInformacionPresupuesto(PresupuestoDto presupuestoSeleccionado) {
@@ -217,7 +217,7 @@ public class SaldoClienteViewsControllers implements Initializable {
 
     public void eliminarPresupuestoAction(ActionEvent actionEvent) {
         try {
-            String idPresupuesto = presupuestoSeleccionado.nombre();
+            String idPresupuesto = presupuestoSeleccionado.idPresupuesto();
 
             // Llamada al método eliminar del controlador
             boolean PresupuestoEliminado = saldoClienteController.eliminarPresupuesto(idPresupuesto);
@@ -240,14 +240,16 @@ public class SaldoClienteViewsControllers implements Initializable {
     private PresupuestoDto construirRegistroPresupuesto() {
         float montoTotal = Float.parseFloat(txtMontoTotal.getText());
         float montoGasto = Float.parseFloat(txtMontoGasto.getText());
+        String cateSelec = cmbCategoria.getValue().toString();
+        Categoria catego = Categoria.valueOf(cateSelec);
 
         String id = UUID.randomUUID().toString();
         return new PresupuestoDto(
                 id,
-                tcNombre.getText(),
+                txtNombre.getText(),
                 montoTotal,
                 montoGasto,
-                (Categoria) cmbCategoria.getValue()
+                catego
         );
     }
 

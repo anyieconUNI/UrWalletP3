@@ -1,6 +1,7 @@
 package co.urwallet.model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class Presupuesto implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -17,9 +18,7 @@ public class Presupuesto implements Serializable {
         this.montoGasto = montoGasto;
         this.categoria = categoria;
     }
-    public Presupuesto(){
-
-    }
+    public Presupuesto(){}
 
     public String getIdPresupuesto() {
         return idPresupuesto;
@@ -59,5 +58,10 @@ public class Presupuesto implements Serializable {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String generaridPresupuesto() {
+        this.idPresupuesto = UUID.randomUUID().toString();
+        return idPresupuesto;
     }
 }
