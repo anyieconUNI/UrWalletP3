@@ -73,6 +73,10 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public void enviarTransferencia(Transaccion transaccionDto) {
         clientController.sendTransaction(transaccionDto);
     }
+    @Override
+    public void enviarSolicitud(String msg){
+        clientController.sendMessageNotify(msg);
+    }
     private void cargarDatosDesdeArchivos() {
         urWallet = new UrWallet();
         try {

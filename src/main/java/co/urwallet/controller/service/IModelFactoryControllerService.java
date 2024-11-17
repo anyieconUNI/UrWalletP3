@@ -15,6 +15,8 @@ import java.util.List;
 
 public interface IModelFactoryControllerService {
 
+    void enviarSolicitud(String msg);
+
     UrWallet getUrWallet();
 
     Cuenta obtenerCuentaPorId(String id);

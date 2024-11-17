@@ -5814,3 +5814,209 @@ nov 16, 2024 4:45:35 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
 INFO: New,Se ha Ingresado a una nueva pantalla,2024-11-16
 nov 16, 2024 4:45:40 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
 INFO: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 4:56:26 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 4:56:26 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 4:56:26 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 4:56:26 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 4:56:29 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 4:56:46 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 4:56:53 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Create,Se han agregado un nuevo usuario,2024-11-16
+nov 16, 2024 4:56:53 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Copy,Se creo una copia en respaldo,2024-11-16
+nov 16, 2024 4:56:56 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 4:57:01 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 4:57:03 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 5:07:09 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 5:07:09 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 5:07:09 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 5:07:09 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 5:07:11 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 5:07:18 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 5:07:20 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 5:07:59 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 5:07:59 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 5:07:59 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 5:07:59 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 5:08:01 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 5:08:04 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 5:08:06 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 5:09:28 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 5:09:28 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 5:09:28 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 5:09:28 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 5:09:30 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 5:09:35 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 5:09:39 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 5:34:09 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 5:34:09 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 5:34:09 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 5:34:09 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 5:34:12 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 5:34:15 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 5:34:17 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 5:59:47 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 5:59:47 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 5:59:47 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 5:59:47 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 5:59:50 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:00:06 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 6:02:49 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 6:02:49 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:02:49 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:02:49 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 6:02:53 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:02:56 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 6:02:58 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:22:07 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 6:22:07 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:22:07 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:22:07 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 6:22:25 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 6:22:25 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:22:25 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:22:25 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 6:22:32 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:22:45 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 6:22:45 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:22:45 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:22:45 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 6:22:46 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:22:52 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 6:22:54 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:23:03 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 6:23:03 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:23:03 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:23:03 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 6:23:06 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:23:12 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:46:48 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 6:46:48 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:46:48 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:46:48 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 6:46:54 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:46:56 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 6:46:56 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:46:56 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:46:56 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 6:47:00 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:47:05 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:47:15 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 6:47:17 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:47:59 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:48:03 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 6:48:05 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:50:37 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 6:50:37 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:50:37 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:50:37 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 6:50:39 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:50:43 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-16
+nov 16, 2024 6:50:44 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:50:54 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado los datos correctamente,2024-11-16
+nov 16, 2024 6:50:54 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:50:54 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: Get,Se han cargado las cuentas,2024-11-16
+nov 16, 2024 6:50:54 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-11-16
+nov 16, 2024 6:50:57 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: New,Se ha Ingresado a una nueva pantalla,2024-11-16
+nov 16, 2024 6:51:03 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFO: New,Se ha Ingresado a una nueva pantalla,2024-11-16

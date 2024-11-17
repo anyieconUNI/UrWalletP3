@@ -3,10 +3,10 @@ package co.urwallet.controller;
 import co.urwallet.mapping.dto.TransaccionDto;
 import co.urwallet.model.Transaccion;
 import co.urwallet.viewController.NotificacionesViewsControllers;
+import co.urwallet.viewController.SolicitudesAdmnViewControllers;
 import co.urwallet.viewController.TransferenciasUsersViewsControllers;
 import co.urwallet.viewController.TransferenciasViewsControllers;
 import javafx.application.Platform;
-import javafx.scene.control.Alert;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -43,12 +43,35 @@ public class ClientController {
         }
     }
 
+    public void sendMessageNotify(String message) {
+        try {
+            if (outputStream != null) {
+                outputStream.writeObject(message);
+                outputStream.flush();
+                System.out.println("Mensaje enviado al servidor: " + message);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void listenForMessages() {
         try (ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream())) {
             Object message;
 
             while ((message = inputStream.readObject()) != null) {
-                if (message instanceof Transaccion) {
+                if (message instanceof String) {
+                    String receivedMessage = (String) message;
+                    System.out.println("Mensaje recibido del servidor: " + receivedMessage);
+
+                    // Actualizar las vistas con el mensaje recibido
+                    Platform.runLater(() -> {
+                        SolicitudesAdmnViewControllers solicitudesAdmnViewControllers = SolicitudesAdmnViewControllers.getInstance();
+                        if (solicitudesAdmnViewControllers != null) {
+                            solicitudesAdmnViewControllers.recibirSolicitud(receivedMessage);
+                        }
+                    });
+                } else if (message instanceof Transaccion) {
                     Transaccion transaccion = (Transaccion) message;
                     TransaccionDto transaccionDto = convertirTransaccionADto(transaccion);
 
@@ -56,18 +79,19 @@ public class ClientController {
                     Platform.runLater(() -> {
                         ModelFactoryController.getInstance().agregarTrasaccionDeServidor(transaccionDto);
 
-
                         TransferenciasUsersViewsControllers viewController = TransferenciasUsersViewsControllers.getInstance();
                         if (viewController != null) {
                             viewController.actualizarTablaTransacciones(transaccionDto);
                         }
-                        TransferenciasViewsControllers AsminviewController = TransferenciasViewsControllers.getInstance();
-                        if (AsminviewController != null) {
-                            AsminviewController.actualizarTablaTransacciones(transaccionDto);
+
+                        TransferenciasViewsControllers adminViewController = TransferenciasViewsControllers.getInstance();
+                        if (adminViewController != null) {
+                            adminViewController.actualizarTablaTransacciones(transaccionDto);
                         }
-                        NotificacionesViewsControllers notificacionesViewsControllers = NotificacionesViewsControllers.getInstance();
-                        if (notificacionesViewsControllers != null) {
-                            notificacionesViewsControllers.actualizarNoti(transaccionDto);
+
+                        NotificacionesViewsControllers notificacionesController = NotificacionesViewsControllers.getInstance();
+                        if (notificacionesController != null) {
+                            notificacionesController.actualizarNoti(transaccionDto);
                         }
                     });
 
@@ -78,6 +102,7 @@ public class ClientController {
             System.out.println("Conexión con el servidor cerrada.");
         }
     }
+
     private TransaccionDto convertirTransaccionADto(Transaccion transaccion) {
         return new TransaccionDto(
                 transaccion.getIdTransaccion(),

@@ -43,6 +43,12 @@ public class ServerMain {
 
                     // Retransmitir a todos los clientes
                     broadcastTransaction(transaccion, outputStream);
+                } else if (message instanceof String) {
+                    String receivedMessage = (String) message;
+                    System.out.println("Mensaje recibido: " + receivedMessage);
+
+                    // Retransmitir el mensaje a todos los clientes
+                    broadcastMessage(receivedMessage, outputStream);
                 }
             }
         } catch (Exception e) {
@@ -62,6 +68,19 @@ public class ServerMain {
             if (!client.equals(sender)) {
                 try {
                     client.writeObject(transaccion);
+                    client.flush();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private static void broadcastMessage(String message, ObjectOutputStream sender) {
+        for (ObjectOutputStream client : clients) {
+            if (!client.equals(sender)) {
+                try {
+                    client.writeObject(message);
                     client.flush();
                 } catch (Exception e) {
                     e.printStackTrace();

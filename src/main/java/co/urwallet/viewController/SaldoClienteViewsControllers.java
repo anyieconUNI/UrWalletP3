@@ -1,12 +1,50 @@
 package co.urwallet.viewController;
 
+import co.urwallet.controller.CuentaControllers;
+import co.urwallet.mapping.dto.CuentaDto;
+import co.urwallet.mapping.dto.TransaccionDto;
+import co.urwallet.model.Cuenta;
+import co.urwallet.model.Usuario;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
-public class SaldoClienteViewsControllers {
+import java.util.List;
+import java.util.stream.Collectors;
 
+public class SaldoClienteViewsControllers {
+    @FXML
+    public TableView<CuentaDto> tableCuentaUser;
+    @FXML
+    public TableColumn<CuentaDto, String> tcNumeroCuenta;
+    @FXML
+    public TableColumn<CuentaDto, String>  tcNombreCuenta;
+    @FXML
+    public TableColumn<CuentaDto, String>  tcTipo;
+    @FXML
+    public TableColumn<CuentaDto, Float>  tcSaldo;
+    @FXML
+    public TextField txtNombreBlanco;
+    ObservableList<CuentaDto> listaCuentaDto = FXCollections.observableArrayList();
+    CuentaControllers cuentaControllers;
+    private Usuario usuarioLogeado;
+    private static SaldoClienteViewsControllers instance;
+    public SaldoClienteViewsControllers() {
+        if (instance == null) {
+            instance = this;
+        }
+    }
+
+    public static SaldoClienteViewsControllers getInstance() {
+        return instance;
+    }
+    @FXML
+    public Label Saldo;
     @FXML
     private AnchorPane panelSaldo;
 
@@ -24,9 +62,30 @@ public class SaldoClienteViewsControllers {
 
     @FXML
     private void initialize() {
-        mostrarPanelSaldo(); // Muestra el panel de saldo al iniciar
+        cuentaControllers = new CuentaControllers();
     }
-
+    public void setUsuario(Usuario user) {
+        this.usuarioLogeado = user;
+        actualizarSaldo();
+        initDataBinding();
+        obtenerCuenta();
+        tableCuentaUser.setItems(listaCuentaDto);
+        mostrarPanelSaldo();
+    }
+    private void obtenerCuenta() {
+        List<CuentaDto> todasLasCuentas = cuentaControllers.obtenerCuenta();
+        List<CuentaDto> cuentasUsers = todasLasCuentas.stream()
+                .filter(cuentas -> usuarioLogeado.getCuentasBancarias().stream()
+                        .anyMatch(cuentaBancaria -> cuentaBancaria.getNumeCuenta().equals(cuentas.numeCuenta())))
+                .collect(Collectors.toList());
+        listaCuentaDto.addAll(cuentasUsers);
+    }
+    private void initDataBinding() {
+        tcNumeroCuenta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().numeCuenta()));
+        tcNombreCuenta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombreCuenta()));
+        tcTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipoCuenta().toString()));
+        tcSaldo.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().saldo()).asObject());
+    }
     @FXML
     private void mostrarPanelSaldo() {
         panelSaldo.setVisible(true);
@@ -38,5 +97,31 @@ public class SaldoClienteViewsControllers {
         panelPresupuesto.setVisible(true);
         panelSaldo.setVisible(false);
     }
+    private void actualizarSaldo() {
+        if (usuarioLogeado != null) {
+            double saldoTotal = usuarioLogeado.getCuentasBancarias().stream()
+                    .mapToDouble(Cuenta::getSaldo)
+                    .sum();
+
+            Saldo.setText(String.format("Saldo Total: $ %.2f", saldoTotal));
+        } else {
+            Saldo.setText("Usuario no logueado.");
+        }
+    }
+    public void solicitarCuenta(ActionEvent actionEvent) {
+        if(txtNombreBlanco.getText() != null){
+            String mensaje = String.format(
+                    "Tienes una solicitud DE CUENTA:\nUsuario: %s\nCC: %s\nNombre de banco: %s",
+                    usuarioLogeado.getNombreCompleto(),
+                    usuarioLogeado.getCedula(),
+                    txtNombreBlanco.getText()
+            );
+            cuentaControllers.enviarSolicitud(mensaje);
+        }
+    }
+
+    public void buscarCuenta(ActionEvent actionEvent) {
+    }
+
 
 }

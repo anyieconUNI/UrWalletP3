@@ -4,6 +4,9 @@ import co.urwallet.controller.service.CuentaControllersService;
 import co.urwallet.controller.service.IModelFactoryControllerService;
 import co.urwallet.mapping.dto.CuentaDto;
 import co.urwallet.mapping.dto.UsuarioDto;
+import co.urwallet.model.Usuario;
+import co.urwallet.viewController.SaldoClienteViewsControllers;
+import co.urwallet.viewController.SolicitudesAdmnViewControllers;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
@@ -37,6 +40,14 @@ public class CuentaControllers implements CuentaControllersService {
     @Override
     public void cerrarVentana(ActionEvent actionEvent) {
         modelFactoryService.cerrarVentana(actionEvent);
+    }
+
+    public void setUserSaldo(Usuario user){
+        SaldoClienteViewsControllers.getInstance().setUsuario(user);
+    }
+    public void enviarSolicitud(String mensaje){
+      System.out.println(mensaje);
+      modelFactoryService.enviarSolicitud(mensaje);
     }
 }
 

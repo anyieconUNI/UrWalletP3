@@ -15,10 +15,12 @@ public class PrincipalUserViewsControllers {
     AsistenteControllers asistenteControllers = new AsistenteControllers();
     TrasaccionControllers userTarnsfere = new TrasaccionControllers();
     NoficaControllers noficaControllers = new NoficaControllers();
+    CuentaControllers cuentaControllers = new CuentaControllers();
     public void setUsuarioLogueado(Usuario usuarioLogueado) {
         home.setUsers(usuarioLogueado);
         asistenteControllers.setUsers(usuarioLogueado);
         userTarnsfere.setUsers(usuarioLogueado);
         noficaControllers.setUsers(usuarioLogueado);
+        cuentaControllers.setUserSaldo(usuarioLogueado);
     }
 }

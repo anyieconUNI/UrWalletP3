@@ -9,13 +9,13 @@
 <AnchorPane prefHeight="528.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.SaldoClienteViewsControllers">
    <children>
       <!-- Panel de navegación a la izquierda -->
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="561.0" layoutY="-11.0" stroke="#00093c" strokeType="INSIDE" width="200.0" />
-      <Button fx:id="btnSaldo" layoutY="23.0" mnemonicParsing="false" onAction="#mostrarPanelSaldo" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #00093c;" text="Saldo" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="561.0" layoutY="-11.0" stroke="#00093c" strokeType="INSIDE" width="178.0" />
+      <Button fx:id="btnSaldo" layoutY="23.0" mnemonicParsing="false" onAction="#mostrarPanelSaldo" prefHeight="50.0" prefWidth="178.0" style="-fx-background-color: #00093c;" text="Saldo" textFill="WHITE">
          <font>
             <Font name="Candara" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnPresupuesto" layoutX="-1.0" layoutY="84.0" mnemonicParsing="false" onAction="#mostrarPanelPresupuesto" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #00093c;" text="Presupuesto" textFill="WHITE">
+      <Button fx:id="btnPresupuesto" layoutX="-1.0" layoutY="84.0" mnemonicParsing="false" onAction="#mostrarPanelPresupuesto" prefHeight="50.0" prefWidth="178.0" style="-fx-background-color: #00093c;" text="Presupuesto" textFill="WHITE">
          <font>
             <Font name="Candara" size="18.0" />
          </font>
@@ -32,23 +32,31 @@
       </ImageView>
 
       <!-- Panel Saldo -->
-      <AnchorPane fx:id="panelSaldo" layoutX="200.0" layoutY="50.0" prefHeight="350.0" prefWidth="380.0" visible="true">
-         <Label layoutX="10.0" layoutY="10.0" text="Saldo Actual">
+      <AnchorPane fx:id="panelSaldo" layoutX="178.0" layoutY="5.0" prefHeight="540.0" prefWidth="424.0" visible="true">
+         <Label fx:id="Saldo" layoutX="25.0" layoutY="80.0" text="Saldo Actual">
             <font>
                <Font name="Candara" size="14.0" />
             </font></Label>
-         <TableView layoutX="32.0" layoutY="57.0" prefHeight="289.0" prefWidth="345.0" style="-fx-border-color: #00093c;">
-           <columns>
-             <TableColumn prefWidth="110.4000244140625" text="Num Cuenta" />
-             <TableColumn prefWidth="110.0" text="Nombre Cuenta" />
-               <TableColumn prefWidth="126.80001831054688" text="Saldo" />
-           </columns>
-         </TableView>
-         <Label layoutX="233.0" layoutY="408.0" text="Saldo Total: ">
+         <Button layoutX="257.0" layoutY="118.0" mnemonicParsing="false" onAction="#solicitarCuenta" prefHeight="27.0" prefWidth="113.0" style="-fx-background-color: #00093c;" text="Solicitar Cuenta" textFill="WHITE">
             <font>
                <Font name="Candara" size="14.0" />
             </font>
-         </Label>
+         </Button>
+         <Button layoutX="158.0" layoutY="118.0" mnemonicParsing="false" onAction="#buscarCuenta" prefHeight="27.0" prefWidth="93.0" style="-fx-background-color: #00093c;" text="Buscar" textFill="WHITE">
+            <font>
+               <Font name="Candara" size="14.0" />
+            </font>
+         </Button>
+         <TextField fx:id="txtNombreBlanco" layoutX="25.0" layoutY="118.0" minHeight="27.0" prefHeight="27.0" prefWidth="127.0" promptText="Escriba name Banco" style="-fx-border-color: #187173;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+         <TableView fx:id="tableCuentaUser" layoutX="8.0" layoutY="170.0" prefHeight="289.0" prefWidth="406.0" style="-fx-border-color: #00093c;">
+           <columns>
+              <TableColumn fx:id="tcNumeroCuenta" prefWidth="100.0" text="Número/cuenta" />
+              <TableColumn fx:id="tcNombreCuenta" minWidth="0.0" prefWidth="106.0" text="Nombre/Cuenta" />
+              <TableColumn fx:id="tcTipo" prefWidth="87.0" text="Tipo/Cuenta" />
+              <TableColumn fx:id="tcSaldo" prefWidth="332.0" text="Saldo" />
+           </columns>
+         </TableView>
       </AnchorPane>
 
       <!-- Panel Presupuesto -->

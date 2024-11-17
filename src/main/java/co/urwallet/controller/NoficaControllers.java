@@ -4,6 +4,7 @@ import co.urwallet.controller.service.IModelFactoryControllerService;
 import co.urwallet.model.Usuario;
 import co.urwallet.viewController.AsistenteUsersViewControllers;
 import co.urwallet.viewController.NotificacionesViewsControllers;
+import co.urwallet.viewController.SolicitudesAdmnViewControllers;
 
 public class NoficaControllers {
     IModelFactoryControllerService modelFactoryService;
@@ -16,4 +17,5 @@ public class NoficaControllers {
         NotificacionesViewsControllers.getInstance().setUsuarioLogueado(user);
         System.out.println("AQUIIIIIIIIIIII SI ENTRAAAAAAAAAAAAAA");
     }
+
 }
