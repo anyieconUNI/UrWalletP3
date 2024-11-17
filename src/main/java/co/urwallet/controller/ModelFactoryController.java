@@ -2,19 +2,10 @@ package co.urwallet.controller;
 
 import co.urwallet.UrWalletApp;
 import co.urwallet.controller.service.IModelFactoryControllerService;
-import co.urwallet.exceptions.CuentaException;
-import co.urwallet.exceptions.LoginException;
-import co.urwallet.exceptions.TransaccionException;
-import co.urwallet.exceptions.UsuarioException;
-import co.urwallet.mapping.dto.CuentaDto;
-import co.urwallet.mapping.dto.LoginDto;
-import co.urwallet.mapping.dto.TransaccionDto;
-import co.urwallet.mapping.dto.UsuarioDto;
+import co.urwallet.exceptions.*;
+import co.urwallet.mapping.dto.*;
 import co.urwallet.mapping.mappers.UrWalletMapper;
-import co.urwallet.model.Cuenta;
-import co.urwallet.model.Transaccion;
-import co.urwallet.model.UrWallet;
-import co.urwallet.model.Usuario;
+import co.urwallet.model.*;
 import co.urwallet.utils.Persistencia;
 import co.urwallet.utils.UrWalletUtils;
 import co.urwallet.viewController.AsistenteUsersViewControllers;
@@ -141,6 +132,10 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public List<CuentaDto> obtenerCuentas() {
         return mapper.getCuentaDto(urWallet.getListaCuentas());
     }
+
+    @Override
+    public List<PresupuestoDto> obtenerPresupuestos() {
+        return mapper.getPresupuestosDto(urWallet.getListaPresupuestos());}
 
     @Override
     public List<TransaccionDto> obtenerTrasaccion() {
@@ -338,50 +333,6 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         }
     }
 
-    public FXMLLoader navegarVentana(String nombreArchivoFxml, String tituloVentana, Usuario usuarioLogueado) {
-        FXMLLoader loader = null;
-        try {
-            URL fxmlLocation = UrWalletApp.class.getResource(nombreArchivoFxml);
-
-            if (fxmlLocation == null) {
-                guardaRegistroLog("No se pudo localizar el archivo FXML", 2, "Warning");
-                throw new IOException("No se pudo localizar el archivo FXML: " + nombreArchivoFxml);
-            }
-
-            loader = new FXMLLoader(fxmlLocation);
-            Parent root = loader.load();
-
-            // Obtener el controlador de la siguiente ventana
-            Object controller = loader.getController();
-
-            // Si el controlador es de la pantalla HomeUser, le pasamos el usuario logueado
-            if (controller instanceof PrincipalUserViewsControllers) {
-                ((PrincipalUserViewsControllers) controller).setUsuarioLogueado(usuarioLogueado);
-            }
-//            if (controller instanceof HomeViewsUsers) {
-//                ((HomeViewsUsers) controller).setUsuarioLogueado(usuarioLogueado);
-//            }
-//            if (controller instanceof AsistenteUsersViewControllers) {
-//                ((AsistenteUsersViewControllers) controller).setUsuarioLogueado(usuarioLogueado);
-//            }
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setTitle(tituloVentana);
-            stage.show();
-            guardaRegistroLog("Se ha Ingresado a una nueva pantalla", 1, "New");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            mostrarMensaje("Error al cargar la ventana", "No se pudo cargar " + nombreArchivoFxml + ": " + e.getMessage(), Alert.AlertType.ERROR);
-        } catch (Exception e) {
-            e.printStackTrace();
-            mostrarMensaje("Error inesperado", "Ocurrió un error al cargar la ventana: " + e.getMessage(), Alert.AlertType.ERROR);
-        }
-        return loader;
-    }
-
     @Override
     public boolean asignarCuentaAUsuario(String cedulaUsuario, String numeroCuenta) {
 
@@ -428,6 +379,104 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public void cerrarVentana(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    public boolean agregarPresupuesto(PresupuestoDto presupuestoDto) {
+        try {
+            System.out.println("MODELLLL" + presupuestoDto.idPresupuesto());
+            if (!urWallet.verificarPresupuestoExistente(presupuestoDto.idPresupuesto())) {
+                Presupuesto presupuesto = mapper.presupuestoDtoToPresupuesto(presupuestoDto);
+                System.out.println("MODELLLL22" + presupuesto.getIdPresupuesto());
+                getUrWallet().agregarPresupuesto(presupuesto);
+                agregarDatosGenerales();
+                guardaRegistroLog("Se ha agregado un nuevo cuenta", 1, "Create");
+                copiarArchivos();
+            }
+            return true;
+        } catch (PresupuestoException e) {
+            e.getMessage();
+            guardaRegistroLog("No se ha agregado un nuevo cuenta", 2, "Warning");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean actualizarPresupuesto(String idPresupuesto, PresupuestoDto presupuestoDto) {
+        try {
+            System.out.println("actualizar" + idPresupuesto);
+            Presupuesto presupuesto = mapper.presupuestoDtoToPresupuesto(presupuestoDto);
+            System.out.println("MQAPERRRR ID" + presupuesto.getIdPresupuesto());
+            getUrWallet().actualizarPresupuesto(idPresupuesto, presupuesto);
+            agregarDatosGenerales();
+            copiarArchivos();
+            guardaRegistroLog("Se ha actualizado el presupuesto", 1, "Update");
+            return true;
+        } catch (PresupuestoException e) {
+            e.getMessage();
+            guardaRegistroLog("No se pudo actualizar el dato", 2, "Warning");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean eliminarPresupuesto(String idPresupuesto) {
+        boolean flagExiste = false;
+        try {
+            flagExiste = getUrWallet().eliminarPresupuesto(idPresupuesto);
+            agregarDatosGenerales();
+            guardaRegistroLog("Se ha eliminado el presupuesto", 1, "Delete");
+            //copiarArchivos();
+        } catch (PresupuestoException e) {
+            guardaRegistroLog("No se pudo eliminar el presupuesto", 2, "Warning");
+            throw new RuntimeException(e);
+        }
+        return flagExiste;
+    }
+
+
+    public FXMLLoader navegarVentana(String nombreArchivoFxml, String tituloVentana, Usuario usuarioLogueado) {
+        FXMLLoader loader = null;
+        try {
+            URL fxmlLocation = UrWalletApp.class.getResource(nombreArchivoFxml);
+
+            if (fxmlLocation == null) {
+                guardaRegistroLog("No se pudo localizar el archivo FXML", 2, "Warning");
+                throw new IOException("No se pudo localizar el archivo FXML: " + nombreArchivoFxml);
+            }
+
+            loader = new FXMLLoader(fxmlLocation);
+            Parent root = loader.load();
+
+            // Obtener el controlador de la siguiente ventana
+            Object controller = loader.getController();
+
+            // Si el controlador es de la pantalla HomeUser, le pasamos el usuario logueado
+            if (controller instanceof PrincipalUserViewsControllers) {
+                ((PrincipalUserViewsControllers) controller).setUsuarioLogueado(usuarioLogueado);
+            }
+//            if (controller instanceof HomeViewsUsers) {
+//                ((HomeViewsUsers) controller).setUsuarioLogueado(usuarioLogueado);
+//            }
+//            if (controller instanceof AsistenteUsersViewControllers) {
+//                ((AsistenteUsersViewControllers) controller).setUsuarioLogueado(usuarioLogueado);
+//            }
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle(tituloVentana);
+            stage.show();
+            guardaRegistroLog("Se ha Ingresado a una nueva pantalla", 1, "New");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarMensaje("Error al cargar la ventana", "No se pudo cargar " + nombreArchivoFxml + ": " + e.getMessage(), Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            e.printStackTrace();
+            mostrarMensaje("Error inesperado", "Ocurrió un error al cargar la ventana: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return loader;
     }
 
 }

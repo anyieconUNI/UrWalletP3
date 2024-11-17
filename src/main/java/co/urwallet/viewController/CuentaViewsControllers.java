@@ -65,6 +65,7 @@ public class CuentaViewsControllers {
         tcTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipoCuenta().toString()));
         tcSaldo.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().saldo()).asObject());
     }
+
     private void mostrarInformacionCuenta(CuentaDto cuentaSelecc) {
         if(cuentaSelecc != null){
             txtNumeroCuenta.setText(cuentaSelecc.numeCuenta());
@@ -97,7 +98,7 @@ public class CuentaViewsControllers {
                 asignarCuentaUserControllers.obtenerCuentas();
             }
             else{
-                cuentaControllers.mostrarMensaje("Los datos ingresados son invalidos", "Usuario no creado", Alert.AlertType.ERROR);
+                cuentaControllers.mostrarMensaje("Los datos ingresados son invalidos", "Cuenta no creado", Alert.AlertType.ERROR);
             }
         }
     }

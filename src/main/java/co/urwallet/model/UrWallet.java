@@ -1,6 +1,7 @@
 package co.urwallet.model;
 
 import co.urwallet.exceptions.CuentaException;
+import co.urwallet.exceptions.PresupuestoException;
 import co.urwallet.exceptions.TransaccionException;
 import co.urwallet.exceptions.UsuarioException;
 import co.urwallet.model.Services.IUrWalletService;
@@ -11,35 +12,41 @@ import java.util.ArrayList;
 
 @Getter
 public class UrWallet implements IUrWalletService , Serializable {
+
     private static final long serialVersionUID = 1L;
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     ArrayList<Cuenta> listaCuentas = new ArrayList<>();
     ArrayList<Transaccion> listaTransaccion = new ArrayList<>();
+    ArrayList<Presupuesto> listaPresupuestos = new ArrayList<>();
 
-    //
-    public UrWallet() {
-    }
+
+    public UrWallet() {}
 
     public ArrayList<Usuario> getListaUsers() {
         return listaUsuarios;
     }
-    public ArrayList<Cuenta> getListaCuentas() {
-        return listaCuentas;
-    }
+
     public  void setListaUsers(ArrayList<Usuario> listaClientes){
         this.listaUsuarios = listaUsuarios;
     }
+
+    public ArrayList<Cuenta> getListaCuentas() {
+        return listaCuentas;
+    }
+
     public void setListaCuentas(ArrayList<Cuenta> listaCuentas) {
         this.listaCuentas = listaCuentas;
     }
+
+    public ArrayList<Presupuesto> getListaPresupuestos() {return listaPresupuestos;}
+
+    public void setListaPresupuestos(ArrayList<Presupuesto> listaPresupuestos) {}
 
     public ArrayList<Transaccion> getListaTransaccion() {
         return listaTransaccion;
     }
 
-    public void setListaTransaccion(ArrayList<Transaccion> listaTransaccion) {
-        this.listaTransaccion = listaTransaccion;
-    }
+    public void setListaTransaccion(ArrayList<Transaccion> listaTransaccion) {this.listaTransaccion = listaTransaccion;}
 
     public void agregarUsuario(Usuario nuevoUsuario) throws UsuarioException {
         getListaUsers().add(nuevoUsuario);
@@ -161,6 +168,7 @@ public class UrWallet implements IUrWalletService , Serializable {
             throw new CuentaException("Error inesperado al actualizar el usuario");
         }
     }
+
     @Override
     public boolean eliminarCuenta(String id) throws CuentaException {
         try {
@@ -188,6 +196,7 @@ public class UrWallet implements IUrWalletService , Serializable {
         }
         return cuentaEncontrado;
     }
+
     @Override
     public boolean verificarCuentaExistente(String idCuenta) throws CuentaException {
         if (cuentaExiste(idCuenta)) {
@@ -196,6 +205,7 @@ public class UrWallet implements IUrWalletService , Serializable {
             return false;
         }
     }
+
     public boolean cuentaExiste(String id) {
         boolean cuentaEncontrado = false;
         for (Cuenta cuenta : getListaCuentas()) {
@@ -210,15 +220,18 @@ public class UrWallet implements IUrWalletService , Serializable {
     public void agregarTransaccion(Transaccion nuevaTransaccion) throws TransaccionException {
         getListaTransaccion().add(nuevaTransaccion);
     }
+
     public void agregarPrecioACuenta(float precio, Cuenta cuenta){
         float saldoActual = cuenta.getSaldo();
         cuenta.setSaldo(saldoActual+precio);
         System.out.println("ACTUALIZA");
     }
+
     public void restarPrecioACuenta(float precio, Cuenta cuenta){
         float saldoActual = cuenta.getSaldo();
         cuenta.setSaldo(saldoActual-precio);
     }
+
     @Override
     public boolean verificarCuentaExistenteTrans(String idCuenta) throws TransaccionException {
         if (!cuentaExiste(idCuenta)) {
@@ -227,6 +240,7 @@ public class UrWallet implements IUrWalletService , Serializable {
             return false;
         }
     }
+
     public Usuario obtenerUsuarioPorCedula(String cedula) {
         for (Usuario usuario : listaUsuarios) {
             if (usuario.getCedula().equalsIgnoreCase(cedula)) {
@@ -246,5 +260,80 @@ public class UrWallet implements IUrWalletService , Serializable {
             }
         }
         return false;
+    }
+
+    // Métodos de presupuesto
+
+    public void agregarPresupuesto(Presupuesto nuevoPresupuesto){
+        getListaPresupuestos().add(nuevoPresupuesto);
+    }
+
+    public Presupuesto obtenerPresupuesto(String idPresupuesto) {
+        Presupuesto presupuestoEncontrado = null;
+        for (Presupuesto presupuesto : getListaPresupuestos()) {
+            if (presupuesto.getIdPresupuesto().equalsIgnoreCase(idPresupuesto)) {
+                presupuestoEncontrado = presupuesto;
+                break;
+            }
+        }
+        return presupuestoEncontrado;
+    }
+
+    public boolean actualizarPresupuesto(String idPresupuesto, Presupuesto presupuesto) throws PresupuestoException {
+        try {
+            System.out.print("AQUIIIIIIIIIIIIIII" + idPresupuesto);
+            Presupuesto presupuestoActual = obtenerPresupuesto(idPresupuesto);
+
+            if (presupuestoActual == null) {
+                throw new PresupuestoException("El presupuesto no existe");
+            } else {
+                presupuestoActual.setNombre(presupuesto.getNombre());
+                presupuestoActual.setMontoTotal(presupuesto.getMontoTotal());
+                presupuestoActual.setMontoGasto(presupuesto.getMontoGasto());
+                presupuestoActual.setCategoria(presupuesto.getCategoria());
+                return true;
+            }
+        } catch (PresupuestoException e) {
+            System.err.println("Error en actualizarPresupuesto: " + e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            System.err.println("Error inesperado: " + e.getMessage());
+            throw new PresupuestoException("Error inesperado al actualizar el presupuesto");
+        }
+    }
+
+    public boolean eliminarPresupuesto(String idPresupuesto) throws PresupuestoException {
+        try {
+            Presupuesto presupuesto = obtenerPresupuesto(idPresupuesto);
+
+            if (presupuesto == null) {
+                throw new PresupuestoException("El presupuesto no existe");
+            } else {
+                getListaPresupuestos().remove(presupuesto);
+                return true;
+            }
+        } catch (PresupuestoException e) {
+            System.err.println("Error en eliminar : " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public boolean verificarPresupuestoExistente(String idPresupuesto) throws PresupuestoException {
+        if (presupuestoExiste(idPresupuesto)) {
+            throw new PresupuestoException("El presupuesto ya existe");
+        } else {
+            return false;
+        }
+    }
+
+    public boolean presupuestoExiste(String idPresupuesto) {
+        boolean presupuestoEncontrado = false;
+        for (Presupuesto presupuesto : getListaPresupuestos()) {
+            if (presupuesto.getIdPresupuesto().equalsIgnoreCase(idPresupuesto)) {
+                presupuestoEncontrado = true;
+                break;
+            }
+        }
+        return presupuestoEncontrado;
     }
 }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -59,41 +61,50 @@
                <Font name="Candara" size="14.0" />
             </font></Label>
 
-         <TableView layoutX="67.0" layoutY="42.0" prefHeight="290.0" prefWidth="346.0" style="-fx-border-color: #00093c;">
+         <TableView fx:id="tablePresupuestos" layoutX="67.0" layoutY="42.0" prefHeight="290.0" prefWidth="346.0" style="-fx-border-color: #00093c;">
             <columns>
-               <TableColumn prefWidth="83.20002746582031" text="Nombre" />
-               <TableColumn prefWidth="89.39996337890625" text="Monto Límite" />
-               <TableColumn prefWidth="94.20001220703125" text="Monto Total" />
+               <TableColumn fx:id="tcNombre" prefWidth="83.20002746582031" text="Nombre" />
+               <TableColumn fx:id="tcMontoGasto" prefWidth="89.39996337890625" text="Monto Gasto" />
+               <TableColumn fx:id="tcMontoTotal" prefWidth="94.20001220703125" text="Monto Total" />
                <TableColumn prefWidth="76.20001220703125" text="Categoria" />
             </columns>
          </TableView>
-         <Button layoutX="94.0" layoutY="440.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #00093c;" text="Agregar" textFill="WHITE">
+         <Button fx:id="btnAgregar" layoutX="67.0" layoutY="443.0" mnemonicParsing="false" onAction="#agregarPresupuestoAction" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #00093c;" text="Agregar" textFill="WHITE">
             <font>
                <Font name="Candara" size="14.0" />
             </font></Button>
-         <Button layoutX="200.0" layoutY="441.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #00093c;" text="Actualizar" textFill="WHITE">
+         <Button fx:id="btnActualizar" layoutX="160.0" layoutY="445.0" mnemonicParsing="false" onAction="#actualizarPresupuestoAction" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #00093c;" text="Actualizar" textFill="WHITE">
             <font>
                <Font size="14.0" />
             </font></Button>
-         <Button layoutX="308.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #00093c;" text="Limpiar" textFill="WHITE">
+         <Button fx:id="btnLimpiar" layoutX="253.0" layoutY="446.0" mnemonicParsing="false" onAction="#limpiarPresupuestoAction" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #00093c;" text="Limpiar" textFill="WHITE">
             <font>
                <Font size="14.0" />
             </font>
          </Button>
-         <ComboBox layoutX="67.0" layoutY="391.0" prefHeight="27.0" prefWidth="151.0" promptText="Categoría" style="-fx-background-color: white; -fx-border-color: #00093c;" />
-         <TextField layoutX="67.0" layoutY="353.0" prefHeight="27.0" prefWidth="151.0" promptText="Nombre" style="-fx-background-color: white; -fx-border-color: #00093c;">
+         <ComboBox fx:id="cmbCategoria" layoutX="164.0" layoutY="392.0" prefHeight="27.0" prefWidth="151.0" promptText="Categoría" style="-fx-background-color: white; -fx-border-color: #00093c;">
+            <items>
+               <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Comida" />
+                  <String fx:value="Transporte" />
+                  <String fx:value="Entretenimiento" />
+               </FXCollections>
+            </items>
+         </ComboBox>
+         <TextField fx:id="txtNombre" layoutX="67.0" layoutY="353.0" prefHeight="27.0" prefWidth="151.0" promptText="Nombre" style="-fx-background-color: white; -fx-border-color: #00093c;">
             <font>
                <Font name="Candara" size="12.0" />
             </font>
          </TextField>
-         <TextField layoutX="264.0" layoutY="391.0" prefHeight="26.0" prefWidth="151.0" promptText="Monto Total" style="-fx-background-color: White; -fx-border-color: #00093c;">
+         <TextField fx:id="txtMontoTotal" layoutX="261.0" layoutY="353.0" prefHeight="26.0" prefWidth="151.0" promptText="Monto Total" style="-fx-background-color: White; -fx-border-color: #00093c;">
             <font>
                <Font name="Candara" size="12.0" />
             </font></TextField>
-         <TextField layoutX="264.0" layoutY="353.0" prefHeight="26.0" prefWidth="151.0" promptText="Monto Límite" style="-fx-background-color: white; -fx-border-color: #00093c;">
+         <Button fx:id="btnEliminar" layoutX="362.0" layoutY="446.0" mnemonicParsing="false" onAction="#eliminarPresupuestoAction" prefHeight="18.0" prefWidth="67.0" style="-fx-background-color: #ff6a6a;" text="Eliminar" textFill="WHITE">
             <font>
-               <Font name="Candara" size="12.0" />
-            </font></TextField>
+               <Font name="Candara" size="14.0" />
+            </font>
+         </Button>
          </AnchorPane>
 
    </children>

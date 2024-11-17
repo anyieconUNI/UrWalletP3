@@ -1,7 +1,9 @@
 package co.urwallet.mapping.mappers;
 import co.urwallet.mapping.dto.CuentaDto;
+import co.urwallet.mapping.dto.PresupuestoDto;
 import co.urwallet.mapping.dto.TransaccionDto;
 import co.urwallet.model.Cuenta;
+import co.urwallet.model.Presupuesto;
 import co.urwallet.model.Transaccion;
 import co.urwallet.model.Usuario;
 import org.mapstruct.IterableMapping;
@@ -26,14 +28,18 @@ public interface UrWalletMapper {
     // Mapea una lista de Usuarios a una lista de UsuarioDto
     List<UsuarioDto> getUsuariosDto(List<Usuario> listaUsuarios);
 
-    //////////////////////////
+
     CuentaDto cuentaToCuentaDto(Cuenta cuenta);
 
-    // Mapea de UsuarioDto a Usuario
     Cuenta cuentaToCuentaDto(CuentaDto cuentaDto);
 
-    // Mapea una lista de Usuarios a una lista de UsuarioDto
+    PresupuestoDto presupuestoToPresupuestoDto(Presupuesto presupuesto);
+
+    Presupuesto presupuestoDtoToPresupuesto(PresupuestoDto presupuestoDto);
+
+    List<PresupuestoDto>getPresupuestosDto(List<Presupuesto> listaPresupuestos);
     List<CuentaDto> getCuentaDto(List<Cuenta> listaCuentas);
+
     // Métodos personalizados para mapear entre Cuenta y String
     default String map(Cuenta cuenta) {
         return cuenta != null ? cuenta.getNumeCuenta() : null;
