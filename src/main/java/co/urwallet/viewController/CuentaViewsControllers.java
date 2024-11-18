@@ -135,7 +135,8 @@ public class CuentaViewsControllers {
                     cuentaActualizada.numeCuenta(),
                     cuentaActualizada.nombreCuenta(),
                     cuentaActualizada.tipoCuenta(),
-                    cuentaActualizada.saldo()
+                    cuentaActualizada.saldo(),
+                    cuentaActualizada.clienteId()
             );
 
             boolean resultado = cuentaControllers.actualizarCuenta(cuentaSeleccionada.numeCuenta(),cuentaActualizada);
@@ -163,7 +164,8 @@ public class CuentaViewsControllers {
                 txtNumeroCuenta.getText(),
                 txtNombreCuenta.getText(),
                 cmbTipoCuenta.getValue().toString(),
-                saldo
+                saldo,
+                ""
         );
     }
     private boolean datosValidos(CuentaDto cuentaDto) {

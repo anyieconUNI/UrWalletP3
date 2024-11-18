@@ -29,6 +29,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,8 +49,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public ModelFactoryController() {
         urWallet = new UrWallet();
 //        cargarDatosBase();
-        clientController = new ClientController();
-        clientController.connect(); // Conectar al servidor
+
 //        guardarPerUsers();
 
         cargarDatosDesdeArchivos();
@@ -66,7 +66,8 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 ////            guardarRecursoBancoXML();
 //        }
         guardaRegistroLog("Inicio de sesión", 1, "inicioSesión");
-
+        clientController = new ClientController();
+        clientController.connect();
     }
 
 
@@ -374,7 +375,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 //                if (!urWallet.verificarCuentaExistenteTrans(transaccionDto.cuentaDestino())) {
             Transaccion transaccion = mapper.transaccionToTransaccionDto(transaccionDto);
             getUrWallet().agregarTransaccion(transaccion);
-            guardarTransferencia();
+//            guardarTransferencia();
 //
             return true;
         } catch (TransaccionException e) {
@@ -468,7 +469,8 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             return false;
         }
 
-        usuario.agregarCuenta(cuenta);
+//        usuario.agregarCuenta(cuenta);
+        cuenta.setClienteId(cedulaUsuario);
         enviarCuenta(cuenta);
         agregarDatosGenerales();
         return true;

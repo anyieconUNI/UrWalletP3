@@ -77,10 +77,11 @@ public class SaldoClienteViewsControllers {
     private void obtenerCuenta() {
         List<CuentaDto> todasLasCuentas = cuentaControllers.obtenerCuenta();
         List<CuentaDto> cuentasUsers = todasLasCuentas.stream()
-                .filter(cuentas -> usuarioLogeado.getCuentasBancarias().stream()
-                        .anyMatch(cuentaBancaria -> cuentaBancaria.getNumeCuenta().equals(cuentas.numeCuenta())))
+                .filter(cuenta -> usuarioLogeado.getCedula().equals(cuenta.clienteId()))
                 .collect(Collectors.toList());
+        listaCuentaDto.clear();
         listaCuentaDto.addAll(cuentasUsers);
+        tableCuentaUser.refresh();
     }
     private void initDataBinding() {
         tcNumeroCuenta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().numeCuenta()));
@@ -101,8 +102,12 @@ public class SaldoClienteViewsControllers {
     }
     public void actualizarSaldo() {
         if (usuarioLogeado != null) {
-            double saldoTotal = usuarioLogeado.getCuentasBancarias().stream()
-                    .mapToDouble(Cuenta::getSaldo)
+            List<CuentaDto> todasLasCuentas = cuentaControllers.obtenerCuenta();
+            List<CuentaDto> cuentasDelUsuario = todasLasCuentas.stream()
+                    .filter(cuenta -> usuarioLogeado.getCedula().equals(cuenta.clienteId()))
+                    .collect(Collectors.toList());
+            double saldoTotal = cuentasDelUsuario.stream()
+                    .mapToDouble(CuentaDto::saldo)
                     .sum();
             Saldo.setText(String.format("Saldo Total: $ %.2f", saldoTotal));
         } else {
@@ -126,18 +131,15 @@ public class SaldoClienteViewsControllers {
 
 
     public void actualizarTablaCuentasUser(CuentaDto cuentaDto) {
-
         if (cuentaDto != null) {
-            // Verificar si la cuenta ya está en la lista
             boolean cuentaExistente = listaCuentaDto.stream()
                     .anyMatch(cuenta -> cuenta.numeCuenta().equals(cuentaDto.numeCuenta()));
 
             if (!cuentaExistente) {
+                actualizarSaldo();
                 listaCuentaDto.add(cuentaDto);
                 tableCuentaUser.refresh();
 
-                // Actualizar el saldo total
-                actualizarSaldo();
             } else {
                 System.out.println("La cuenta ya existe en la tabla.");
             }

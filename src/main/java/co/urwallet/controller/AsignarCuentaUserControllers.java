@@ -53,5 +53,4 @@ public class AsignarCuentaUserControllers implements AsignarCuentaUserService {
         return  modelFactoryService.obtenerUsuarioPorCedula(cedulaUsuario);
     }
 
-
 }

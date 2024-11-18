@@ -186,7 +186,8 @@ public class ClientController {
                 cuenta.getNumeCuenta(),
                 cuenta.getNombreCuenta(),
                 cuenta.getTipoCuenta().toString(),
-                cuenta.getSaldo()
+                cuenta.getSaldo(),
+                ""
         );
     }
     private UsuarioDto convertirUsuarioADto(Usuario usuario) {

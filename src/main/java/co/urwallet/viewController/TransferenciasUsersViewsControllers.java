@@ -98,24 +98,26 @@ public class TransferenciasUsersViewsControllers {
     private void obtenerTransaccion() {
         List<TransaccionDto> todasLasTransacciones = trasaccionControllers.obtenerTrasaccion();
         List<TransaccionDto> transaccionesFiltradas = todasLasTransacciones.stream()
-                .filter(transaccion -> usuarioLogeado.getCuentasBancarias().stream()
-                        .anyMatch(cuentaBancaria -> cuentaBancaria.getNumeCuenta().equals(transaccion.cuentaOrigen().getNumeCuenta())))
+                .filter(transaccion ->
+                        transaccion.cuentaOrigen() != null &&
+                                usuarioLogeado.getCedula().equals(transaccion.cuentaOrigen().getClienteId())
+                )
                 .collect(Collectors.toList());
+        listaTransaccion.clear();
         listaTransaccion.addAll(transaccionesFiltradas);
         ObservableList<String> categorias = FXCollections.observableArrayList(
                 Arrays.stream(Categoria.values())
                         .map(Enum::name)
                         .collect(Collectors.toList())
         );
-
         cbBuscarPorCategory.setItems(categorias);
         ObservableList<String> tipos = FXCollections.observableArrayList(
                 Arrays.stream(TipoTransaccion.values())
                         .map(Enum::name)
                         .collect(Collectors.toList())
         );
-
         cbBuscarPorType.setItems(tipos);
+        tableTransaccion.refresh();
     }
 
     private void initDataBinding() {
@@ -129,26 +131,20 @@ public class TransferenciasUsersViewsControllers {
     }
 
     public void cargarCuentas() {
-
         List<CuentaDto> todasLasCuentas = cuentaControllers.obtenerCuenta();
-
         List<CuentaDto> cuentasOrigen = todasLasCuentas.stream()
-                .filter(cuenta -> usuarioLogeado.getCuentasBancarias().stream()
-                        .anyMatch(cuentaBancaria -> cuentaBancaria.getIdCuenta().equals(cuenta.idCuenta())))
+                .filter(cuenta -> usuarioLogeado.getCedula().equals(cuenta.clienteId()))
                 .collect(Collectors.toList());
         ObservableList<String> nombresClientesOrigen = FXCollections.observableArrayList(
                 cuentasOrigen.stream().map(CuentaDto::numeCuenta).collect(Collectors.toList())
         );
         cmbCuentaOrigen.setItems(nombresClientesOrigen);
-
         ObservableList<String> nombresClientesDestino = FXCollections.observableArrayList(
                 todasLasCuentas.stream()
-                        .filter(cuenta -> usuarioLogeado.getCuentasBancarias().stream()
-                                .noneMatch(cuentaBancaria -> cuentaBancaria.getIdCuenta().equals(cuenta.idCuenta())))
+                        .filter(cuenta -> !usuarioLogeado.getCedula().equals(cuenta.clienteId()))
                         .map(CuentaDto::numeCuenta)
                         .collect(Collectors.toList())
         );
-
         cmbCuentaDestino.setItems(nombresClientesDestino);
     }
 

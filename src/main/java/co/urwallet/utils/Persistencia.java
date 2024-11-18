@@ -1,5 +1,6 @@
 package co.urwallet.utils;
 
+import co.urwallet.mapping.dto.UsuarioDto;
 import co.urwallet.model.*;
 
 import java.util.Locale;
@@ -106,6 +107,59 @@ public class Persistencia {
 
         return users;
     }
+    public static ArrayList<UsuarioDto> cargarUsersConCuentas() {
+        ArrayList<UsuarioDto> usuariosConCuentas = new ArrayList<>();
+        try {
+            ArrayList<String> contenido = ArchivoUtils.leerArchivo(RUTA_ARCHIVO_USUARIOS);
+
+            for (String linea : contenido) {
+                if (linea.trim().isEmpty()) {
+                    continue;
+                }
+
+                String[] partes = linea.split("@@");
+                if (partes.length < 8) {
+                    System.err.println("Línea mal formateada: " + linea);
+                    continue;
+                }
+
+                String idUsuario = partes[0];
+                String cedula = partes[1];
+                String nombreCompleto = partes[2];
+                String telefono = partes[3];
+                String correo = partes[4];
+                String contrasena = partes[5];
+                String direccion = partes[6];
+                Float saldoDispo = Float.valueOf(partes[7]);
+
+                if (partes.length > 8 && !partes[8].isEmpty()) {
+                    String[] cuentasArray = partes[8].split("@@");
+                    for (String cuentaStr : cuentasArray) {
+                        String[] detalles = cuentaStr.split(":");
+                        if (detalles.length == 5) {
+                            UsuarioDto usuarioConCuenta = new UsuarioDto(
+                                    idUsuario,
+                                    cedula,
+                                    nombreCompleto,
+                                    telefono,
+                                    correo,
+                                    contrasena,
+                                    direccion,
+                                    Float.valueOf(detalles[4]),
+                                    null
+                            );
+                            usuariosConCuentas.add(usuarioConCuenta);
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error al cargar los usuarios:");
+            e.printStackTrace();
+        }
+
+        return usuariosConCuentas;
+    }
 
 
     public static void copiarArchivos() throws IOException {
@@ -132,38 +186,48 @@ public class Persistencia {
         String contenido = "";
         for (Cuenta cuentas : listaCuentas) {
             contenido += cuentas.getIdCuenta() + "@@" + cuentas.getNombreCuenta() + "@@" + cuentas.getNumeCuenta() + "@@" + cuentas.getTipoCuenta()
-                    + "@@" + cuentas.getSaldo() + "\n";
+                    + "@@" + cuentas.getSaldo() + "@@" +cuentas.getClienteId()+ "\n";
         }
         ArchivoUtils.guardarArchivo(RUTA_ARCHIVO_CUENTAS, contenido, false);
     }
 
 
-    public static ArrayList<Cuenta> cargarCuentas() throws FileNotFoundException, IOException {
-        ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
+    public static ArrayList<Cuenta> cargarCuentas() throws IOException {
+        ArrayList<Cuenta> cuentas = new ArrayList<>();
         ArrayList<String> contenido = ArchivoUtils.leerArchivo(RUTA_ARCHIVO_CUENTAS);
-        String linea = "";
-        for (int i = 0; i < contenido.size(); i++) {
-            linea = contenido.get(i);
-            Cuenta cuenta = new Cuenta();
-            cuenta.setIdCuenta(linea.split("@@")[0]);
-            cuenta.setNombreCuenta(linea.split("@@")[1]);
-            cuenta.setNumeCuenta(linea.split("@@")[2]);
-            String tipoCuentaStr = linea.split("@@")[3];
-            TipoCuenta tipoCuenta;
-            try {
-                tipoCuenta = TipoCuenta.valueOf(tipoCuentaStr.toUpperCase());
-            } catch (IllegalArgumentException e) {
-                tipoCuenta = TipoCuenta.AHORROS;
-                System.out.println("Tipo de cuenta no válido: " + tipoCuentaStr + ". Usando valor por defecto.");
+
+        for (String linea : contenido) {
+            if (linea.trim().isEmpty()) {
+                continue; // Ignorar líneas vacías
             }
-            cuenta.setTipoCuenta(tipoCuenta);
-            Float saldo = Float.parseFloat(linea.split("@@")[4]);
-            cuenta.setSaldo(saldo);
+
+            String[] partes = linea.split("@@");
+            if (partes.length < 5) {
+                System.err.println("Línea mal formateada: " + linea);
+                continue; // Saltar líneas mal formateadas
+            }
+
+            Cuenta cuenta = new Cuenta();
+            cuenta.setIdCuenta(partes[0]);
+            cuenta.setNombreCuenta(partes[1]);
+            cuenta.setNumeCuenta(partes[2]);
+            cuenta.setTipoCuenta(TipoCuenta.valueOf(partes[3]));
+            cuenta.setSaldo(Float.valueOf(partes[4]));
+
+            // Manejar el clienteId (puede ser nulo o vacío)
+            if (partes.length > 5 && !partes[5].trim().isEmpty()) {
+                cuenta.setClienteId(partes[5]); // Asignar clienteId si está presente
+            } else {
+                cuenta.setClienteId(""); // Dejarlo como null si no está presente
+            }
 
             cuentas.add(cuenta);
         }
+
         return cuentas;
     }
+
+
 
     public static void guardarTransacciones(ArrayList<Transaccion> listaTransaccion) throws IOException {
         // TODO Auto-generated method stub

@@ -7,6 +7,7 @@ public record CuentaDto(
         String numeCuenta,
         String nombreCuenta,
         String tipoCuenta,
-        Float saldo
+        Float saldo,
+        String clienteId
 ) {
 }

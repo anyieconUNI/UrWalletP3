@@ -19,13 +19,16 @@ public class Cuenta implements Serializable {
     private String nombreCuenta;
     private TipoCuenta tipoCuenta;
     private Float saldo;
+    private String clienteId;
 
-    public Cuenta(String idCuenta,  String numeCuenta,String nombreCuenta, TipoCuenta tipoCuenta, Float saldo) {
+
+    public Cuenta(String idCuenta, String numeCuenta, String nombreCuenta, TipoCuenta tipoCuenta, Float saldo,String clienteId) {
         this.idCuenta = idCuenta;
         this.numeCuenta = numeCuenta;
         this.nombreCuenta = nombreCuenta;
         this.tipoCuenta = tipoCuenta;
         this.saldo = saldo;
+        this.clienteId = clienteId;
     }
     public Cuenta(){
 
@@ -69,6 +72,13 @@ public class Cuenta implements Serializable {
 
     public void setSaldo(Float saldo) {
         this.saldo = saldo;
+    }
+    public void setClienteId(String clienteId) {
+        this.clienteId = clienteId;
+    }
+
+    public String getClienteId() {
+        return clienteId;
     }
 
     public String generaridCuenta() {
