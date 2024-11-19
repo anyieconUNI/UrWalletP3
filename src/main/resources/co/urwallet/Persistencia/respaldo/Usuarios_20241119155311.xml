@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="21.0.3" class="java.beans.XMLDecoder">
+ <object class="co.urwallet.model.UrWallet" id="UrWallet0">
+  <void property="listaCuentas">
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string></string>
+     </void>
+     <void property="idCuenta">
+      <string>cbdb489b-e429-4f4f-9df3-12a0078a72de</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>12</string>
+     </void>
+     <void property="numeCuenta">
+      <string>22</string>
+     </void>
+     <void property="saldo">
+      <float>22.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object class="java.lang.Enum" id="TipoCuenta0" method="valueOf">
+       <class>co.urwallet.model.TipoCuenta</class>
+       <string>AHORROS</string>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string>2</string>
+     </void>
+     <void property="idCuenta">
+      <string>f1b5766c-2d83-4a4b-b2dc-98012288e93b</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>11</string>
+     </void>
+     <void property="numeCuenta">
+      <string>11</string>
+     </void>
+     <void property="saldo">
+      <float>123.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string>2</string>
+     </void>
+     <void property="idCuenta">
+      <string>81bfd8c8-4f2e-4cfb-8619-d64a31c6b5d9</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>23F</string>
+     </void>
+     <void property="numeCuenta">
+      <string>12345</string>
+     </void>
+     <void property="saldo">
+      <float>12.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string>2</string>
+     </void>
+     <void property="idCuenta">
+      <string>44a1bafa-3841-4a6f-805b-06193a4331c4</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>124</string>
+     </void>
+     <void property="numeCuenta">
+      <string>12467</string>
+     </void>
+     <void property="saldo">
+      <float>12.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string>2</string>
+     </void>
+     <void property="idCuenta">
+      <string>6b5e85bb-ec85-4046-83c8-316879912ae8</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>555</string>
+     </void>
+     <void property="numeCuenta">
+      <string>789</string>
+     </void>
+     <void property="saldo">
+      <float>23.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string>2</string>
+     </void>
+     <void property="idCuenta">
+      <string>fe468028-0efa-4eff-804c-c4fe09351cfa</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>444</string>
+     </void>
+     <void property="numeCuenta">
+      <string>23456789</string>
+     </void>
+     <void property="saldo">
+      <float>13.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string>2</string>
+     </void>
+     <void property="idCuenta">
+      <string>6f1c9f34-8139-4067-934b-4bf3aabe0e62</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>234</string>
+     </void>
+     <void property="numeCuenta">
+      <string>8888</string>
+     </void>
+     <void property="saldo">
+      <float>123.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string>2</string>
+     </void>
+     <void property="idCuenta">
+      <string>14c5a0b9-cb2b-4af6-8352-ca8f0ba9090f</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>345</string>
+     </void>
+     <void property="numeCuenta">
+      <string>0998</string>
+     </void>
+     <void property="saldo">
+      <float>12.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string></string>
+     </void>
+     <void property="idCuenta">
+      <string>a1def96c-179d-4af8-b30a-d4274f168df1</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>22221</string>
+     </void>
+     <void property="numeCuenta">
+      <string>11122221</string>
+     </void>
+     <void property="saldo">
+      <float>11.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="listaTransaccion">
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object class="java.lang.Enum" id="Categoria0" method="valueOf">
+       <class>co.urwallet.model.Categoria</class>
+       <string>Comida</string>
+      </object>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>1</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>123</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>11</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>e3c66de2-c276-48b8-aae9-b944aabeffa2</string>
+     </void>
+     <void property="monto">
+      <float>11.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object class="java.lang.Enum" id="TipoTransaccion0" method="valueOf">
+       <class>co.urwallet.model.TipoTransaccion</class>
+       <string>Retiro</string>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>111111111</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>123</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>11</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>1798f517-4cef-49d6-a695-d987c1daad30</string>
+     </void>
+     <void property="monto">
+      <float>11.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>123</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>111111111</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>11</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>67e3b9de-dfc4-4d58-a75b-76d64c0a792a</string>
+     </void>
+     <void property="monto">
+      <float>11.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>1</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>111111111</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>|</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>9ba77caf-fd96-4b0a-969a-4584eb95b92e</string>
+     </void>
+     <void property="monto">
+      <float>1.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>123</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>111111111</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>22</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>5eef0c83-535e-4fbb-b951-f6764afbe8b2</string>
+     </void>
+     <void property="monto">
+      <float>2.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object class="java.lang.Enum" id="Categoria1" method="valueOf">
+       <class>co.urwallet.model.Categoria</class>
+       <string>Transporte</string>
+      </object>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>111111111</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>123</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>1</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>c0c5f79e-e401-42af-81f1-46db90c4aac7</string>
+     </void>
+     <void property="monto">
+      <float>1.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria1"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>123</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>111111111</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>hola	</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>0a728535-6ec4-431d-ae2a-bc3957a8d25e</string>
+     </void>
+     <void property="monto">
+      <float>5.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.urwallet.model.TipoTransaccion</class>
+       <string>Deposito</string>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>789</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>22</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>111</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>d361d31e-69af-4ceb-82af-53ac23d6ab0f</string>
+     </void>
+     <void property="monto">
+      <float>1111.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>11</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>22</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>111</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>11c46c53-f0d9-49d4-a063-104b0577dd4f</string>
+     </void>
+     <void property="monto">
+      <float>1111.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>11</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>22</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>11</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>90662080-54e2-48b4-8a48-849dbac58723</string>
+     </void>
+     <void property="monto">
+      <float>11.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>8888</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>22</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>11</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>a3821cfa-211d-4095-aec2-3f1f7d13aee5</string>
+     </void>
+     <void property="monto">
+      <float>11.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>22</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>11</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>111</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>e008211b-7077-44e9-ae28-8199461a83de</string>
+     </void>
+     <void property="monto">
+      <float>11.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Transaccion">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="cuentaDestino">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>22</string>
+       </void>
+      </object>
+     </void>
+     <void property="cuentaOrigen">
+      <object class="co.urwallet.model.Cuenta">
+       <void property="numeCuenta">
+        <string>11</string>
+       </void>
+      </object>
+     </void>
+     <void property="descripcion">
+      <string>11</string>
+     </void>
+     <void property="fecha">
+      <string>19/11/2024</string>
+     </void>
+     <void property="idTransaccion">
+      <string>4df186f3-e8fc-42b0-bc0d-189280ebca9c</string>
+     </void>
+     <void property="monto">
+      <float>11.0</float>
+     </void>
+     <void property="tipoTransaccion">
+      <object idref="TipoTransaccion0"/>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="listaUsers">
+   <void method="add">
+    <object class="co.urwallet.model.Usuario" id="Usuario0">
+     <void property="cedula">
+      <string>2</string>
+     </void>
+     <void property="contrasena">
+      <string>2</string>
+     </void>
+     <void property="correo">
+      <string>2</string>
+     </void>
+     <void property="cuentasBancarias">
+      <void method="add">
+       <object class="co.urwallet.model.Cuenta">
+        <void property="idCuenta">
+         <string>2305160f-ba76-4313-b9ef-f18ee582c836</string>
+        </void>
+        <void property="nombreCuenta">
+         <string>2</string>
+        </void>
+        <void property="numeCuenta">
+         <string>2</string>
+        </void>
+        <void property="saldo">
+         <float>2.0</float>
+        </void>
+        <void property="tipoCuenta">
+         <object idref="TipoCuenta0"/>
+        </void>
+       </object>
+      </void>
+     </void>
+     <void property="direccion">
+      <string>2</string>
+     </void>
+     <void property="idUsuario">
+      <string>fdd1e2ea-3186-4659-b68b-1ba33ac106ed</string>
+     </void>
+     <void property="nombreCompleto">
+      <string>2</string>
+     </void>
+     <void property="telefono">
+      <string>2</string>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>

@@ -53,9 +53,7 @@ public class NotificacionesViewsControllers {
                     );
                     NotiArea.appendText(mensaje);
                 }
-            }
-
-            if (objeto instanceof CuentaDto) {
+            } else if (objeto instanceof CuentaDto) {
                 CuentaDto cuenta = (CuentaDto) objeto;
                 String mensaje = String.format(
                         "Se ha actualizado una cuenta:\n - Número: %s\n - Banco: %s\n - Saldo: %.2f\n",
