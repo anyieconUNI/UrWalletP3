@@ -1,6 +1,7 @@
 package co.urwallet.model;
 
 import co.urwallet.exceptions.CuentaException;
+import co.urwallet.exceptions.PresupuestoException;
 import co.urwallet.exceptions.TransaccionException;
 import co.urwallet.exceptions.UsuarioException;
 import co.urwallet.model.Services.IUrWalletService;
@@ -15,20 +16,24 @@ public class UrWallet implements IUrWalletService , Serializable {
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     ArrayList<Cuenta> listaCuentas = new ArrayList<>();
     ArrayList<Transaccion> listaTransaccion = new ArrayList<>();
+    ArrayList<Presupuesto> listaPresupuestos = new ArrayList<>();
+
 
     //
-    public UrWallet() {
-    }
+    public UrWallet() {}
 
     public ArrayList<Usuario> getListaUsers() {
         return listaUsuarios;
     }
+
     public ArrayList<Cuenta> getListaCuentas() {
         return listaCuentas;
     }
+
     public  void setListaUsers(ArrayList<Usuario> listaClientes){
         this.listaUsuarios = listaUsuarios;
     }
+
     public void setListaCuentas(ArrayList<Cuenta> listaCuentas) {
         this.listaCuentas = listaCuentas;
     }
@@ -246,5 +251,80 @@ public class UrWallet implements IUrWalletService , Serializable {
             }
         }
         return false;
+    }
+
+//Métodos del Presupuesto
+
+    public void agregarPresupuesto(Presupuesto nuevoPresupuesto){
+        getListaPresupuestos().add(nuevoPresupuesto);
+    }
+
+    public Presupuesto obtenerPresupuesto(String idPresupuesto) {
+        Presupuesto presupuestoEncontrado = null;
+        for (Presupuesto presupuesto : getListaPresupuestos()) {
+            if (presupuesto.getIdPresupuesto().equalsIgnoreCase(idPresupuesto)) {
+                presupuestoEncontrado = presupuesto;
+                break;
+            }
+        }
+        return presupuestoEncontrado;
+    }
+
+    public boolean actualizarPresupuesto(String idPresupuesto, Presupuesto presupuesto) throws PresupuestoException {
+        try {
+            System.out.print("AQUIIIIIIIIIIIIIII" + idPresupuesto);
+            Presupuesto presupuestoActual = obtenerPresupuesto(idPresupuesto);
+
+            if (presupuestoActual == null) {
+                throw new PresupuestoException("El presupuesto no existe");
+            } else {
+                presupuestoActual.setNombre(presupuesto.getNombre());
+                presupuestoActual.setMontoTotal(presupuesto.getMontoTotal());
+                presupuestoActual.setMontoGasto(presupuesto.getMontoGasto());
+                presupuestoActual.setCategoria(presupuesto.getCategoria());
+                return true;
+            }
+        } catch (PresupuestoException e) {
+            System.err.println("Error en actualizarPresupuesto: " + e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            System.err.println("Error inesperado: " + e.getMessage());
+            throw new PresupuestoException("Error inesperado al actualizar el presupuesto");
+        }
+    }
+
+    public boolean eliminarPresupuesto(String idPresupuesto) throws PresupuestoException {
+        try {
+            Presupuesto presupuesto = obtenerPresupuesto(idPresupuesto);
+
+            if (presupuesto == null) {
+                throw new PresupuestoException("El presupuesto no existe");
+            } else {
+                getListaPresupuestos().remove(presupuesto);
+                return true;
+            }
+        } catch (PresupuestoException e) {
+            System.err.println("Error en eliminar : " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public boolean verificarPresupuestoExistente(String idPresupuesto) throws PresupuestoException {
+        if (presupuestoExiste(idPresupuesto)) {
+            throw new PresupuestoException("El presupuesto ya existe");
+        } else {
+            return false;
+        }
+    }
+
+    public boolean presupuestoExiste(String idPresupuesto) {
+        boolean presupuestoEncontrado = false;
+        for (Presupuesto presupuesto : getListaPresupuestos()) {
+            if (presupuesto.getIdPresupuesto().equalsIgnoreCase(idPresupuesto)) {
+                presupuestoEncontrado = true;
+                break;
+            }
+        }
+        return presupuestoEncontrado;
     }
 }

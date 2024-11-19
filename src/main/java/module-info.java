@@ -20,5 +20,6 @@ module co.urwallet {
     opens co.urwallet.mapping.mappers;
     exports co.urwallet.mapping.mappers;
     opens co.urwallet.model;
+    opens co.urwallet.model.Services;
 
 }

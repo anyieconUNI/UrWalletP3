@@ -1,4 +1,4 @@
-package co.urwallet.model;
+package co.urwallet.model.Services;
 
 public interface IClienteService {
 }

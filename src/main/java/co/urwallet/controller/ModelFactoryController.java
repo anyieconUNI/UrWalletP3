@@ -2,19 +2,10 @@ package co.urwallet.controller;
 
 import co.urwallet.UrWalletApp;
 import co.urwallet.controller.service.IModelFactoryControllerService;
-import co.urwallet.exceptions.CuentaException;
-import co.urwallet.exceptions.LoginException;
-import co.urwallet.exceptions.TransaccionException;
-import co.urwallet.exceptions.UsuarioException;
-import co.urwallet.mapping.dto.CuentaDto;
-import co.urwallet.mapping.dto.LoginDto;
-import co.urwallet.mapping.dto.TransaccionDto;
-import co.urwallet.mapping.dto.UsuarioDto;
+import co.urwallet.exceptions.*;
+import co.urwallet.mapping.dto.*;
 import co.urwallet.mapping.mappers.UrWalletMapper;
-import co.urwallet.model.Cuenta;
-import co.urwallet.model.Transaccion;
-import co.urwallet.model.UrWallet;
-import co.urwallet.model.Usuario;
+import co.urwallet.model.*;
 import co.urwallet.utils.FileWatcher;
 import co.urwallet.utils.Persistencia;
 import co.urwallet.utils.UrWalletUtils;
@@ -95,16 +86,20 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     public void enviarTransferencia(Transaccion transaccionDto) {
         clientController.sendTransaction(transaccionDto);
     }
+
     @Override
     public void enviarSolicitud(String msg){
         clientController.sendMessageNotify(msg);
     }
+
     public void enviarCuenta(Cuenta cuenta){
         clientController.sendCuenta(cuenta);
     }
+
     public void enviarUsuarios(Usuario usuario){
         clientController.sendUsuario(usuario);
     }
+
     public void cargarDatosDesdeArchivos() {
         urWallet = new UrWallet();
         try {
@@ -191,20 +186,22 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         return mapper.gettransaccionesToTransaccionesDto(urWallet.getListaTransaccion());
     }
 
+    @Override
+    public List<PresupuestoDto> obtenerPresupuestos() {
+        return mapper.getPresupuestosDto(urWallet.getListaPresupuestos());}
+
     private void agregarDatosGenerales(){
         guardarPerUsers();
         guardarPerCuentas();
         guardarRecursourWalletBinario();
         guardarRecursoBancoXML();
     }
+
     @Override
     public boolean agregarUsers(UsuarioDto usuarioDto, boolean isSocket) {
         try {
-            System.out.println("MODELLLL" + usuarioDto.correo());
             if (!urWallet.verificarUsuarioExistente(usuarioDto.cedula())) {
                 Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
-                System.out.println("MODELLLL22" + user.getCorreo());
-
                 getUrWallet().agregarUsuario(user);
                 enviarUsuarios(user);
 
@@ -219,13 +216,12 @@ public class ModelFactoryController implements IModelFactoryControllerService {
             return false;
         }
     }
+
     @Override
     public boolean agregarUsersSocket(UsuarioDto usuarioDto, boolean isSocket) {
         try {
-            System.out.println("MODELLLL" + usuarioDto.correo());
             if (!urWallet.verificarUsuarioExistente(usuarioDto.cedula())) {
                 Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
-                System.out.println("MODELLLL22" + user.getCorreo());
 
                 getUrWallet().agregarUsuario(user);
                 agregarDatosGenerales();
@@ -280,9 +276,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     @Override
     public boolean actualizarUser(String idUser, UsuarioDto usuarioDto) {
         try {
-            System.out.println("actualizar" + idUser);
             Usuario user = mapper.usuarioDtoToUsuario(usuarioDto);
-            System.out.println("MQAPERRRR ID" + user.getIdUsuario());
             getUrWallet().actualizarUsuario(idUser, user);
             agregarDatosGenerales();
             guardaRegistroLog("Se han actualizado correctamente los datos", 1, "Update");
@@ -312,10 +306,8 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     @Override
     public boolean agregarCuenta(CuentaDto cuentaDto, boolean isSocket) {
         try {
-            System.out.println("MODELLLL" + cuentaDto.numeCuenta());
             if (!urWallet.verificarCuentaExistente(cuentaDto.numeCuenta())) {
                 Cuenta cuenta = mapper.cuentaToCuentaDto(cuentaDto);
-                System.out.println("MODELLLL22" + cuenta.getIdCuenta());
                 getUrWallet().agregarCuenta(cuenta);
 
                 agregarDatosGenerales();
@@ -334,9 +326,7 @@ public class ModelFactoryController implements IModelFactoryControllerService {
     @Override
     public boolean actualizarCuenta(String idCuenta, CuentaDto cuentaDto) {
         try {
-            System.out.println("actualizar" + idCuenta);
             Cuenta cuenta = mapper.cuentaToCuentaDto(cuentaDto);
-            System.out.println("MQAPERRRR ID" + cuenta.getNumeCuenta());
             getUrWallet().actualizarCuenta(idCuenta, cuenta);
             agregarDatosGenerales();
             copiarArchivos();
@@ -531,4 +521,53 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         stage.close();
     }
 
+    @Override
+    public boolean agregarPresupuesto(PresupuestoDto presupuestoDto) {
+        try {
+            if (!urWallet.verificarPresupuestoExistente(presupuestoDto.idPresupuesto())) {
+                Presupuesto presupuesto = mapper.presupuestoDtoToPresupuesto(presupuestoDto);
+                getUrWallet().agregarPresupuesto(presupuesto);
+                agregarDatosGenerales();
+                guardaRegistroLog("Se ha agregado un nuevo cuenta", 1, "Create");
+                copiarArchivos();
+            }
+            return true;
+        } catch (PresupuestoException e) {
+            e.getMessage();
+            guardaRegistroLog("No se ha agregado un nuevo cuenta", 2, "Warning");
+            return false;
+        }
+    }
+
+
+    @Override
+    public boolean actualizarPresupuesto(String idPresupuesto, PresupuestoDto presupuestoDto) {
+        try {
+            Presupuesto presupuesto = mapper.presupuestoDtoToPresupuesto(presupuestoDto);
+            getUrWallet().actualizarPresupuesto(idPresupuesto, presupuesto);
+            agregarDatosGenerales();
+            copiarArchivos();
+            guardaRegistroLog("Se ha actualizado el presupuesto", 1, "Update");
+            return true;
+        } catch (PresupuestoException e) {
+            e.getMessage();
+            guardaRegistroLog("No se pudo actualizar el dato", 2, "Warning");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean eliminarPresupuesto(String idPresupuesto) {
+        boolean flagExiste = false;
+        try {
+            flagExiste = getUrWallet().eliminarPresupuesto(idPresupuesto);
+            agregarDatosGenerales();
+            guardaRegistroLog("Se ha eliminado el presupuesto", 1, "Delete");
+            //copiarArchivos();
+        } catch (PresupuestoException e) {
+            guardaRegistroLog("No se pudo eliminar el presupuesto", 2, "Warning");
+            throw new RuntimeException(e);
+        }
+        return flagExiste;
+    }
 }

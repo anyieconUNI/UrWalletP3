@@ -12,7 +12,7 @@
       </font></TextArea>
 
     <!-- Campo de entrada para el mensaje -->
-    <TextField fx:id="inputField" layoutX="12.0" layoutY="330.0" prefHeight="27.0" prefWidth="476.0" promptText="Escribe tu mensaje aquí..." style="-fx-background-color: #00093c;">
+    <TextField fx:id="inputField" layoutX="12.0" layoutY="330.0" prefHeight="27.0" prefWidth="476.0" promptText="Escribe tu mensaje aquí..." style="-fx-background-color: white; -fx-border-color: #00093c;">
       <font>
          <Font name="Candara" size="14.0" />
       </font></TextField>

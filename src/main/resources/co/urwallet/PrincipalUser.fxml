@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.PrincipalUserViewsControllers">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.urwallet.viewController.PrincipalUserViewsControllers">
     <children>
         <TabPane prefHeight="550.0" prefWidth="701.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
@@ -58,17 +55,17 @@
                                         <fx:include source="AsistenteUsers.fxml" />
                                     </items>
                                 </SplitPane>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="72.0" layoutY="449.0" stroke="#00093c" strokeType="INSIDE" width="701.0" />
-                        <ImageView fitHeight="42.0" fitWidth="58.0" layoutX="25.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/logo1.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="66.0" fitWidth="238.0" layoutX="232.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/logoC.png" />
-                            </image>
-                        </ImageView>
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="72.0" layoutY="449.0" stroke="#00093c" strokeType="INSIDE" width="701.0" />
+                                <ImageView fitHeight="42.0" fitWidth="58.0" layoutX="25.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@img/logo1.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fitHeight="66.0" fitWidth="238.0" layoutX="232.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@img/logoC.png" />
+                                    </image>
+                                </ImageView>
                             </children>
                         </AnchorPane>
                     </content>
@@ -76,18 +73,22 @@
                 <Tab text="Transacción">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0">
-                                        <fx:include source="TransaccionesUsers.fxml" />
-                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="24.0" layoutY="502.0" stroke="#00093c" strokeType="INSIDE" width="701.0" />
+                            <fx:include source="TransaccionesUsers.fxml" />
+                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="24.0" layoutY="502.0" stroke="#00093c" strokeType="INSIDE" width="701.0" />
 
                         </AnchorPane>
                     </content>
                 </Tab>
                 <Tab text="Notificaciones">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0" style="-fx-border-color: #00093c;">
                             <fx:include source="NotificacionesViews.fxml" />
-                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="24.0" layoutY="502.0" stroke="#00093c" strokeType="INSIDE" width="701.0" />
-
+                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00093c" height="109.0" layoutY="417.0" stroke="#00093c" strokeType="INSIDE" width="701.0" />
+                     <ImageView fitHeight="70.0" fitWidth="210.0" layoutX="23.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="@img/logoL.png" />
+                         </image>
+                     </ImageView>
                         </AnchorPane>
                     </content>
                 </Tab>

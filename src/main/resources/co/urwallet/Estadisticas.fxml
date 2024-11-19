@@ -20,7 +20,7 @@
     </Label>
 
     <!-- ComboBox para seleccionar estadísticas -->
-    <ComboBox fx:id="cmbEstadistica" layoutX="68.0" layoutY="51.0" prefHeight="25.0" prefWidth="388.0" style="-fx-background-color: #187173;">
+    <ComboBox fx:id="cmbEstadistica" layoutX="68.0" layoutY="51.0" prefHeight="25.0" prefWidth="388.0" style="-fx-background-color: white; -fx-border-color: #00093c;">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="Gastos mas comunes" />

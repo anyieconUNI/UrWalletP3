@@ -1,7 +1,9 @@
 package co.urwallet.mapping.mappers;
 import co.urwallet.mapping.dto.CuentaDto;
+import co.urwallet.mapping.dto.PresupuestoDto;
 import co.urwallet.mapping.dto.TransaccionDto;
 import co.urwallet.model.Cuenta;
+import co.urwallet.model.Presupuesto;
 import co.urwallet.model.Transaccion;
 import co.urwallet.model.Usuario;
 import org.mapstruct.IterableMapping;
@@ -39,5 +41,10 @@ public interface UrWalletMapper {
     Transaccion transaccionToTransaccionDto(TransaccionDto transaccionDto);
     List<TransaccionDto> gettransaccionesToTransaccionesDto(ArrayList<Transaccion> listaTransaccion);
 
+    PresupuestoDto presupuestoToPresupuestoDto(Presupuesto presupuesto);
+
+    Presupuesto presupuestoDtoToPresupuesto(PresupuestoDto presupuestoDto);
+
+    List<PresupuestoDto>getPresupuestosDto(List<Presupuesto> listaPresupuestos);
 
 }
