@@ -1,0 +1,5 @@
+Descripción del proyecto: UrWallet es una avanzada billetera virtual desarrollada en Java con una interfaz intuitiva en JavaFX, que permite a los usuarios gestionar sus finanzas de manera digital y eficiente. 
+La aplicación facilita la adición, transferencia y retiro de dinero, y permite el seguimiento detallado de transacciones y presupuestos. Cada usuario, identificado de forma única, puede vincular múltiples
+cuentas bancarias y realizar operaciones financieras como depósitos y retiros, con cada transacción registrada con datos relevantes como fecha, monto y tipo. Además, UrWallet incluye la funcionalidad de
+presupuesto, donde los usuarios pueden establecer límites de gasto por categoría, lo que se complementa con una clasificación de transacciones a través de categorías específicas como "Comida", "Transporte" 
+y "Entretenimiento". Con un enfoque en la organización y el análisis financiero, UrWallet se convierte en una herramienta esencial para el control de gastos y la planificación financiera.
