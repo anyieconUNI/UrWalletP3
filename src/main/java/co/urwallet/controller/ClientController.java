@@ -103,7 +103,6 @@ public class ClientController {
                     // Agregar la transacción al modelo y actualizar la vista
                     Platform.runLater(() -> {
                         ModelFactoryController.getInstance().agregarTrasaccionDeServidor(transaccionDto);
-
                         TransferenciasUsersViewsControllers viewController = TransferenciasUsersViewsControllers.getInstance();
                         if (viewController != null) {
                             viewController.actualizarTablaTransacciones(transaccionDto);
@@ -154,11 +153,6 @@ public class ClientController {
                         if (user != null) {
                             user.actualizarTablasUser(usuario);
                         }
-
-//                        NotificacionesViewsControllers notificacionesController = NotificacionesViewsControllers.getInstance();
-//                        if (notificacionesController != null) {
-//                            notificacionesController.actualizarNoti(cuentaDto);
-//                        }
                     });
 
                 }

@@ -97,14 +97,20 @@ public class TransferenciasUsersViewsControllers {
 
     private void obtenerTransaccion() {
         List<TransaccionDto> todasLasTransacciones = trasaccionControllers.obtenerTrasaccion();
+        List<CuentaDto> cuentasUsuario = cuentaControllers.obtenerCuenta().stream()
+                .filter(cuenta -> usuarioLogeado.getCedula().equals(cuenta.clienteId()))
+                .toList();
         List<TransaccionDto> transaccionesFiltradas = todasLasTransacciones.stream()
-                .filter(transaccion ->
-                        transaccion.cuentaOrigen() != null &&
-                                usuarioLogeado.getCedula().equals(transaccion.cuentaOrigen().getClienteId())
+                .filter(transaccion -> cuentasUsuario.stream()
+                        .anyMatch(cuenta ->
+                                (transaccion.cuentaOrigen() != null && transaccion.cuentaOrigen().getNumeCuenta().equals(cuenta.numeCuenta())) ||
+                                        (transaccion.cuentaDestino() != null && transaccion.cuentaDestino().getNumeCuenta().equals(cuenta.numeCuenta()))
+                        )
                 )
                 .collect(Collectors.toList());
         listaTransaccion.clear();
         listaTransaccion.addAll(transaccionesFiltradas);
+        tableTransaccion.refresh();
         ObservableList<String> categorias = FXCollections.observableArrayList(
                 Arrays.stream(Categoria.values())
                         .map(Enum::name)
@@ -274,11 +280,27 @@ public class TransferenciasUsersViewsControllers {
     }
 
     public void actualizarTablaTransacciones(TransaccionDto nuevaTransaccion) {
-        if (usuarioLogeado.getCuentasBancarias().stream()
-                .anyMatch(cuenta -> cuenta.getNumeCuenta().equals(nuevaTransaccion.cuentaOrigen().getNumeCuenta()))) {
-            trasaccionControllers.mostrarMensaje("Notificación","Haz hecho una transferencia", Alert.AlertType.INFORMATION);
-            listaTransaccion.add(nuevaTransaccion);
-            tableTransaccion.refresh();
+        // Verificar si la cuenta origen de la transacción tiene el clienteId del usuario logueado
+        if (nuevaTransaccion.cuentaOrigen().getClienteId().equals(usuarioLogeado.getCedula())) {
+            // Evitar duplicados en la tabla
+            boolean yaExiste = listaTransaccion.stream()
+                    .anyMatch(transaccion -> transaccion.idTransaccion().equals(nuevaTransaccion.idTransaccion()));
+
+            if (!yaExiste) {
+                // Agregar la transacción y refrescar la tabla
+                listaTransaccion.add(nuevaTransaccion);
+                tableTransaccion.refresh();
+
+                trasaccionControllers.mostrarMensaje(
+                        "Notificación",
+                        "Se ha registrado una nueva transacción.",
+                        Alert.AlertType.INFORMATION
+                );
+            } else {
+                System.out.println("La transacción ya está registrada.");
+            }
+        } else {
+            System.out.println("La transacción no está asociada al usuario logueado.");
         }
     }
 }

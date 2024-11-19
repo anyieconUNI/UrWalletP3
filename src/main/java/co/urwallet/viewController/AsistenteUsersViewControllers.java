@@ -1,4 +1,7 @@
 package co.urwallet.viewController;
+import co.urwallet.controller.AsistenteControllers;
+import co.urwallet.mapping.dto.CuentaDto;
+import co.urwallet.mapping.dto.TransaccionDto;
 import co.urwallet.model.Usuario;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
@@ -7,6 +10,8 @@ import javafx.scene.control.TextField;
 import co.urwallet.controller.ModelFactoryController;
 import co.urwallet.model.Transaccion;
 import javafx.fxml.FXML;
+
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -20,6 +25,7 @@ public class AsistenteUsersViewControllers extends Thread {
     @FXML
     private Button sendButton;
     private Usuario usuario;
+    private AsistenteControllers asistenteControllers;
     private final ModelFactoryController modelFactoryService;
     private final BlockingQueue<String> messageQueue;
     private volatile boolean isRunning;
@@ -29,6 +35,7 @@ public class AsistenteUsersViewControllers extends Thread {
     }
 
     public void setUsuarioLogueado(Usuario usuarioLogueado) {
+        asistenteControllers = new AsistenteControllers();
         usuario = usuarioLogueado;
         chatArea.appendText("Asistente: ¡Hola!" + usuario.getNombreCompleto() + " Soy tu asistente UrWallet financiero. ¿En qué puedo ayudarte hoy?\n"+
                 "Nuestro menú disponible:\n"+
@@ -88,8 +95,12 @@ public class AsistenteUsersViewControllers extends Thread {
     }
 
     private String ahorro() {
-        double totalIncome = usuario.getCuentasBancarias().stream()
-                .mapToDouble(cuenta -> cuenta.getSaldo())
+        List<CuentaDto> todasLasCuentas = asistenteControllers.obtenerCuenta();
+        List<CuentaDto> cuentasUsers = todasLasCuentas.stream()
+                .filter(cuenta -> usuario.getCedula().equals(cuenta.clienteId()))
+                .toList();
+        double totalIncome = cuentasUsers.stream()
+                .mapToDouble(CuentaDto::saldo)
                 .sum();
         double totalSavings = totalIncome * 0.2;
 
@@ -98,96 +109,73 @@ public class AsistenteUsersViewControllers extends Thread {
     }
 
     private String gastos() {
-        var usuarios = modelFactoryService.getUrWallet().getListaUsers().stream()
-                .filter(user -> user.getCedula().equals(usuario.getCedula()))
-                .findFirst()
-                .orElse(null);
-
-        Map<String, Double> gastosPorCategoria = modelFactoryService.getUrWallet().getListaTransaccion().stream()
+        List<TransaccionDto> transaccionesUsuario = asistenteControllers.obtenerTrasaccion().stream()
                 .filter(transaccion ->
-                        usuarios.getCuentasBancarias().contains(transaccion.getCuentaOrigen()) ||
-                                usuarios.getCuentasBancarias().contains(transaccion.getCuentaDestino()))
-                .collect(Collectors.groupingBy(
-                        transaccion -> transaccion.getCategoria().name(),
-                        Collectors.summingDouble(Transaccion::getMonto)
-                ));
-
-        if (gastosPorCategoria.isEmpty()) {
-            return usuario.getNombreCompleto() + " no tienes gastos registrados, Tienes un buen manejo de tus ingresos";
+                        transaccion.cuentaOrigen() != null &&
+                                transaccion.cuentaOrigen().getClienteId().equals(usuario.getCedula()))
+                .toList();
+        if (transaccionesUsuario.isEmpty()) {
+            return usuario.getNombreCompleto() + ", no tienes gastos registrados. ¡Buen manejo de tus ingresos!";
         }
-        StringBuilder gastosDetalles = new StringBuilder(usuario.getNombreCompleto() +" Tus gastos son: " +  ":\n");
+        Map<String, Double> gastosPorCategoria = transaccionesUsuario.stream()
+                .collect(Collectors.groupingBy(
+                        transaccion -> transaccion.categoria().name(),
+                        Collectors.summingDouble(TransaccionDto::monto)
+                ));
+        StringBuilder gastosDetalles = new StringBuilder(usuario.getNombreCompleto() + ", tus gastos por categoría son:\n");
         gastosPorCategoria.forEach((categoria, monto) ->
                 gastosDetalles.append(categoria).append(": $").append(String.format("%.2f", monto)).append("\n"));
+
         return gastosDetalles.toString();
     }
 
     private String inversiones() {
-        var usuarios = modelFactoryService.getUrWallet().getListaUsers().stream()
-                .filter(user -> user.getCedula().equals(usuario.getCedula()))
-                .findFirst()
-                .orElse(null);
-
-        if (usuarios == null) {
-            return "No se encontró un usuario con la cédula proporcionada.";
-        }
-
-        double totalBalance = usuarios.getCuentasBancarias().stream()
-                .mapToDouble(cuenta -> cuenta.getSaldo())
+        List<CuentaDto> cuentasUsuario = asistenteControllers.obtenerCuenta().stream()
+                .filter(cuenta -> cuenta.clienteId().equals(usuario.getCedula()))
+                .toList();
+        double totalBalance = cuentasUsuario.stream()
+                .mapToDouble(CuentaDto::saldo)
                 .sum();
-
         if (totalBalance > 10000) {
-            return  usuario.getNombreCompleto() + ": Tienes un buen balance de $"
+            return usuario.getNombreCompleto() + ": Tienes un buen balance de $"
                     + String.format("%.2f", totalBalance) + ". Considera invertir en fondos indexados o bienes raíces.";
         } else {
-            return  usuario.getNombreCompleto() + ": Tu balance es bajo ($"
+            return usuario.getNombreCompleto() + ": Tu balance es bajo ($"
                     + String.format("%.2f", totalBalance) + "). Te sugiero ahorrar más antes de invertir.";
         }
     }
     private String consultarSaldo() {
-        var usuarios = modelFactoryService.getUrWallet().getListaUsers().stream()
-                .filter(user -> user.getCedula().equals(usuario.getCedula()))
-                .findFirst()
-                .orElse(null);
-
-        if (usuarios == null) {
-            return "No se encontró un usuario con la cédula proporcionada.";
-        }
-
-        double saldoTotal = usuarios.getCuentasBancarias().stream()
-                .mapToDouble(cuenta -> cuenta.getSaldo())
+        List<CuentaDto> cuentasUsuario = asistenteControllers.obtenerCuenta().stream()
+                .filter(cuenta -> cuenta.clienteId().equals(usuario.getCedula()))
+                .toList();
+        double saldoTotal = cuentasUsuario.stream()
+                .mapToDouble(CuentaDto::saldo)
                 .sum();
 
-        return  usuario.getNombreCompleto() + ": Tu saldo total es de $" + String.format("%.2f", saldoTotal);
+        return usuario.getNombreCompleto() + ": Tu saldo total es de $" + String.format("%.2f", saldoTotal);
     }
     private String consultarTransferenciasRecibidas() {
-        var usuarios = modelFactoryService.getUrWallet().getListaUsers().stream()
-                .filter(user -> user.getCedula().equals(usuario.getCedula()))
-                .findFirst()
-                .orElse(null);
-
-        if (usuarios == null) {
-            return "No se encontró un usuario con la cédula proporcionada.";
-        }
-
-        var cuentasDelUsuario = usuarios.getCuentasBancarias();
-        var transferenciasRecibidas = modelFactoryService.getUrWallet().getListaTransaccion().stream()
-                .filter(transaccion -> cuentasDelUsuario.contains(transaccion.getCuentaDestino()))
-                .collect(Collectors.toList());
+        List<CuentaDto> cuentasUsuario = asistenteControllers.obtenerCuenta().stream()
+                .filter(cuenta -> cuenta.clienteId().equals(usuario.getCedula()))
+                .toList();
+        List<Transaccion> transferenciasRecibidas = modelFactoryService.getUrWallet().getListaTransaccion().stream()
+                .filter(transaccion -> cuentasUsuario.stream()
+                        .anyMatch(cuenta -> cuenta.numeCuenta().equals(transaccion.getCuentaDestino().getNumeCuenta())))
+                .toList();
 
         if (transferenciasRecibidas.isEmpty()) {
-            return  usuario.getCedula() + " ,No se encontraron transferencias recibidas .";
+            return usuario.getNombreCompleto() + ", no se encontraron transferencias recibidas.";
         }
         StringBuilder resumen = new StringBuilder("Transferencias recibidas:\n");
-        for (var transaccion : transferenciasRecibidas) {
-            var cuentaOrigen = transaccion.getCuentaOrigen();
-            var usuarioOrigen = modelFactoryService.getUrWallet().getListaUsers().stream()
-                    .filter(user -> user.getCuentasBancarias().contains(cuentaOrigen))
+        for (Transaccion transaccion : transferenciasRecibidas) {
+            CuentaDto cuentaOrigen = asistenteControllers.obtenerCuenta().stream()
+                    .filter(cuenta -> cuenta.numeCuenta().equals(transaccion.getCuentaOrigen().getNumeCuenta()))
                     .findFirst()
                     .orElse(null);
 
-            String nombreOrigen = usuarioOrigen != null ? usuarioOrigen.getNombreCompleto() : "Usuario desconocido";
+            String nombreOrigen = cuentaOrigen != null ? cuentaOrigen.clienteId() : "Usuario desconocido";
             resumen.append("De: ").append(nombreOrigen)
-                    .append(" (Cuenta: ").append(cuentaOrigen.getIdCuenta())
+                    .append(" (Cuenta: ").append(transaccion.getCuentaOrigen().getNumeCuenta())
                     .append(") - Monto: $").append(String.format("%.2f", transaccion.getMonto()))
                     .append("\n");
         }

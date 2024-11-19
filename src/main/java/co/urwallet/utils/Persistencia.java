@@ -44,24 +44,6 @@ public class Persistencia {
 
 
     public static ArrayList<Usuario> cargarUsers() throws FileNotFoundException, IOException {
-//        ArrayList<Usuario> users = new ArrayList<Usuario>();
-//        ArrayList<String> contenido = ArchivoUtils.leerArchivo(RUTA_ARCHIVO_USUARIOS);
-//        String linea = "";
-//        for (int i = 0; i < contenido.size(); i++) {
-//            linea = contenido.get(i);
-//            Usuario Usuario = new Usuario();
-//            Usuario.setIdUsuario(linea.split("@@")[0]);
-//            Usuario.setCedula(linea.split("@@")[1]);
-//            Usuario.setNombreCompleto(linea.split("@@")[2]);
-//            Usuario.setTelefono(linea.split("@@")[3]);
-//            Usuario.setCorreo(linea.split("@@")[4]);
-//            Usuario.setContrasena(linea.split("@@")[5]);
-//            Usuario.setDireccion(linea.split("@@")[6]);
-//            Usuario.setSaldoDispo(Float.valueOf(linea.split("@@")[7]));
-//
-//            users.add(Usuario);
-//        }
-//        return users;
         ArrayList<Usuario> users = new ArrayList<>();
         ArrayList<String> contenido = ArchivoUtils.leerArchivo(RUTA_ARCHIVO_USUARIOS);
 
@@ -180,15 +162,22 @@ public class Persistencia {
             urWallet.getListaCuentas().addAll(cuentasCargados);
 
     }
-
+    private static final Object FILE_LOCK = new Object();
     public static void guardarCuentas(ArrayList<Cuenta> listaCuentas) throws IOException {
-        // TODO Auto-generated method stub
-        String contenido = "";
-        for (Cuenta cuentas : listaCuentas) {
-            contenido += cuentas.getIdCuenta() + "@@" + cuentas.getNombreCuenta() + "@@" + cuentas.getNumeCuenta() + "@@" + cuentas.getTipoCuenta()
-                    + "@@" + cuentas.getSaldo() + "@@" +cuentas.getClienteId()+ "\n";
+        synchronized (FILE_LOCK) {
+            StringBuilder contenido = new StringBuilder();
+            for (Cuenta cuenta : listaCuentas) {
+                contenido.append(cuenta.getIdCuenta()).append("@@")
+                        .append(cuenta.getNombreCuenta()).append("@@")
+                        .append(cuenta.getNumeCuenta()).append("@@")
+                        .append(cuenta.getTipoCuenta()).append("@@")
+                        .append(cuenta.getSaldo()).append("@@")
+                        .append(cuenta.getClienteId() == null ? "" : cuenta.getClienteId()).append("\n");
+            }
+
+            ArchivoUtils.guardarArchivo(RUTA_ARCHIVO_CUENTAS, contenido.toString(), false);
+            System.out.println("Cuentas guardadas con bloqueo para asegurar persistencia inmediata.");
         }
-        ArchivoUtils.guardarArchivo(RUTA_ARCHIVO_CUENTAS, contenido, false);
     }
 
 
@@ -231,14 +220,15 @@ public class Persistencia {
 
     public static void guardarTransacciones(ArrayList<Transaccion> listaTransaccion) throws IOException {
         // TODO Auto-generated method stub
-        String contenido = "";
-        for (Transaccion transacciones : listaTransaccion) {
-            contenido += transacciones.getIdTransaccion() + "@@" + transacciones.getDescripcion() + "@@" + transacciones.getTipoTransaccion()
-                    + "@@" + transacciones.getCategoria() + "@@" + transacciones.getCuentaOrigen() + "@@" + transacciones.getCuentaDestino()
-                    + "@@" + transacciones.getMonto() + "@@" + transacciones.getFecha() + "\n";
+        synchronized (FILE_LOCK) {
+            String contenido = "";
+            for (Transaccion transacciones : listaTransaccion) {
+                contenido += transacciones.getIdTransaccion() + "@@" + transacciones.getDescripcion() + "@@" + transacciones.getTipoTransaccion()
+                        + "@@" + transacciones.getCategoria() + "@@" + transacciones.getCuentaOrigen() + "@@" + transacciones.getCuentaDestino()
+                        + "@@" + transacciones.getMonto() + "@@" + transacciones.getFecha() + "\n";
+            }
+            ArchivoUtils.guardarArchivo(RUTA_ARCHIVO_TRANSSACCION, contenido, false);
         }
-        ArchivoUtils.guardarArchivo(RUTA_ARCHIVO_TRANSSACCION, contenido, false);
-
     }
 
     public static void cargarDatosArchivosTransacciones(UrWallet urWallet) throws FileNotFoundException, IOException {

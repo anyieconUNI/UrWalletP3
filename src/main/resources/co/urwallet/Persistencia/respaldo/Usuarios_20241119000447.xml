@@ -30,7 +30,7 @@
    <void method="add">
     <object class="co.urwallet.model.Cuenta">
      <void property="clienteId">
-      <string>2</string>
+      <string></string>
      </void>
      <void property="idCuenta">
       <string>30ba7a63-f468-4938-8664-017df70542e4</string>
@@ -52,7 +52,7 @@
    <void method="add">
     <object class="co.urwallet.model.Cuenta">
      <void property="clienteId">
-      <string>2</string>
+      <string></string>
      </void>
      <void property="idCuenta">
       <string>be34ec77-5f92-4a2c-bceb-7f3eacceb91b</string>
@@ -68,72 +68,6 @@
      </void>
      <void property="tipoCuenta">
       <object idref="TipoCuenta0"/>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="co.urwallet.model.Cuenta">
-     <void property="clienteId">
-      <string></string>
-     </void>
-     <void property="idCuenta">
-      <string>b73b2078-36a6-4c96-a2da-2a3b9b74ec7a</string>
-     </void>
-     <void property="nombreCuenta">
-      <string>11</string>
-     </void>
-     <void property="numeCuenta">
-      <string>111111111</string>
-     </void>
-     <void property="saldo">
-      <float>11.0</float>
-     </void>
-     <void property="tipoCuenta">
-      <object idref="TipoCuenta0"/>
-     </void>
-    </object>
-   </void>
-  </void>
-  <void property="listaTransaccion">
-   <void method="add">
-    <object class="co.urwallet.model.Transaccion">
-     <void property="categoria">
-      <object class="java.lang.Enum" method="valueOf">
-       <class>co.urwallet.model.Categoria</class>
-       <string>Comida</string>
-      </object>
-     </void>
-     <void property="cuentaDestino">
-      <object class="co.urwallet.model.Cuenta">
-       <void property="numeCuenta">
-        <string>1</string>
-       </void>
-      </object>
-     </void>
-     <void property="cuentaOrigen">
-      <object class="co.urwallet.model.Cuenta">
-       <void property="numeCuenta">
-        <string>123</string>
-       </void>
-      </object>
-     </void>
-     <void property="descripcion">
-      <string>11</string>
-     </void>
-     <void property="fecha">
-      <string>19/11/2024</string>
-     </void>
-     <void property="idTransaccion">
-      <string>e3c66de2-c276-48b8-aae9-b944aabeffa2</string>
-     </void>
-     <void property="monto">
-      <float>11.0</float>
-     </void>
-     <void property="tipoTransaccion">
-      <object class="java.lang.Enum" method="valueOf">
-       <class>co.urwallet.model.TipoTransaccion</class>
-       <string>Retiro</string>
-      </object>
      </void>
     </object>
    </void>

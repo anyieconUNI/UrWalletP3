@@ -74,7 +74,7 @@ public class SaldoClienteViewsControllers {
         tableCuentaUser.setItems(listaCuentaDto);
         mostrarPanelSaldo();
     }
-    private void obtenerCuenta() {
+    public void obtenerCuenta() {
         List<CuentaDto> todasLasCuentas = cuentaControllers.obtenerCuenta();
         List<CuentaDto> cuentasUsers = todasLasCuentas.stream()
                 .filter(cuenta -> usuarioLogeado.getCedula().equals(cuenta.clienteId()))
@@ -126,8 +126,7 @@ public class SaldoClienteViewsControllers {
         }
     }
 
-    public void buscarCuenta(ActionEvent actionEvent) {
-    }
+
 
 
     public void actualizarTablaCuentasUser(CuentaDto cuentaDto) {

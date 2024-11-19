@@ -15,9 +15,14 @@ import co.urwallet.model.Cuenta;
 import co.urwallet.model.Transaccion;
 import co.urwallet.model.UrWallet;
 import co.urwallet.model.Usuario;
+import co.urwallet.utils.FileWatcher;
 import co.urwallet.utils.Persistencia;
 import co.urwallet.utils.UrWalletUtils;
 import co.urwallet.viewController.PrincipalUserViewsControllers;
+import co.urwallet.viewController.SaldoClienteViewsControllers;
+import co.urwallet.viewController.TransferenciasUsersViewsControllers;
+import co.urwallet.viewController.TransferenciasViewsControllers;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -65,6 +70,22 @@ public class ModelFactoryController implements IModelFactoryControllerService {
 //            cargarDatosBase();
 ////            guardarRecursoBancoXML();
 //        }
+        FileWatcher.startWatching(() -> {
+            synchronized (this) {
+                cargarDatosArchivosCuentas();
+                Platform.runLater(() -> {
+                    SaldoClienteViewsControllers saldoController = SaldoClienteViewsControllers.getInstance();
+                    if (saldoController != null) {
+                        saldoController.obtenerCuenta();
+                        saldoController.actualizarSaldo();
+                    }
+                    TransferenciasUsersViewsControllers userTrans = TransferenciasUsersViewsControllers.getInstance();
+                    if (userTrans != null) {
+                        userTrans.cargarCuentas();
+                    }
+                });
+            }
+        });
         guardaRegistroLog("Inicio de sesión", 1, "inicioSesión");
         clientController = new ClientController();
         clientController.connect();
@@ -95,13 +116,15 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         }
     }
 
-    private void cargarDatosArchivosCuentas(){
+    private void cargarDatosArchivosCuentas() {
         try {
-            Persistencia.cargarDatosArchivosCuentas(urWallet);
-            guardaRegistroLog("Se han cargado las cuentas", 1, "Get");
-        }catch (IOException e){
-            guardaRegistroLog("No se han cargado las cuentas", 2, "Warning");
-            throw new RuntimeException(e);
+            ArrayList<Cuenta> cuentas = Persistencia.cargarCuentas();
+            urWallet.getListaCuentas().clear();
+            urWallet.getListaCuentas().addAll(cuentas);
+            System.out.println("Datos de cuentas recargados sin duplicados desde el archivo.");
+        } catch (IOException e) {
+            System.err.println("Error al recargar datos de cuentas:");
+            e.printStackTrace();
         }
     }
     private void cargarDatosArchivosTransacciones(){
@@ -183,12 +206,11 @@ public class ModelFactoryController implements IModelFactoryControllerService {
                 System.out.println("MODELLLL22" + user.getCorreo());
 
                 getUrWallet().agregarUsuario(user);
-//                if(isSocket){
                 enviarUsuarios(user);
-//                }
+
                 agregarDatosGenerales();
                 guardaRegistroLog("Se han agregado un nuevo usuario", 1, "Create");
-//                copiarArchivos();
+
             }
             return true;
         } catch (UsuarioException e) {
@@ -473,6 +495,13 @@ public class ModelFactoryController implements IModelFactoryControllerService {
         cuenta.setClienteId(cedulaUsuario);
         enviarCuenta(cuenta);
         agregarDatosGenerales();
+        Platform.runLater(() -> {
+            SaldoClienteViewsControllers saldoController = SaldoClienteViewsControllers.getInstance();
+            if (saldoController != null) {
+                saldoController.actualizarSaldo();
+                saldoController.obtenerCuenta(); // Refresca la tabla
+            }
+        });
         return true;
     }
     @Override
