@@ -38,6 +38,10 @@ public class SaldoClienteViewsControllers {
     private Button btnEliminar;
     @FXML
     private Button btnLimpiar;
+
+    @FXML
+    private Button btnActualizar;
+
     @FXML
     public TableView<PresupuestoDto> tablePresupuestos;
     @FXML
@@ -231,12 +235,12 @@ public class SaldoClienteViewsControllers {
         PresupuestoDto presupuestoDto = construirRegistroPresupuesto();
         if(datosValidos(presupuestoDto)){
             if(saldoClienteController.agregarPresupuesto(presupuestoDto)){
-                saldoClienteController.mostrarMensaje("El presumpuesto se creo correctamente", "Notificación usuario", Alert.AlertType.INFORMATION);
+                saldoClienteController.mostrarMensaje("El presupuesto se creo correctamente", "Notificación usuario", Alert.AlertType.INFORMATION);
+                tablePresupuestos.setItems(listaPresupuestoDto);
                 listaPresupuestoDto.add(presupuestoDto);
-
                 tablePresupuestos.refresh();
                 limpiarPresupuesto();
-                saldoClienteController.obtenerPresupuesto();
+//                saldoClienteController.obtenerPresupuesto();
             }
             else{
                 saldoClienteController.mostrarMensaje("Los datos ingresados son invalidos", "Presupuesto no creado", Alert.AlertType.ERROR);

@@ -2,22 +2,42 @@ package co.urwallet.viewController;
 
 import co.urwallet.controller.ModelFactoryController;
 import co.urwallet.controller.service.IModelFactoryControllerService;
+import co.urwallet.mapping.dto.CuentaDto;
+import co.urwallet.mapping.dto.TransaccionDto;
 import co.urwallet.mapping.dto.UsuarioDto;
 import co.urwallet.model.Categoria;
 import co.urwallet.model.Transaccion;
 import co.urwallet.model.Usuario;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class EstadistecasViewsControllers {
+
     private final IModelFactoryControllerService modelFactoryService;
+
+    @FXML
+    private Button btnReporte;
 
     @FXML
     private ComboBox<String> cmbEstadistica;
@@ -110,4 +130,58 @@ public class EstadistecasViewsControllers {
                 javafx.scene.control.Alert.AlertType.INFORMATION
         );
     }
+
+
+    public List<TransaccionDto> getListaTransacciones() {
+        return modelFactoryService.obtenerTrasaccion();
+    }
+
+    public void generaReporteAction(ActionEvent actionEvent) throws FileNotFoundException, MalformedURLException {
+        String pdfPath = "src/main/resources/co/urwallet/Pdf/presuspuesto.pdf";
+        String imagePath = "src/main/resources/co/urwallet/img/logo.png";
+
+        PdfWriter pdfWriter = new PdfWriter(pdfPath);
+        PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+        Document document = new Document(pdfDocument);
+
+        ImageData imageData = ImageDataFactory.create(imagePath);
+        Image logo = new Image(imageData);
+        logo.scaleToFit(100, 50);
+        document.add(logo);
+
+        // Título
+        Paragraph paragraph = new Paragraph("Reporte de Transacciones");
+        paragraph.setBold();
+        paragraph.setFontSize(14);
+        document.add(paragraph);
+
+        // Agrega la tabla al PDF
+        Table table = new Table(7);
+        table.addCell("Fecha");
+        table.addCell("Tipo");
+        table.addCell("Monto");
+        table.addCell("Descripción");
+        table.addCell("Cuenta Origen");
+        table.addCell("Cuenta Destino");
+        table.addCell("Categoría");
+
+        for (TransaccionDto transaccion : getListaTransacciones()) {
+            table.addCell(transaccion.fecha().toString());
+            table.addCell(transaccion.tipoTransaccion().toString()); // Convertir enum a texto
+            table.addCell(String.valueOf(transaccion.monto()));
+            table.addCell(transaccion.descripcion());
+            table.addCell(transaccion.cuentaOrigen().getNumeCuenta());
+            table.addCell(transaccion.cuentaDestino().getNumeCuenta());
+            table.addCell(transaccion.categoria().toString()); // Convertir enum a texto
+        }
+
+        modelFactoryService.mostrarMensaje(
+                "Reporte generado",
+                "Se creo el reporte en " + pdfPath,
+                javafx.scene.control.Alert.AlertType.INFORMATION
+        );
+        document.add(table);
+        document.close();
+    }
+
 }

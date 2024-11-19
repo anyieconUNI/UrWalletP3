@@ -49,9 +49,9 @@
          <TableView fx:id="tableCuentaUser" layoutX="8.0" layoutY="170.0" prefHeight="289.0" prefWidth="406.0" style="-fx-border-color: #00093c;">
             <columns>
                <TableColumn fx:id="tcNumeroCuenta" prefWidth="100.0" text="Número/cuenta" />
-               <TableColumn fx:id="tcNombreCuenta" minWidth="0.0" prefWidth="106.0" text="Nombre/Cuenta" />
-               <TableColumn fx:id="tcTipo" prefWidth="87.0" text="Tipo/Cuenta" />
-               <TableColumn fx:id="tcSaldo" prefWidth="332.0" text="Saldo" />
+               <TableColumn fx:id="tcNombreCuenta" minWidth="0.0" prefWidth="166.4000244140625" text="Nombre/Cuenta" />
+               <TableColumn fx:id="tcTipo" prefWidth="133.39999389648438" text="Tipo/Cuenta" />
+               <TableColumn fx:id="tcSaldo" prefWidth="227.4000244140625" text="Saldo" />
             </columns>
          </TableView>
       </AnchorPane>
