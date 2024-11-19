@@ -8666,3 +8666,19 @@ nov 19, 2024 1:28:00 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
 INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-19
 nov 19, 2024 1:28:00 A. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
 INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 12:28:00 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado los datos correctamente,2024-11-19
+nov 19, 2024 12:28:00 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se han cargado las cuentas,2024-11-19
+nov 19, 2024 12:28:00 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: inicioSesión,Inicio de sesión,2024-11-19
+nov 19, 2024 12:28:19 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-19
+nov 19, 2024 12:28:26 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+ADVERTENCIA: Warning,Email o contraseña incorrecta,2024-11-19
+nov 19, 2024 12:28:49 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-19
+nov 19, 2024 12:28:56 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: Get,Se ha iniciado corecctamente la sesión,2024-11-19
+nov 19, 2024 12:29:02 P. M. co.urwallet.utils.ArchivoUtils guardarRegistroLog
+INFORMACIÓN: New,Se ha Ingresado a una nueva pantalla,2024-11-19
