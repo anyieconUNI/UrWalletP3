@@ -116,16 +116,7 @@ public class TransferenciasViewsControllers {
         tcCuentaDestino.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cuentaDestino().getNumeCuenta()));
         tcCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().categoria().toString()));
     }
-//    private void mostrarInformacionTransaccion(TransaccionDto transaccionDto) {
-//        if(transaccionDto != null){
-//            tareaDescripcion.setText(transaccionDto.descripcion());
-//            txtMonto.setText(String.valueOf(transaccionDto.monto()));
-//            cmbCuentaOrigen.setValue(transaccionDto.cuentaOrigen());
-//            cmbCuentaDestino.setValue(transaccionDto.cuentaDestino());
-//            cmbTipoTrnsaccion.setValue(transaccionDto.tipoTransaccion());
-//            cmbCategoria.setValue(transaccionDto.categoria());
-//        }
-//    }
+
     public  void cargarCuentas() {
         List<CuentaDto> cuentasOrigen = cuentaControllers.obtenerCuenta();
         ObservableList<String> nombresClientes = FXCollections.observableArrayList(

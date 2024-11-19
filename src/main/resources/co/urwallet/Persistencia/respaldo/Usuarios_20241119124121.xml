@@ -1,6 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="21.0.5" class="java.beans.XMLDecoder">
+<java version="21.0.3" class="java.beans.XMLDecoder">
  <object class="co.urwallet.model.UrWallet" id="UrWallet0">
+  <void property="listaCuentas">
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string>2</string>
+     </void>
+     <void property="idCuenta">
+      <string>39031be6-ed3f-401a-a18a-b309cc994ea9</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>123</string>
+     </void>
+     <void property="numeCuenta">
+      <string>123</string>
+     </void>
+     <void property="saldo">
+      <float>123.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object class="java.lang.Enum" id="TipoCuenta0" method="valueOf">
+       <class>co.urwallet.model.TipoCuenta</class>
+       <string>AHORROS</string>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string>2</string>
+     </void>
+     <void property="idCuenta">
+      <string>30ba7a63-f468-4938-8664-017df70542e4</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>1</string>
+     </void>
+     <void property="numeCuenta">
+      <string>1</string>
+     </void>
+     <void property="saldo">
+      <float>1.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string>2</string>
+     </void>
+     <void property="idCuenta">
+      <string>be34ec77-5f92-4a2c-bceb-7f3eacceb91b</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>12</string>
+     </void>
+     <void property="numeCuenta">
+      <string>11</string>
+     </void>
+     <void property="saldo">
+      <float>1111111.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string></string>
+     </void>
+     <void property="idCuenta">
+      <string>b73b2078-36a6-4c96-a2da-2a3b9b74ec7a</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>11</string>
+     </void>
+     <void property="numeCuenta">
+      <string>111111111</string>
+     </void>
+     <void property="saldo">
+      <float>11.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.urwallet.model.Cuenta">
+     <void property="clienteId">
+      <string></string>
+     </void>
+     <void property="idCuenta">
+      <string>01acd1c3-3b9a-490b-b61e-63ecf69d5e90</string>
+     </void>
+     <void property="nombreCuenta">
+      <string>1</string>
+     </void>
+     <void property="numeCuenta">
+      <string>23456</string>
+     </void>
+     <void property="saldo">
+      <float>2.0</float>
+     </void>
+     <void property="tipoCuenta">
+      <object idref="TipoCuenta0"/>
+     </void>
+    </object>
+   </void>
+  </void>
   <void property="listaTransaccion">
    <void method="add">
     <object class="co.urwallet.model.Transaccion">
@@ -256,10 +371,7 @@
          <float>2.0</float>
         </void>
         <void property="tipoCuenta">
-         <object class="java.lang.Enum" method="valueOf">
-          <class>co.urwallet.model.TipoCuenta</class>
-          <string>AHORROS</string>
-         </object>
+         <object idref="TipoCuenta0"/>
         </void>
        </object>
       </void>
